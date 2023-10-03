@@ -1,0 +1,58 @@
+{% extends 'core/template.html' %}
+
+{% block content %}
+{% load static %}
+<main class="pb-3 pt-3 op-destacados">
+  <div class="container">
+    <div class="row d-flex justify-content-center">
+        <div class="col-10">
+          <ul class="op-botonera d-flex justify-content-between mx-3 mt-2">
+            <li class="op-botonera-boton">
+              <a href="#" class="op-botonera-link"><i class="fa-solid fa-list-ul"></i> Todo</a>
+            </li>
+            <li class="op-botonera-boton">
+              <a href="#" class="op-botonera-link"><i class="fa-solid fa-dog"></i> Perros</a>
+            </li>
+            <li class="op-botonera-boton">
+              <a href="#" class="op-botonera-link"><i class="fa-solid fa-cat"></i> Gatos</a>
+            </li>
+            <li class="op-botonera-boton">
+              <a href="#" class="op-botonera-link"><i class="fa-solid fa-bone"></i> Alimentación</a>
+            </li>
+            <li class="op-botonera-boton">
+              <a href="#" class="op-botonera-link"><i class="fa-solid fa-paw"></i> Adopción</a>
+            </li>
+            <li class="op-botonera-boton">
+              <a href="#" class="op-botonera-link"><i class="fa-solid fa-chart-line"></i> Charts</a>
+            </li>
+          </ul>
+        </div>
+    </div>
+    <div class="row d-flex justify-content-center">
+      <div class="col-8">
+
+        <article class="op-post d-flex justify-content-between mt-2 mb-2">
+          <div class="op-post-cont-sm">
+            <img class="op-post-img" src="{% static 'core/img/bellota.jpg' %}" alt="Bellota">
+          </div>
+          <div class="op-post-cont-xl">
+            <h3 class="op-post-title">Lorem ipsum, dolor sit</h3>
+            <div class="op-post-barra"></div>
+            <p class="op-post-text">
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum ducimus, 
+              id esse aliquid fugit voluptas veniam cumque, eaque iste repellat est error
+              eveniet sit! Est suscipit pariatur dolor animi reprehenderit. Lorem ipsum 
+              dolor sit amet consectetur adipisicing elit. Quia aliquid sint quae quaerat 
+              cum sed porro, sit, expedita velit dolor voluptas ipsam necessitatibus
+              blanditiis repudiandae molestiae autem ipsum provident assumenda.
+            </p>
+          </div>
+        </article>   
+        <article class="op-post d-flex justify-content-between mt-2 mb-2">
+          <div id="news"></div>
+        </article>
+        </div>
+      </div>
+    </div>
+  </main>
+{% endblock %}
