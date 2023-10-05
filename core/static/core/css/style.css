@@ -260,8 +260,9 @@ input[type=number]:focus,
     width: 100%;
     border-radius: 20px;
     display: inline-block;
+    display: block;
+    aspect-ratio: auto 414 / 311;
 }
-
 .op-post-title {
     color: var(--azul);
     font-size: 20px;
@@ -392,4 +393,11 @@ footer {
     border-radius: 0px 8px 8px 0px;
     margin-bottom: 20px;
     resize: none;
+}
+
+.op-post d-flex justify-content-between mt-2 mb-2{
+    display: grid;
+    grid-column-gap: var(--grid-column-gap);
+    grid-template-columns: repeat(4,1fr);
+    margin-right: 8px;
 }

@@ -65,16 +65,19 @@ function Api_con_axios() {
 
             let imageDiv = document.createElement('div');
             imageDiv.classList.add('op-post-cont-sm');
-            imageDiv.innerHTML = `<img class="op-post-img" src="${elemento.image}" alt="Bellota">`;
+            imageDiv.innerHTML = `
+            <div class="op-post-cont-sm">
+              <img class="op-post-img" src="${elemento.image}" alt="Bellota">
+            </div>`;
+            
             
             let contentDiv = document.createElement('div');
             contentDiv.classList.add('op-post-cont-xl');
             contentDiv.innerHTML = `
                 <h1 class="op-post-title">${elemento.title}</h1>
-                <h5 class="op-post-description">${elemento.description}</h5>
+                <h6 class="op-post-description">${elemento.description}</h6>
                 <div class="op-post-barra"></div>
                 <p class="op-post-text">${elemento.content}</p>
-                <h4 class="op-post-time">${elemento.publishedAt}</h4>
                 <h4 class="op-post-time">${elemento.source.name}</h4>
                 <a href="${elemento.url}" target="_blank" class="op-post-link">Seguir leyendo</a>
             `;
