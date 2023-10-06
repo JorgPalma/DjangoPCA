@@ -240,6 +240,8 @@ input[type=number]:focus,
 }
 
 .op-post{
+    display: flex;
+    align-items: center;
     width: 100%;
     background-color: white;
     padding: 10px;
@@ -247,21 +249,21 @@ input[type=number]:focus,
 }
 
 .op-post-cont-sm {
-    width: 30%;
+    width: 500px; /* Ajusta el ancho de la imagen según tu diseño */
+    margin-right: 20px; /* Espaciado entre la imagen y el texto */
     display: inline-block;
 }
 
 .op-post-cont-xl {
-    width: 68%;
+    width: 70%;
     display: inline-block;
 }
 
 .op-post-img {
-    width: 100%;
-    border-radius: 20px;
-    display: inline-block;
+    width: 100%; /* La imagen ocupará el 100% del contenedor */
+    height: 100%; /* La imagen ocupará el 100% del contenedor */border-radius: 20px;
     display: block;
-    aspect-ratio: auto 414 / 311;
+    aspect-ratio: auto 500 / 500;
 }
 .op-post-title {
     color: var(--azul);

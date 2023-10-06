@@ -14,5 +14,5 @@ def contacto(request):
 def blog(request):
     return render(request, 'core/blog.html')
 
-def blog(request):
+def formulario(request):
     return render(request, 'core/formulario.html')
