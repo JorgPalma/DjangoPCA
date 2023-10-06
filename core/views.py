@@ -13,3 +13,6 @@ def contacto(request):
 
 def blog(request):
     return render(request, 'core/blog.html')
+
+def blog(request):
+    return render(request, 'core/formulario.html')

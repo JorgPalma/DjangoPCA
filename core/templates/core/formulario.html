@@ -1,0 +1,44 @@
+{% extends 'core/template.html' %}
+
+{% block content %}
+{% load static %}
+
+
+<div class="container pt-5 pb-5">
+    <div class="row d-flex justify-content-center">       
+      <div class="col-6 op-col-contacto">
+        <h2>Formulario de informacion animal</h2>
+        <form action="#" method="post" id="formulario-contacto" class="op-contact-form d-flex flex-wrap justify-content-center">
+          <label for="nombre"></label>
+          <input type="text" id="nombre" name="nombre" placeholder="Nombre Mascota" required>
+          <br>
+          <select class="form-select" aria-label="Default select example">
+            <option selected>Selecciona animal</option>
+            <option value="1">One</option>
+            <option value="2">Two</option>
+            <option value="3">Three</option>
+          </select> 
+          <br>
+          <label for="correo"><i class="fa-solid fa-envelope"></i></label>
+          <input type="email" id="correo" name="correo" placeholder="ejemplo@mail.com" required>
+          <br>
+          <label for="asunto"><i class="fa-solid fa-clipboard"></i></label>
+          <input type="text" id="asunto" name="asunto" placeholder="Asunto" required>
+          <br>
+          <label for="consulta"><i class="fa-solid fa-pen-to-square"></i></label>
+          <textarea id="consulta" name="consulta" rows="4" placeholder="¿Cómo podemos ayudarte?" required></textarea>
+          <br>
+          <div class="form-group" data-toggle="buttons">
+            <button class="btn btn-lg btn-outline-primary align-selft-start" type="button" id="limpiar">Limpiar</button>
+            <button class="btn btn-lg btn-primary" type="submit" id="enviar">Enviar</button>
+          </div>
+      </form>
+      </div>
+    </div>
+  </div>
+
+
+<!--Vacunas, actividad fisica, comida tiempo, sintomas, enfermedades anteriores, alergias, operaciones
+nombre mascota, especie, raza, edad, tamanio, peso, genero -->
+
+{% endblock %}
