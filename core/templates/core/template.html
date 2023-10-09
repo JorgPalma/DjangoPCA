@@ -43,9 +43,6 @@
                       <li class="nav-item">
                         <a class="nav-link" href="{% url 'blog' %}">Blog</a>
                       </li>
-                      <li class="nav-item">
-                        <a class="nav-link" href="{% url 'formulario' %}">Formulario</a>
-                      </li>
                       {% if user.is_authenticated %}
                         <li class="nav-item">
                           <a class="nav-link op-button" href="{% url 'logout' %}">Cerrar Sesión</a>
