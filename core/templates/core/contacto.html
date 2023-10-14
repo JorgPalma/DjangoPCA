@@ -2,147 +2,37 @@
 
 {% block content %}
 {% load static %}
-        <div class="container pt-5 pb-5">
-          <div class="row d-flex justify-content-center">
-            <div class="col-5">
-              <img src="{% static 'core/img/ImagotipoColor.png' %}" alt="PetCare" width="80%">
-            </div>
-            <div class="col-6 op-col-contacto">
-              <form action="#" method="post" id="formulario-contacto" class="op-contact-form d-flex flex-wrap justify-content-center">
-                <label for="nombre"><i class="fa-solid fa-user"></i></label>
-                <input type="text" id="nombre" name="nombre" placeholder="Nombre Apellido" required>
-                <br>
-                <label for="correo"><i class="fa-solid fa-envelope"></i></label>
-                <input type="email" id="correo" name="correo" placeholder="ejemplo@mail.com" required>
-                <br>
-                <label for="asunto"><i class="fa-solid fa-clipboard"></i></label>
-                <input type="text" id="asunto" name="asunto" placeholder="Asunto" required>
-                <br>
-                <label for="consulta"><i class="fa-solid fa-pen-to-square"></i></label>
-                <textarea id="consulta" name="consulta" rows="4" placeholder="¿Cómo podemos ayudarte?" required></textarea>
-                <br>
+<div class="container pt-5 pb-5">
+  <div class="row d-flex justify-content-center">
+    <div class="col-5">
+      <img src="{% static 'core/img/ImagotipoColor.png' %}" alt="PetCare" width="80%">
+    </div>
+    <div class="col-6 op-col-contacto">
+      <h2>Formulario de contacto e información animal</h2>
+      <form action="#" method="post" id="formulario-contacto" class="op-contact-form d-flex flex-wrap justify-content-center">
+        <label for="nombre"><i class="fa-solid fa-user"></i></label>
+        <input type="text" id="nombre" name="nombre" placeholder="Nombre Apellido" required>
+        <br>
+        <label for="correo"><i class="fa-solid fa-envelope"></i></label>
+        <input type="email" id="correo" name="correo" placeholder="ejemplo@mail.com" required>
+        <br>
+        <label for="asunto"><i class="fa-solid fa-clipboard"></i></label>
+        <input type="text" id="asunto" name="asunto" placeholder="Asunto" required>
+        <br>
+        <label for="consulta"><i class="fa-solid fa-pen-to-square"></i></label>
+        <textarea id="consulta" name="consulta" rows="4" placeholder="¿Cómo podemos ayudarte?" required></textarea>
+        <br>
+        
                 <div class="form-group" data-toggle="buttons">
                   <button class="btn btn-lg btn-outline-primary align-selft-start" type="button" id="limpiar">Limpiar</button>
                   <button class="btn btn-lg btn-primary" type="submit" id="enviar">Enviar</button>
                 </div>
-            </form>
+              </form>
             </div>
           </div>
         </div>
-
-
-        <div class="container pt-5 pb-5">
-          <div class="row d-flex justify-content-center">       
-            <div class="col-6 op-col-contacto">
-              <h2>Formulario de informacion animal</h2>
-              <form action="#" method="post" id="formulario-contacto" class="op-contact-form d-flex flex-wrap justify-content-center">
-                <label for="nombre"></label>
-                <input type="text" id="nombre" name="nombre" placeholder="Nombre Mascota" required>
-                <br>
-                <select class="form-select" aria-label="Default select example">
-                  <option selected>Selecciona animal</option>
-                  <option value="1">Perro</option>
-                  <option value="2">Gato</option>
-                  <option value="3">Peces</option>
-                  <option value="4">Aves</option>
-                  <option value="5">Reptiles</option>
-                  <option value="6">Anfibios</option>
-                  <option value="7">Roedores</option>
-                  <option value="8">Marsupiales</option>
-                  <option value="9">Insectos</option>
-                  <option value="10">Araña</option>
-                  <option value="11">Invertebrados acuáticos</option>
-                  <option value="12">Animales exóticos</option>
-                  <option value="13">Animales de granja</option>
-                </select> 
-                <br>
-                <select class="form-select" aria-label="Default select example">
-                  <option selected>Raza</option>
-                  <option value="1">Canarios</option>
-                  <option value="2">Periquitos</option>
-                  <option value="3">Loros</option>
-                  <option value="4">Cacatúas</option>
-                  <option value="5">Serpientes</option>
-                  <option value="6">Lagartos</option>
-                  <option value="7">Tortugas</option>
-                  <option value="8">Cocodrilos </option>
-                  <option value="9">Ranas</option>
-                  <option value="10">Salamandras</option>
-                  <option value="11">Tritones</option>
-                  <option value="12">Ratones</option>
-                  <option value="13">Ratas</option>
-                  <option value="14">Hámsters</option>
-                  <option value="15">Conejos</option>
-                  <option value="16">Cobayas </option>
-                  <option value="17">Jerbos</option>
-                  <option value="18">Wallabies</option>
-                  <option value="19">Zarigüeyas</option>
-                  <option value="20">Tarántulas</option>
-                  <option value="21">Arañas saltarinas</option>
-                  <option value="22">Zorros</option>
-                  <option value="23">Mapaches </option>
-                  <option value="24">Hurones</option>
-                  <option value="25">Skunks </option>
-                  <option value="26">Skunks </option>
-                  <option value="27">Vacas</option>
-                  <option value="28">Ovejas</option>
-                  <option value="29">Cabras</option>
-                  <option value="30">Patos</option>
-                  <option value="31">Gallinas</option>
-                </select> 
-                <br>
-                <label for="number"></label>
-                <input type="number" id="Edad" name="Edad" placeholder="Edad" required>
-                <br>
-                <label for="number"></label>
-                <input type="number" id="tamaño" name="Tamaño" placeholder="Tamaño(Metros)" required>
-                <br>
-                <label for="number"></label>
-                <input type="number" id="peso" name="peso" placeholder="Peso(Kilos)" required>
-                <br>
-                <label for="number"></label>
-                <input type="number" id="vacunas" name="vacunas" placeholder="Vacunas" required>
-                <br>
-                <select class="form-select" aria-label="Default select example">
-                  <option selected>Sexo animal</option>
-                  <option value="1">Macho</option>
-                  <option value="2">Hembra</option>
-                </select> 
-                <br>
-                <select class="form-select" aria-label="Default select example">
-                  <option selected>Actividad Fisica</option>
-                  <option value="1">Si</option>
-                  <option value="2">No</option>
-                </select> 
-                <br>
-                <label for="number"></label>
-                <input type="number" id="comida" name="comida" placeholder="Tiempo entre Comidas (Horas)" required>
-                <br>
-                <label for="sintomas"><i class="fa-solid fa-pen-to-square"></i></label>
-                <textarea id="sintomas" name="sintomas" rows="2" placeholder="Sintomas del animal" required></textarea>
-                <br>
-                <label for="enfermedades"><i class="fa-solid fa-pen-to-square"></i></label>
-                <textarea id="enfermedades" name="enfermedades" rows="2" placeholder="Enfermedades del animal" required></textarea>
-                <br>
-                <div class="form-group" data-toggle="buttons">
-                  <button class="btn btn-lg btn-outline-primary align-selft-start" type="button" id="limpiar">Limpiar</button>
-                  <button class="btn btn-lg btn-primary" type="submit" id="enviar">Enviar</button>
-                </div>
-                <label for="number"></label>
-                <input type="number" id="operaciones" name="operaciones" placeholder="Numero de operaciones" required>
-                <br>
-                <label for="correo"><i class="fa-solid fa-envelope"></i></label>
-                <input type="email" id="correo" name="correo" placeholder="ejemplo@mail.com" required>
-                <br>
-            </form>
-            </div>
-          </div>
-        </div>
-      
-      
-      <!--Vacunas(listo), actividad fisica(listo), comida tiempo(listo), sintomas(listo), enfermedades anteriores(listo), alergias, operaciones
-      nombre mascota(listo), especie(listo), raza(listo), edad(tamaño), tamanio(listo), peso(listo), genero(listo) -->
-      
-
-
+      </form>
+    </div>
+  </div>
+</div>
 {% endblock %}
