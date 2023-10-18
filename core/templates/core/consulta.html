@@ -1,36 +1,29 @@
 {% extends 'core/template.html' %}
 
+
+
 {% block content %}
+
 {% load static %}
 
-<label for="nombre"></label>
-        <input type="text" id="nombre" name="nombre" placeholder="Nombre Mascota" required>
-        <br>
-        <label for="nombre"></label>
-        <select class="form-select" aria-label="Default select example">
-          <option selected>Selecciona animal</option>
-          <option value="1">Perro</option>
-          <option value="2">Gato</option>
-          <option value="3">Peces</option>
-          <option value="4">Aves</option>
-          <option value="5">Reptiles</option>
-          <option value="6">Anfibios</option>
-          <option value="7">Roedores</option>
-          <option value="8">Marsupiales</option>
-          <option value="9">Insectos</option>
-          <option value="10">Arañas</option>
-          <option value="11">Invertebrados acuáticos</option>
-          <option value="12">Animales exóticos</option>
-          <option value="13">Animales de granja</option>
-        </select> 
-        <br>
-        
-      
+
+
         
         <div class="container pt-5 pb-5">
           <div class="row d-flex justify-content-center">       
             <div class="col-6 op-col-contacto">              
-              <form action="#" method="post" id="formulario-contacto" class="op-contact-form d-flex flex-wrap justify-content-center">
+              <label for="nombre"></label>
+                <input type="text" id= "nombre" name="nombre" placeholder= "Nombre Mascota" required>
+                <br>
+                <label for="nombre"></label>
+                <select class="form-select" aria-label="Default select example">
+                <option selected>Selecciona animal</option>
+                <option value="1">Perro</option>
+                <option value="2">Gato</option>
+                </select> 
+                <br>
+                <form action="#" method="post" id="formulario-contacto" class="op-contact-form d-flex flex-wrap justify-content-center">
+                
                 <select class="form-select" aria-label="Default select example">
                   <option selected>Raza</option>
                   <!-- Opciones de raza -->
@@ -75,6 +68,7 @@
                 <label for="correo"><i class="fa-solid fa-envelope"></i></label>
                 <input type="email" id="correo" name="correo" placeholder="ejemplo@mail.com" required>
                 <br>
+                <script src="sweetalert2.all.min.js"></script>
 
-
+                
 {% endblock %}
