@@ -1,1 +1,1 @@
-npm install sweetalert2
+pillow
