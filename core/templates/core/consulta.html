@@ -5,70 +5,67 @@
 {% block content %}
 
 {% load static %}
+   
+<form action="#" method="post" id="formulario-contacto" class="op-contact-form d-flex flex-wrap justify-content-center">
+  <input type="text" id="nombre" name="nombre" placeholder="Nombre Mascota" required>
+  <br>
+  <label for="animal"></label>
+  <select class="form-select" id="animal" name="animal" aria-label="Default select example" required>
+      <option selected>Selecciona animal</option>
+      <option value="1">Perro</option>
+      <option value="2">Gato</option>
+  </select>
+  <br>
+  <label for="raza"></label>
+  <select class="form-select" id="raza" name="raza" aria-label="Default select example" required>
+      <option selected>Raza</option>
+      <!-- Opciones de raza -->
+  </select>
+  <br>
+  <label for="edad"></label>
+  <input type="number" id="edad" name="edad" placeholder="Edad" required>
+  <br>
+  <label for="tamaño"></label>
+  <input type="number" id="tamaño" name="tamaño" placeholder="Tamaño(Metros)" required>
+  <br>
+  <label for="peso"></label>
+  <input type="number" id="peso" name="peso" placeholder="Peso(Kilos)" required>
+  <br>
+  <label for="vacunas"></label>
+  <input type="number" id="vacunas" name="vacunas" placeholder="Vacunas" required>
+  <br>
+  <label for="sexo"></label>
+  <select class="form-select" id="sexo" name="sexo" aria-label="Default select example" required>
+      <option selected>Sexo animal</option>
+      <option value="1">Macho</option>
+      <option value="2">Hembra</option>
+  </select>
+  <br>
+  <label for="actividad"></label>
+  <select class="form-select" id="actividad" name="actividad" aria-label="Default select example" required>
+      <option selected>Actividad Fisica</option>
+      <option value="1">Si</option>
+      <option value="2">No</option>
+  </select>
+  <br>
+  <label for="comida"></label>
+  <input type="number" id="comida" name="comida" placeholder="Tiempo entre Comidas (Horas)" required>
+  <br>
+  <label for="sintomas"></label>
+  <textarea id="sintomas" name="sintomas" rows="2" placeholder="Sintomas del animal" required></textarea>
+  <br>
+  <label for="enfermedades"></label>
+  <textarea id="enfermedades" name="enfermedades" rows="2" placeholder="Enfermedades del animal" required></textarea>
+  <br>
+  <label for="operaciones"></label>
+  <input type="number" id="operaciones" name="operaciones" placeholder="Numero de operaciones" required>
+  <br>
+  <label for="correo"></label>
+  <input type="email" id="correo" name="correo" placeholder="ejemplo@mail.com" required>
+  <br>
+  <input type="submit" value="Enviar">
+</form>
 
-
-
-        
-        <div class="container pt-5 pb-5">
-          <div class="row d-flex justify-content-center">       
-            <div class="col-6 op-col-contacto">              
-              <label for="nombre"></label>
-                <input type="text" id= "nombre" name="nombre" placeholder= "Nombre Mascota" required>
-                <br>
-                <label for="nombre"></label>
-                <select class="form-select" aria-label="Default select example">
-                <option selected>Selecciona animal</option>
-                <option value="1">Perro</option>
-                <option value="2">Gato</option>
-                </select> 
-                <br>
-                <form action="#" method="post" id="formulario-contacto" class="op-contact-form d-flex flex-wrap justify-content-center">
-                
-                <select class="form-select" aria-label="Default select example">
-                  <option selected>Raza</option>
-                  <!-- Opciones de raza -->
-                </select> 
-                <br>
-                <label for="number"></label>
-                <input type="number" id="Edad" name="Edad" placeholder="Edad" required>
-                <br>
-                <label for="number"></label>
-                <input type="number" id="tamaño" name="Tamaño" placeholder="Tamaño(Metros)" required>
-                <br>
-                <label for="number"></label>
-                <input type="number" id="peso" name="peso" placeholder="Peso(Kilos)" required>
-                <br>
-                <label for="number"></label>
-                <input type="number" id="vacunas" name="vacunas" placeholder="Vacunas" required>
-                <br>
-                <select class="form-select" aria-label="Default select example">
-                  <option selected>Sexo animal</option>
-                  <option value="1">Macho</option>
-                  <option value="2">Hembra</option>
-                </select> 
-                <br>
-                <select class="form-select" aria-label="Default select example">
-                  <option selected>Actividad Fisica</option>
-                  <option value="1">Si</option>
-                  <option value="2">No</option>
-                </select> 
-                <br>
-                <label for="number"></label>
-                <input type="number" id="comida" name="comida" placeholder="Tiempo entre Comidas (Horas)" required>
-                <br>
-                <label for="sintomas"><i class="fa-solid fa-pen-to-square"></i></label>
-                <textarea id="sintomas" name="sintomas" rows="2" placeholder="Sintomas del animal" required></textarea>
-                <br>
-                <label for="enfermedades"><i class="fa-solid fa-pen-to-square"></i></label>
-                <textarea id="enfermedades" name="enfermedades" rows="2" placeholder="Enfermedades del animal" required></textarea>
-                <br>
-                <label for="number"></label>
-                <input type="number" id="operaciones" name="operaciones" placeholder="Numero de operaciones" required>
-                <br>
-                <label for="correo"><i class="fa-solid fa-envelope"></i></label>
-                <input type="email" id="correo" name="correo" placeholder="ejemplo@mail.com" required>
-                <br>
                 <script src="sweetalert2.all.min.js"></script>
 
-                
 {% endblock %}
