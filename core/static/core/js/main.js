@@ -42,11 +42,4 @@ function Api_con_axios() {
     });
 }
 
-
-
-document.addEventListener("DOMContentLoaded", (event) => {
-    console.log("DOM fully loaded and parsed");
-    Swal.fire('SweetAlert2 is working!');
-  });
-
 Api_con_axios();

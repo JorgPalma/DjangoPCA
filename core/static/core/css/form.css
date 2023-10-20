@@ -1,4 +1,13 @@
 /* Estilos para el formulario */
+.form-container {
+    max-width: 500px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
 .form-group {
     margin-bottom: 20px;
 }
@@ -17,6 +26,7 @@ textarea {
     border-radius: 5px;
     box-sizing: border-box;
     font-size: 16px;
+    margin-top: 5px;
 }
 
 select {
@@ -36,20 +46,11 @@ input[type="submit"] {
     font-size: 18px;
 }
 
-/* Estilos adicionales para mejorar la apariencia */
-.form-container {
-    max-width: 500px;
-    margin: 0 auto;
-    padding: 20px;
-    background-color: #f9f9f9;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
-
-/* Estilos para hacer el formulario responsivo */
+/* Estilos adicionales para hacer el formulario responsivo */
 @media screen and (max-width: 600px) {
     .form-container {
         padding: 10px;
     }
 }
+
 
