@@ -7,9 +7,10 @@
 {% load static %}
    
 <br>
-<div class="container" style="max-width: 1000px; min-width: 700px;">
-  <div class="card">
-    <div class="card-body">
+<div class="container pt-5 pb-5">
+  <div class="row d-flex justify-content-center">
+    <div class="col-5">
+      
       <form id="myForm" onsubmit="return validar()">
         <div class="form-group">
           <legend>Datos de la Mascota</legend>
@@ -29,32 +30,35 @@
               </select>
           <label for="edad">Edad:</label>
           <input type="number" class="form-control" id="email" placeholder="Edad de tu mascota">
-          <label for="Pass1">Altura de tu mascota (En cm):</label>
-          <input type="password" class="form-control" id="pass1" placeholder="Contraseña">
-          <label for="pass2">Rep. Contraseña:</label>
-          <input type="password" class="form-control" id="pass2" placeholder="Repetir Contraseña">
-          <label for="codipos">Código Postal:</label>
-          <input type="text" class="form-control" id="codipos" placeholder="Codigo Postal">
+          <label for="alturacm">Altura de tu mascota (En cm):</label>
+          <input type="number" class="form-control" id="pass1" placeholder="Altura de tu mascota">
+          <label for="pesomas">Peso de tu mascota:</label>
+          <input type="number" class="form-control" id="pass2" placeholder="En Kg">
+          <label for="codipos">Número de vacunas:</label>
+          <input type="number" class="form-control" id="codipos" placeholder="Número de vacunas de tu mascota">
+          <label for="raza">Raza de tu mascota:</label> <br>
+          <input type="radio" id="sexo" name="sexo"> Macho
+          <input type="radio" id="sexo" name="sexo"> Hembra <br>
+          <label for="actfisica">¿Tu mascota realiza actividad física?:</label> <br>
+          <input type="radio" id="actfisica" name="actfisica"> Sí
+          <input type="radio" id="actfisica" name="actfisica"> No <br>
+          <label for="codipos">¿Cada cuanto come tu mascota? (En horas):</label>
+          <input type="number" class="form-control" id="codipos" placeholder="Horas">
+          <label for="sintomas">Síntomas del animal:</label>
+          <input id="sintomas" name="sintomas" rows="2" class="form-control" placeholder="Síntomas del animal" required></textarea>
+          <label for="enfermedades">Enfermedades del animal:</label>
+          <input id="enfermedades" name="enfermedades" rows="2" class="form-control" placeholder="Enfermedades del animal" required></textarea>
+          <label for="operaciones">Número de operaciones:</label>
+          <input type="number" id="operaciones" name="operaciones" class="form-control" placeholder="Número de operaciones" required>
+          <label for="correo">Correo electrónico:</label>
+          <input type="email" id="correo" name="correo" class="form-control" placeholder="Ejemplo@mail.com" required> <br>
+          <input type="submit" class="btn btn-success" id="boton" value="Enviar">
+          <input type="reset" class="btn btn-danger" id="boton" value="Borrar"> 
+        
         </div>
 
-        <div class="form-group">
-          <legend>Datos Personales</legend>
-          <label for="sexo">Sexo:</label>
-          <input type="radio" id="sexo" name="sexo"> Masculino
-          <input type="radio" id="sexo" name="sexo"> Femenino <br>
-          <label for="ciudad">Ciudad:</label>      
-            <select class="form-control" id="ciudad">
-              <option value="Lota">Seleccionar</option>
-              <option value="Lota">Lota</option>
-              <option value="Coronel">Coronel</option>
-              <option value="concepción">Concepción</option>
-            </select>      
-          <label for="terminos">Legalidades:</label><br>
-          <input type="checkbox" id="terminos"> Acepto los términos y condiciones          
-        </div>
-        <input type="submit" class="btn btn-success" id="boton" value="Registrar">
-        <input type="reset" class="btn btn-danger" id="boton" value="Reiniciar"> 
-      </form>
+        
+        </form>
     </div>
   </div>
 </div>
