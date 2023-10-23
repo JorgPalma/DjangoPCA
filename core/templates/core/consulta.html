@@ -6,84 +6,58 @@
 
 {% load static %}
    
-<form action="#" method="post" id="formulario-contacto" class="op-contact-form d-flex flex-wrap justify-content-center">
-  <div class="form-group">
-      <label for="nombre">Nombre Mascota:</label>
-      <input type="text" id="nombre" name="nombre" class="form-control" placeholder="Nombre Mascota" required>
-  </div>
-  <div class="form-group">
-      <label for="animal">Selecciona animal:</label>
-      <select class="form-select" id="animal" name="animal" required>
-          <option selected disabled>Selecciona animal</option>
-          <option value="1">Perro</option>
-          <option value="2">Gato</option>
-      </select>
-  </div>
-  <div class="form-group">
-      <label for="raza">Raza:</label>
-      <select class="form-select" id="raza" name="raza" required>
-          <option selected disabled>Selecciona raza</option>
-          <!-- Opciones de raza -->
-      </select>
-  </div>
-  <div class="form-group">
-      <label for="edad">Edad:</label>
-      <input type="number" id="edad" name="edad" class="form-control" placeholder="Edad" required>
-  </div>
-  <div class="form-group">
-      <label for="tamaño">Tamaño (Metros):</label>
-      <input type="number" id="tamaño" name="tamaño" class="form-control" placeholder="Tamaño(Metros)" required>
-  </div>
-  <div class="form-group">
-      <label for="peso">Peso (Kilos):</label>
-      <input type="number" id="peso" name="peso" class="form-control" placeholder="Peso(Kilos)" required>
-  </div>
-  <div class="form-group">
-      <label for="vacunas">Número de Vacunas:</label>
-      <input type="number" id="vacunas" name="vacunas" class="form-control" placeholder="Vacunas" required>
-  </div>
-  <div class="form-group">
-      <label for="sexo">Sexo:</label>
-      <select class="form-select" id="sexo" name="sexo" required>
-          <option selected disabled>Selecciona sexo</option>
-          <option value="1">Macho</option>
-          <option value="2">Hembra</option>
-      </select>
-  </div>
-  <div class="form-group">
-      <label for="actividad">¿Realiza actividad física?</label>
-      <select class="form-select" id="actividad" name="actividad" required>
-          <option selected disabled>Selecciona opción</option>
-          <option value="1">Sí</option>
-          <option value="2">No</option>
-      </select>
-  </div>
-  <div class="form-group">
-      <label for="comida">Tiempo entre Comidas (Horas):</label>
-      <input type="number" id="comida" name="comida" class="form-control" placeholder="Tiempo entre Comidas (Horas)" required>
-  </div>
-  <div class="form-group">
-      <label for="sintomas">Síntomas del animal:</label>
-      <textarea id="sintomas" name="sintomas" rows="2" class="form-control" placeholder="Síntomas del animal" required></textarea>
-  </div>
-  <div class="form-group">
-      <label for="enfermedades">Enfermedades del animal:</label>
-      <textarea id="enfermedades" name="enfermedades" rows="2" class="form-control" placeholder="Enfermedades del animal" required></textarea>
-  </div>
-  <div class="form-group">
-      <label for="operaciones">Número de operaciones:</label>
-      <input type="number" id="operaciones" name="operaciones" class="form-control" placeholder="Numero de operaciones" required>
-  </div>
-  <div class="form-group">
-      <label for="correo">Correo electrónico:</label>
-      <input type="email" id="correo" name="correo" class="form-control" placeholder="ejemplo@mail.com" required>
-  </div>
-  <div class="form-group">
-      <input type="submit" value="Enviar" class="btn btn-primary">
-  </div>
-</form>
+<br>
+<div class="container" style="max-width: 1000px; min-width: 700px;">
+  <div class="card">
+    <div class="card-body">
+      <form id="myForm" onsubmit="return validar()">
+        <div class="form-group">
+          <legend>Datos de la Mascota</legend>
+          <label for="mascota">Nombre de tu mascota:</label>
+          <input type="text" class="form-control" id="user" placeholder="Usuario"> 
+          <label for="animal">Animal:</label>      
+            <select class="form-control" id="mascota">
+              <option value="seleccion_mascota">Selecciona tu mascota</option>
+              <option value="Perro">Perro</option>
+              <option value="Gato">Gato</option>
+            </select>
+            <label for="raza_mascota">Raza de tu mascota:</label>   
+            <select class="form-control" id="raza">
+                <option value="raza_mascota">Selecciona la raza de tu mascota</option>
+                <option value="">algo</option>
+                <option value="">algo</option>
+              </select>
+          <label for="edad">Edad:</label>
+          <input type="number" class="form-control" id="email" placeholder="Edad de tu mascota">
+          <label for="Pass1">Altura de tu mascota (En cm):</label>
+          <input type="password" class="form-control" id="pass1" placeholder="Contraseña">
+          <label for="pass2">Rep. Contraseña:</label>
+          <input type="password" class="form-control" id="pass2" placeholder="Repetir Contraseña">
+          <label for="codipos">Código Postal:</label>
+          <input type="text" class="form-control" id="codipos" placeholder="Codigo Postal">
+        </div>
 
-
-                <script src="sweetalert2.all.min.js"></script>
+        <div class="form-group">
+          <legend>Datos Personales</legend>
+          <label for="sexo">Sexo:</label>
+          <input type="radio" id="sexo" name="sexo"> Masculino
+          <input type="radio" id="sexo" name="sexo"> Femenino <br>
+          <label for="ciudad">Ciudad:</label>      
+            <select class="form-control" id="ciudad">
+              <option value="Lota">Seleccionar</option>
+              <option value="Lota">Lota</option>
+              <option value="Coronel">Coronel</option>
+              <option value="concepción">Concepción</option>
+            </select>      
+          <label for="terminos">Legalidades:</label><br>
+          <input type="checkbox" id="terminos"> Acepto los términos y condiciones          
+        </div>
+        <input type="submit" class="btn btn-success" id="boton" value="Registrar">
+        <input type="reset" class="btn btn-danger" id="boton" value="Reiniciar"> 
+      </form>
+    </div>
+  </div>
+</div>
+<br>
 
 {% endblock %}

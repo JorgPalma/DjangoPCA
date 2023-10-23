@@ -33,7 +33,7 @@
                         <a class="nav-link active" aria-current="page" href="{% url 'home' %}">Inicio</a>
                       </li>
                       <li class="nav-item">
-                        <a class="nav-link" href="{% url 'consulta' %}">Consulta</a>
+                        <a class="nav-link" href="{% url 'consulta' %}">Cambiar</a>
                       </li>
                       <li class="nav-item">
                         <a class="nav-link" href="{% url 'nosotros' %}">Nosotros</a>
@@ -42,7 +42,10 @@
                         <a class="nav-link" href="{% url 'contacto' %}">Contacto</a>
                       </li>
                       <li class="nav-item">
-                        <a class="nav-link" href="{% url 'blog' %}">Blog</a>
+                        <a class="nav-link" href="{% url 'blog' %}">Comunidad</a>
+                      <li class="nav-item">
+                        <a class="nav-link" href="{% url 'blog' %}">Noticias</a>
+                      </li>
                       </li>
                       {% if user.is_authenticated %}
                         <li class="nav-item">

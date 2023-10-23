@@ -486,3 +486,10 @@ footer {
 .helptext ul{
     list-style:circle;
 }
+
+.center-iframe {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
