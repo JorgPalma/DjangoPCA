@@ -51,7 +51,10 @@
                       </li>
                       {% if user.is_authenticated %}
                         <li class="nav-item">
-                          <a class="nav-link op-button" href="{% url 'logout' %}">Cerrar Sesión</a>
+                          <a class="nav-link" href="{% url 'perfil' %}"> @{{ user.username }}</a>
+                        </li>
+                        <li class="nav-item">
+                          <a class="nav-link op-button-short" href="{% url 'logout' %}"><i class="fa-solid fa-right-from-bracket"></i></a>
                         </li>
                       {% else %}
                         <li class="nav-item">

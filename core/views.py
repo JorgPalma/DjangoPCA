@@ -1,6 +1,7 @@
-from django.shortcuts import redirect, render
+from django.shortcuts import redirect, render, get_object_or_404
 from .forms import RegistroForm
 from django.contrib.auth import authenticate, login
+from .models import User, Persona
 
 # Create your views here.
 
@@ -37,3 +38,14 @@ def registro(request):
 
 def consulta(request):
     return render(request, 'core/consulta.html')
+
+def perfil(request):
+
+    usuario = get_object_or_404(User, pk=request.user.pk)
+    persona = Persona.objects.get(nombre_usuario=usuario)
+
+    data = {
+        'persona': persona
+    }
+
+    return render(request, 'core/perfil.html', data)

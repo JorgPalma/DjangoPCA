@@ -28,7 +28,7 @@ nav {
     color: white;
     font-family: var(--quicksans);
     font-weight: bolder;
-    font-size: 18px;
+    font-size: 16px;
     margin: 0 10px;
 }
 
@@ -45,6 +45,15 @@ nav {
     background: var(--celeste);
     height: 42px;
     width: 140px;
+    border-radius: 5px;
+    text-align: center;
+}
+
+.op-button-short{
+    color: var(--azul);
+    background: var(--celeste);
+    height: 42px;
+    width: 40px;
     border-radius: 5px;
     text-align: center;
 }

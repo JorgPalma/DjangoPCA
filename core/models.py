@@ -14,6 +14,7 @@ class Persona(models.Model):
     apellido_mate = models.CharField(max_length=30)
     telefono = models.IntegerField()
     edad = models.IntegerField()
+    imagen = models.ImageField(upload_to="perfil", null=True, default='default.png')
 
     def __str__(self):
         return self.primer_nombre
