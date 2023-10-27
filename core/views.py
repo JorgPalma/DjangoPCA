@@ -21,6 +21,7 @@ def formulario(request):
     return render(request, 'core/formulario.html')
 
 def registro(request):
+
     data = {
         'form': RegistroForm
     }
@@ -31,6 +32,10 @@ def registro(request):
             formulario.save()
             user = authenticate(username=formulario.cleaned_data["username"], password=formulario.cleaned_data["password1"])
             login (request, user)
+            usuario = get_object_or_404(User, pk=request.user.pk)
+            persona = Persona()
+            persona.nombre_usuario = usuario
+            persona.save()
             return redirect(to="home")
             
 

@@ -6,15 +6,15 @@ from django.utils import timezone
 
 class Persona(models.Model):
     nombre_usuario = models.OneToOneField(User, on_delete=models.CASCADE, related_name='profile_user')
-    rut = models.IntegerField()
-    digito_ver = models.CharField(max_length=1)
-    primer_nombre = models.CharField(max_length=30)
-    segundo_nombre = models.CharField(max_length=30)
-    apellido_pat = models.CharField(max_length=30)
-    apellido_mate = models.CharField(max_length=30)
-    telefono = models.IntegerField()
-    edad = models.IntegerField()
-    imagen = models.ImageField(upload_to="perfil", null=True, default='default.png')
+    rut = models.IntegerField(default=12345678)
+    digito_ver = models.CharField(max_length=1, default=1)
+    primer_nombre = models.CharField(max_length=30, default="-")
+    segundo_nombre = models.CharField(max_length=30, default=" ", blank=True)
+    apellido_pat = models.CharField(max_length=30, default="-")
+    apellido_mate = models.CharField(max_length=30, default=" ", blank=True)
+    telefono = models.IntegerField(default=123456789)
+    edad = models.IntegerField(default=18)
+    imagen = models.ImageField(upload_to="perfil", null=True, default='perfil/default.png')
 
     def __str__(self):
         return self.primer_nombre

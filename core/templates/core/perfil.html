@@ -2,39 +2,90 @@
 
 {% block content %}
 {% load static %}
-<div class="container pt-2 pb-5">
+<div class="container container-op-perfil pt-3 pb-5">
   <div class="row d-flex justify-content-center">
-    <div class="col-4">
-      <img src="{{ persona.imagen }}" alt="" width="200px">
+    <div class="col-12 d-flex justify-content-end">
+      <button class="btn btn-lg btn-op-perfil">Editar</button>
     </div>
-    <div class="col-8">
-      <h2 class="text-start">@{{ persona.nombre_usuario }}</h2>
-      <div class="row d-flex justify-content-between">
-        <div class="col-6">
-          <h6>Nombres</h6>
-          <p>{{ persona.primer_nombre }}  {{ persona.segundo_nombre }}</p>
-        </div>
-        <div class="col-6">
-          <h6>Apellidos</h6>
-          <p>{{ persona.apellido_pat }}  {{ persona.apellido_mate }}</p>
-        </div>
-        <div class="col-6">
-          <h6>Rut</h6>
-          <p>{{ persona.rut }} - {{ persona.digito_ver }}</p>
-        </div>
-        <div class="col-6">
-          <h6>Edad</h6>
-          <p>{{ persona.edad }}</p>
-        </div>
-        <div class="col-6">
-          <h6>E-mail</h6>
-          <p>{{ user.email }}</p>
-        </div>
-        <div class="col-6">
-          <h6>Teléfono</h6>
-          <p>{{ persona.telefono }}</p>
-        </div>
-      </div>
+    <div class="col-4 d-flex flex-wrap justify-content-center pt-3">
+      <img class="img-op-perfil" src='{{persona.imagen.url}}'' alt="Foto usuario" width="200px">
+      <h2 class="text-center nombre-op-perfil">@{{ persona.nombre_usuario }}</h2>
+    </div>
+    <div class="col-4">
+      <table class="table table-hover table-striped">
+        <thead>
+          <tr>
+            <th scope="col">Nombres</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">{{ persona.primer_nombre }}  {{ persona.segundo_nombre }}</th>
+          </tr>
+        </tbody>
+      </table>
+      <table class="table table-hover table-striped">
+        <thead>
+          <tr>
+            <th scope="col">Rut</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">{{ persona.rut }} - {{ persona.digito_ver }}</th>
+          </tr>
+        </tbody>
+      </table>
+      <table class="table table-hover table-striped">
+        <thead>
+          <tr>
+            <th scope="col">E-mail</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">{{ user.email }}</th>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="col-4">
+      <table class="table table-hover table-striped">
+        <thead>
+          <tr>
+            <th scope="col">Apellidos</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">{{ persona.apellido_pat }}  {{ persona.apellido_mate }}</th>
+          </tr>
+        </tbody>
+      </table>
+      <table class="table table-hover table-striped">
+        <thead>
+          <tr>
+            <th scope="col">Edad</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">{{ persona.edad }} años</th>
+          </tr>
+        </tbody>
+      </table>
+      <table class="table table-hover table-striped">
+        <thead>
+          <tr>
+            <th scope="col">Teléfono</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">{{ persona.telefono }}</th>
+          </tr>
+        </tbody>
+      </table>
     </div>
   </div>
 </div>

@@ -502,3 +502,35 @@ footer {
     align-items: center;
     height: 100vh;
 }
+
+.img-op-perfil {
+    width: 60%;
+    border-radius: 50%;
+}
+
+.nombre-op-perfil {
+    width: 100%;
+}
+
+.btn-op-perfil {
+    font-family: var(--quicksans);
+    color: white;
+    background: var(--celeste);
+}
+
+.btn-op-perfil:hover {
+    font-family: var(--quicksans);
+    color: white;
+    background: var(--azul);
+}
+
+.container-op-perfil h2{
+    font-family: var(--quicksans);
+    font-weight: bolder;
+    color: var(--azul);
+}
+
+.container-op-perfil table {
+    font-family: var(--opensans);
+    font-weight: lighter;
+}
