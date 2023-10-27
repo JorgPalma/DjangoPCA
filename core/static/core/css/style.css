@@ -504,8 +504,11 @@ footer {
 }
 
 .img-op-perfil {
-    width: 60%;
-    border-radius: 50%;
+    width: 200px;
+    height: 200px;
+    border-radius: 100px;
+    object-fit: cover;
+    object-position: 50% 25%; 
 }
 
 .nombre-op-perfil {
@@ -525,12 +528,25 @@ footer {
 }
 
 .container-op-perfil h2{
-    font-family: var(--quicksans);
+    font-family: var(--opensans);
     font-weight: bolder;
     color: var(--azul);
 }
 
 .container-op-perfil table {
-    font-family: var(--opensans);
+    font-family: var(--quicksans) ;
     font-weight: lighter;
+    font-size: 16px;
+}
+
+.container-op-perfil table thead th{
+    font-family: var(--quicksans) ;
+    font-weight: lighter;
+    color: var(--azul);
+}
+
+.container-op-perfil table tbody th{
+    font-family: var(--quicksans) ;
+    font-weight: lighter;
+    color: rgb(128, 128, 128);
 }

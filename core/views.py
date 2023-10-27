@@ -2,6 +2,7 @@ from django.shortcuts import redirect, render, get_object_or_404
 from .forms import RegistroForm
 from django.contrib.auth import authenticate, login
 from .models import User, Persona
+from .forms import EditarPefil
 
 # Create your views here.
 
@@ -54,3 +55,22 @@ def perfil(request):
     }
 
     return render(request, 'core/perfil.html', data)
+
+def editarPerfil(request, id):
+
+    persona = get_object_or_404(Persona, id = id)
+    
+    data = {
+        'form': EditarPefil(instance = persona),
+        'persona': persona
+    }
+
+    if request.method == 'POST':
+        formulario = EditarPefil(data=request.POST, files=request.FILES, instance=persona)
+        if formulario.is_valid():
+            formulario.save()
+            return redirect(to="perfil")
+        else:
+            data["form"] = formulario
+
+    return render(request, 'core/editarperfil.html', data)

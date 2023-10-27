@@ -17,7 +17,7 @@ class Persona(models.Model):
     imagen = models.ImageField(upload_to="perfil", null=True, default='perfil/default.png')
 
     def __str__(self):
-        return self.primer_nombre
+        return f'Perfil de: {self.nombre_usuario}'
 
     
 class Blog(models.Model):

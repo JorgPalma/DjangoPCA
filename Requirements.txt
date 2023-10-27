@@ -1,1 +1,2 @@
 pillow
+crispy-bootstrap5
