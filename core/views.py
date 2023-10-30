@@ -74,3 +74,6 @@ def editarPerfil(request, id):
             data["form"] = formulario
 
     return render(request, 'core/editarperfil.html', data)
+
+def noticias(request):
+    return render(request, 'core/noticias.html')

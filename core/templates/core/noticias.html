@@ -1,0 +1,23 @@
+{% extends 'core/template.html' %}
+
+{% block title %}
+  <title>PetCareAnalytics | Noticias</title>
+{% endblock %}
+
+{% block content %}
+{% load static %}
+<main class="pb-3 pt-3 op-destacados">
+  <div class="container">
+    <div class="row d-flex justify-content-center">
+        <div class="col-12">
+          <h2 class="text-center h1">Noticias</h2>
+          <div class="row d-flex flex-wrap">
+            <div id="news" class="col-12 flex-wrap op-noticias">
+            </div>
+          </div>
+          
+        </div>
+      </div>  
+    </div>
+  </main>
+{% endblock %}
