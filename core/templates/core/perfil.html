@@ -8,9 +8,13 @@
 {% load static %}
 <div class="container container-op-perfil pt-3 pb-5">
   <div class="row d-flex justify-content-center">
-    <div class="col-12 d-flex justify-content-end">
-      <a href="{% url 'editarPerfil' persona.id %}" class="btn btn-lg btn-op-perfil">Editar</a>
-    </div>
+    {% if comparacion1 == comparacion2 %}
+      <div class="col-12 d-flex justify-content-end">
+        <a href="{% url 'editarPerfil' persona.id %}" class="btn btn-lg btn-op-perfil">Editar</a>
+      </div>
+    {% endif %}
+    <p> {{ comparacion1 }} </p>
+    <p> {{ comparacion2 }} </p>
     <div class="col-4 d-flex flex-wrap justify-content-center pt-3">
       <img class="img-op-perfil" src='{{persona.imagen.url}}'' alt="Foto usuario" width="200px">
       <h2 class="text-center nombre-op-perfil">@{{ persona.nombre_usuario }}</h2>

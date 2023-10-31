@@ -10,7 +10,7 @@ urlpatterns=[
     path('formulario/', formulario, name="formulario"),
     path('registro/', registro, name="registro"),
     path('consulta/', consulta, name="consulta"),
-    path('perfil/', login_required (perfil), name="perfil"),
+    path('perfil/<username>/', login_required (perfil), name="perfil"),
     path('editarPerfil/<id>/', login_required (editarPerfil), name="editarPerfil"),
     path('noticias/', noticias, name="noticias")
 ]

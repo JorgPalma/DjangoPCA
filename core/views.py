@@ -45,13 +45,17 @@ def registro(request):
 def consulta(request):
     return render(request, 'core/consulta.html')
 
-def perfil(request):
+def perfil(request, username):
 
-    usuario = get_object_or_404(User, pk=request.user.pk)
-    persona = Persona.objects.get(nombre_usuario=usuario)
+    user = get_object_or_404(User, username = username)
+    persona = Persona.objects.get(nombre_usuario = user)
+
 
     data = {
-        'persona': persona
+        'user': user,
+        'persona': persona,
+        'comparacion1': persona.nombre_usuario,
+        'comparacion2': user.username
     }
 
     return render(request, 'core/perfil.html', data)
@@ -69,7 +73,7 @@ def editarPerfil(request, id):
         formulario = EditarPefil(data=request.POST, files=request.FILES, instance=persona)
         if formulario.is_valid():
             formulario.save()
-            return redirect(to="perfil")
+            return redirect(to="home")
         else:
             data["form"] = formulario
 

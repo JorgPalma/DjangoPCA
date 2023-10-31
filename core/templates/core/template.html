@@ -76,7 +76,7 @@
                           <a  
                           {% if request.resolver_match.url_name == 'perfil' %}class="active nav-link"
                           {% elif request.resolver_match.url_name != 'perfil' %}class="nav-link"
-                          {% endif %} aria-current="page" href="{% url 'perfil' %}">Perfil
+                          {% endif %} aria-current="page" href="{% url 'perfil' user.username %}">Perfil
                         </a>
                         </li>
                         <li class="nav-item">
