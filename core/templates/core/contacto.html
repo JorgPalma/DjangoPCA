@@ -14,17 +14,9 @@
     <div class="col-6 op-col-contacto">
       <h2 class="h4 text-center" >Formulario de contacto e información animal</h2>
       <form action="#" method="post" id="formulario-contacto" class="op-contact-form d-flex flex-wrap justify-content-center">
-        <label for="nombre"><i class="fa-solid fa-user"></i></label>
-        <input type="text" id="nombre" name="nombre" placeholder="Nombre Apellido" required>
-        <br>
-        <label for="correo"><i class="fa-solid fa-envelope"></i></label>
-        <input type="email" id="correo" name="correo" placeholder="ejemplo@mail.com" required>
-        <br>
-        <label for="asunto"><i class="fa-solid fa-clipboard"></i></label>
-        <input type="text" id="asunto" name="asunto" placeholder="Asunto" required>
-        <br>
-        <label for="consulta"><i class="fa-solid fa-pen-to-square"></i></label>
-        <textarea id="consulta" name="consulta" rows="4" placeholder="¿Cómo podemos ayudarte?" required></textarea>
+        {% csrf_token %}
+
+        {{ form }}
         <br>
         
                 <div class="form-group" data-toggle="buttons">
@@ -32,6 +24,7 @@
                   <button class="btn btn-lg btn-primary" type="submit" id="enviar">Enviar</button>
                 </div>
               </form>
+              {{mensaje}}
             </div>
           </div>
         </div>
