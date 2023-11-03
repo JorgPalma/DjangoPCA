@@ -345,7 +345,18 @@ footer {
     font-size: 16px;
     color: var(--azul);
     width: 15%;
-    background: #54d2d2;
+    background: var(--celeste);
+    padding: 15px;
+    border-radius: 5px;
+}
+
+.op-botonera-post {
+    text-decoration: none;
+    font-family: var(--quicksans);
+    font-size: 16px;
+    color: var(--azul);
+    width: 15%;
+    background: var(--naranjo);
     padding: 15px;
     border-radius: 5px;
 }
@@ -549,4 +560,34 @@ footer {
     font-family: var(--quicksans) ;
     font-weight: lighter;
     color: rgb(128, 128, 128);
+}
+
+.op-bienvenido h2{
+    font-family: var(--quicksans);
+    font-weight: bolder;
+    color: var(--azul);
+}
+
+.op-bienvenido img {
+    display: inline-block;
+    position: relative;
+    height:100%;
+    width:100%;
+}
+
+.op-bienvenido p {
+    font-family: var(--opensans);
+    text-align: justify;
+}
+
+.op-bienvenido a {
+    color: white;
+    background: var(--celeste);
+    float: right;
+}
+
+.storyset{
+    color: white;
+    text-decoration: none;
+    text-align: center;
 }

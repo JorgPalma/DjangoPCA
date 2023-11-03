@@ -1,0 +1,33 @@
+{% extends 'core/template.html' %}
+
+{% block title %}
+  <title>PetCareAnalytics | Bienvenido</title>
+{% endblock %}
+
+{% block content %}
+{% load static %}
+<div class="container pt-5 pb-5">
+  <div class="row d-flex justify-content-center">
+    {% if validacion == True  %}
+    <div class="col-6 justify-content-center flex-wrap op-bienvenido">
+      <img class="align-self-center mt-0" src="{% static 'core/img/Welcome.gif' %}" alt="Bienvenido">
+    </div>
+    <div class="col-6 justify-content-center flex-wrap op-bienvenido">
+      <h2 class="h1 text-center">@{{ persona.nombre_usuario }}</h2>
+      <hr>
+      <p class="">¡Bienvenido a PetCareAnalytics! Para brindarte la mejor experiencia, nos gustaría conocerte un poco mejor. 
+        Por favor, tómate un momento para proporcionar información adicional que enriquecerá tu perfil. 
+        Esto nos ayudará a personalizar recomendaciones y servicios específicos para ti.
+        No te llevará mucho tiempo y nos permitirá ofrecerte un servicio más personalizado. 
+        <br>
+        <br>
+        ¡Gracias por ayudarnos a mejorar tu experiencia en PetCareAnalytics!
+      </p>
+      <a class="btn btn-lg" href="{% url 'editarPerfil' persona.dinamico %}"> Completar mi perfil </a>
+    </div>
+    {% elif validacion == False %}
+    <p>trolleao</p>
+    {% endif %}
+  </div>
+</div>
+{% endblock %}

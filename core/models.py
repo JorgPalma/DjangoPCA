@@ -15,6 +15,7 @@ class Persona(models.Model):
     telefono = models.IntegerField(default=123456789)
     edad = models.IntegerField(default=18)
     imagen = models.ImageField(upload_to="perfil", null=True, default='perfil/default.png')
+    dinamico = models.CharField(default="", blank=True, max_length=100)
 
     def __str__(self):
         return f'Perfil de: {self.nombre_usuario}'
@@ -24,12 +25,19 @@ class Blog(models.Model):
     nombre_usuario = models.OneToOneField(User, on_delete=models.CASCADE, related_name='user_post')
     titulo = models.CharField(max_length=30)
     informacion = models.CharField(max_length=800)
-    categoria = models.CharField(max_length=30)
+    class Categoria_Choices(models.TextChoices):
+        PER = "1", "Perro"
+        GAT = "2", "Gato"
+        ALI = "3", "Alimentación"
+        ADO = "4", "Adopción"
+    categoria = models.CharField(max_length=2,
+                                choices=Categoria_Choices.choices,
+                                default=Categoria_Choices.PER)
     timestamp = models.DateTimeField(default=timezone.now)
     imagen = models.ImageField(upload_to="fotos", null=True)
 
     def __str__(self):
-        return self.titulo
+        return f'Post de: {self.nombre_usuario}'
     
 class Comentario(models.Model):
     nombre_usuario = models.OneToOneField(User, on_delete=models.CASCADE, related_name='user_comentario')

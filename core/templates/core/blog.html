@@ -26,11 +26,32 @@
             <li class="op-botonera-boton">
               <a href="#" class="op-botonera-link"><i class="fa-solid fa-paw"></i> Adopción</a>
             </li>
-            <li class="op-botonera-boton">
-              <a href="#" class="op-botonera-link"><i class="fa-solid fa-chart-line"></i> Charts</a>
-            </li>
+            {% if user.is_authenticated %}
+              <li class="op-botonera-boton">
+                <a href="{% url 'addPost' %}" class="op-botonera-post"><i class="fa-solid fa-plus"></i>  Nuevo</a>
+              </li>
+            {% endif %}
           </ul>
         </div>
+      </div>
+      {% for b in blog %}
+      <div class="row d-flex justify-content-center">
+        <div class="col-8">
+          <article class="op-post d-flex justify-content-between mt-2 mb-2">
+            <div class="op-post-cont-sm">
+              <img class="op-post-img" src="{{ b.imagen }}" alt="Bellota">
+            </div>
+            <div class="op-post-cont-xl">
+              <h3 class="op-post-title">{{ b.titulo }}</h3>
+              <div class="op-post-barra"></div>
+              <p class="op-post-text">
+                {{ b.informacion }}
+              </p>
+            </div>
+          </article>
+        </div>
+      </div> 
+      {% endfor %}   
     </div>
   </main>
 {% endblock %}
