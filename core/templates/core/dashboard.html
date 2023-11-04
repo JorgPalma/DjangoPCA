@@ -1,0 +1,18 @@
+{% extends 'core/template.html' %}
+
+{% block title %}
+  <title>PetCareAnalytics | Dashboard</title>
+{% endblock %}
+
+{% block content %}
+<h2 class="text-center h1">Dashboard</h2>
+  <div id="plotly-chart">
+    {{ plot_div|safe }}
+  </div>
+{% endblock %}
+
+{% block scripts %}
+
+  <!-- Incluir las bibliotecas de Plotly -->
+  <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+{% endblock %}
