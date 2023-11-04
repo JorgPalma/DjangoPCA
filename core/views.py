@@ -108,7 +108,7 @@ def editarPerfil(request, dinamico):
         formulario = EditarPefil(data=request.POST, files=request.FILES, instance=persona)
         if formulario.is_valid():
             formulario.save()
-            return redirect('perfil', username=persona.dinamico,)
+            return redirect('perfil', username=persona.nombre_usuario)
         else:
             data["form"] = formulario
 
@@ -146,19 +146,18 @@ def handler500(request):
 
 def addPost(request):
 
+    current_user = get_object_or_404(User, pk=request.user.pk)
+
     data = {
-        'form': AddPostForms(),
+        'form': AddPostForms
     }
 
     if request.method == "POST":
         formulario = AddPostForms(data=request.POST, files=request.FILES)
         if formulario.is_valid():
             post = formulario.save(commit=False)
-            usuario = get_object_or_404(User, pk=request.user.pk)
-            post.nombre_usuario = usuario
-            post.id = usuario.id
+            post.nombre_usuario = current_user
             post.save()
-            formulario.save()
             return redirect('blog')
         else:
             data["form"] = formulario

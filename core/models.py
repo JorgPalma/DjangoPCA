@@ -22,7 +22,7 @@ class Persona(models.Model):
 
     
 class Blog(models.Model):
-    nombre_usuario = models.OneToOneField(User, on_delete=models.CASCADE, related_name='user_post')
+    nombre_usuario = models.ForeignKey(User, on_delete=models.CASCADE, related_name='user_post')
     titulo = models.CharField(max_length=30)
     informacion = models.CharField(max_length=800)
     class Categoria_Choices(models.TextChoices):
