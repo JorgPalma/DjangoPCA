@@ -4,11 +4,17 @@ from django.contrib.auth import authenticate, login
 from .models import User, Persona, Blog
 from .forms import EditarPefil, ContactoForm, AddPostForms
 import random
+from django.shortcuts import render
+import plotly.graph_objs as go
+import csv
+
 
 # Create your views here.
 
 def home(request):
     return render(request, 'core/home.html')
+
+
 
 def nosotros(request):
     return render(request, 'core/nosotros.html')
@@ -164,3 +170,17 @@ def addPost(request):
             data["form"] = formulario
 
     return render(request, 'core/addPost.html', data)
+
+def dashboard(request):
+    # Datos para el gráfico
+    x_data = [1, 2, 3, 4, 5]
+    y_data = [10, 11, 12, 13, 14]
+
+    # Crear el gráfico usando Plotly
+    trace = go.Scatter(x=x_data, y=y_data, mode='markers+lines')
+    data = [trace]
+    layout = go.Layout(title='Mi Gráfico Plotly', xaxis=dict(title='Eje X'), yaxis=dict(title='Eje Y'))
+    plot_div = go.Figure(data=data, layout=layout).to_html(full_html=False)
+
+    # Pasar el gráfico a la plantilla 'dashboard.html'
+    return render(request, 'core/dashboard.html', {'plot_div': plot_div})
