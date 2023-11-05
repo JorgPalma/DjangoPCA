@@ -9,7 +9,6 @@ import plotly.graph_objs as go
 import csv
 
 
-# Create your views here.
 
 def home(request):
     return render(request, 'core/home.html')
@@ -114,7 +113,7 @@ def editarPerfil(request, dinamico):
         formulario = EditarPefil(data=request.POST, files=request.FILES, instance=persona)
         if formulario.is_valid():
             formulario.save()
-            return redirect('perfil', username=persona.nombre_usuario)
+            return redirect('perfil', username=persona.dinamico,)
         else:
             data["form"] = formulario
 
@@ -152,23 +151,23 @@ def handler500(request):
 
 def addPost(request):
 
-    current_user = get_object_or_404(User, pk=request.user.pk)
-
     data = {
-        'form': AddPostForms
+        'form': AddPostForms(),
     }
 
     if request.method == "POST":
         formulario = AddPostForms(data=request.POST, files=request.FILES)
         if formulario.is_valid():
             post = formulario.save(commit=False)
-            post.nombre_usuario = current_user
+            usuario = get_object_or_404(User, pk=request.user.pk)
+            post.nombre_usuario = usuario
+            post.id = usuario.id
             post.save()
+            formulario.save()
             return redirect('blog')
         else:
             data["form"] = formulario
-
-    return render(request, 'core/addPost.html', data)
+    
 
 def dashboard(request):
     # Datos para el gráfico
