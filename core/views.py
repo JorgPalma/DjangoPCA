@@ -168,16 +168,53 @@ def addPost(request):
         else:
             data["form"] = formulario
     
+import csv
+import plotly.graph_objs as go
+from django.shortcuts import render
+
+def convertir_a_entero(valor, valor_por_defecto=0):
+    try:
+        return int(valor)
+    except (ValueError, TypeError):
+        return valor_por_defecto
 
 def dashboard(request):
-    # Datos para el gráfico
-    x_data = [1, 2, 3, 4, 5]
-    y_data = [10, 11, 12, 13, 14]
+    # Ruta al archivo CSV
+    csv_file_path = 'core/templates/CSV/csv.csv'
+
+    # Listas para almacenar los datos del archivo CSV
+    vacunas = []
+    ac_fisica = []
+    comida_tiempo = []
+    tiene_sintomas = []
+    sintomas = []
+    tiene_enfermedad = []
+    enferme_ante = []
+    tiene_alergias = []
+    alergias = []
+    tiene_operaciones = []
+    operaciones = []
+
+    # Leer datos desde el archivo CSV y manejar valores no numéricos
+    with open(csv_file_path, 'r') as csvfile:
+        csvreader = csv.DictReader(csvfile)
+        for row in csvreader:
+            vacunas.append(convertir_a_entero(row['vacunas']))
+            ac_fisica.append(row['ac_fisica'])
+            comida_tiempo.append(convertir_a_entero(row['comida_tiempo'], valor_por_defecto=0))
+            tiene_sintomas.append(row['tiene_sintomas'])
+            sintomas.append(row['sintomas'])
+            tiene_enfermedad.append(row['tiene_enfermedad'])
+            enferme_ante.append(row['enferme_ante'])
+            tiene_alergias.append(row['tiene_alergias'])
+            alergias.append(row['alergias'])
+            tiene_operaciones.append(row['tiene_operaciones'])
+            operaciones.append(row['operaciones'])
 
     # Crear el gráfico usando Plotly
-    trace = go.Scatter(x=x_data, y=y_data, mode='markers+lines')
+    trace = go.Scatter(x=comida_tiempo, y=vacunas, mode='markers+lines')
     data = [trace]
-    layout = go.Layout(title='Mi Gráfico Plotly', xaxis=dict(title='Eje X'), yaxis=dict(title='Eje Y'))
+    layout = go.Layout(title='Mi Gráfico Plotly', xaxis=dict(title='Comida a Tiempo'), yaxis=dict(title='Vacunas'))
     plot_div = go.Figure(data=data, layout=layout).to_html(full_html=False)
 
     # Pasar el gráfico a la plantilla 'dashboard.html'
