@@ -373,47 +373,41 @@ footer {
 }
 
 .op-contact-form label {
-    width: 5%;
-    text-align: center;
-    border: 2px solid var(--azul);
-    border-radius: 8px 0px 0px 8px;
-    padding: 0;
-    margin: 0;
-    height: 50px;
-    line-height: 50px;
-    background: white;
+    width: 100%;
+    text-align: start;
+    padding-left: 5px;
+    height: 20px;
+    line-height: 20px;
     color: var(--azul);
-    font-size: 20px;
+    font-size: 16px;
 }
 
 
 .op-contact-form input{
-    height: 50px;
-    width: 94%;
+    height: 40px;
+    width: 100%;
     padding-left: 5px;
-    margin: 0;
     font-family:var(--quicksans);
     border: 2px solid var(--azul);
-    border-radius: 0px 8px 8px 0px;
-    margin-bottom: 20px;
+    border-radius: 8px;
+    margin-bottom: 5px;
 }
 
 .op-contact-form input:focus{
     font-family:var(--quicksans);
     border: 2px solid var(--azul);
-    border-radius: 0px 8px 8px 0px;
+    border-radius: 8px;
     outline: 1px solid var(--azul);
 }
 
 .op-contact-form textarea {
-    height: 250px;
-    width: 94%;
+    height: 200px;
+    width: 100%;
     padding-left: 5px;
-    margin: 0;
     font-family:var(--quicksans);
     border: 2px solid var(--azul);
-    border-radius: 0px 8px 8px 0px;
-    margin-bottom: 20px;
+    border-radius: 8px;
+    margin-bottom: 10px;
     resize: none;
 }
 
@@ -457,9 +451,6 @@ footer {
 }
 
 .login-bg{  
-    background-image: radial-gradient(white, 4px, transparent 4px), radial-gradient(white, 4px, transparent 4px);
-    background-size: 100px 100px;
-    background-position: 0 0, 50px 50px;
     background-color: var(--azul);
 }
 
@@ -467,44 +458,58 @@ footer {
     width: 100%;
 }
 
-.op-btn-volver {
-    color: var(--azul);
+.op-botonera-login .limpiar,
+.op-botonera-login .op-btn-volver {
     background: white;
-    border: 1px solid var(--celeste);
-}
-
-.op-btn-volver:hover {
+    font-family: var(--quicksans);
     color: var(--azul);
-    background: var(--celeste);
+    border-radius: 8px;
+    border: 2px solid var(--celeste);
 }
 
-.op-btn-login{
-    display: inline-block;
+.op-botonera-login .limpiar:hover 
+.op-botonera-login .op-btn-volver:hover {
     background: var(--celeste);
+    font-family: var(--quicksans);
+    color: white;
+    border-radius: 8px;
+    border: 2px solid var(--celeste);
+}
+
+.op-botonera-login .enviar,
+.op-botonera-login .op-btn-login {
+    background: var(--celeste);
+    font-family: var(--quicksans);
     color: var(--azul);
+    border-radius: 8px;
+    border: 2px solid var(--celeste);
 }
 
+.op-botonera-login .enviar:hover,
+.op-botonera-login .op-btn-login:hover {
+    background: var(--naranjo);
+    font-family: var(--quicksans);
+    color: white;
+    border-radius: 8px;
+    border: 2px solid var(--naranjo);
+}
 
 .op-texto-login {
     font-size: 12px;
     width: 100%;
-    height: 14px;
+    height: 12px;
+    margin-bottom: -1px;
 }
 
 .op-link-login{
     text-decoration: none;
     font-size: 16px;
     color: #f8aa4b;
-    height: 20px;
+    height: 16px;
 }
 
 .helptext{
-    font-size: 10px;
-    font-family: var(--opensans);
-}
-
-.helptext ul{
-    list-style:circle;
+    display: none;
 }
 
 .center-iframe {

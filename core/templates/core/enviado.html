@@ -1,0 +1,22 @@
+{% extends 'core/template.html' %}
+
+{% block title %}
+  <title>PetCareAnalytics | Contacto</title>
+{% endblock %}
+
+{% block content %}
+{% load static %}
+<div class="container pt-5 pb-5">
+  <div class="row d-flex justify-content-center">
+    <div class="col-6">
+      <img src="{% static 'core/img/enviado.gif' %}" alt="Mail_Enviado" width="80%">
+    </div>
+    <div class="col-6 justify-content-center flex-wrap op-bienvenido">
+      <h2 class="text-center">¡Mensaje enviado con éxito!</h2>
+      <br>
+      <p>¡Hemos recibido tu mensaje de contacto con éxito! Queremos agradecerte por ponerte en contacto con nosotros. Nuestro equipo revisará tu mensaje y te responderá en breve. Valoramos tu interés y esperamos poder ayudarte en lo que necesitas. Si tienes alguna otra consulta o solicitud, no dudes en contactarnos nuevamente. ¡Gracias por elegirnos!</p>
+      
+    </div>
+  </div>
+</div>
+{% endblock %}

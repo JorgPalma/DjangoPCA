@@ -28,7 +28,7 @@ def contacto(request):
         formulario = ContactoForm(data=request.POST)
         if formulario.is_valid():
             formulario.save()
-            data["mensaje"] = "contacto guardado"
+            return redirect('enviado')
         else: 
             data["form"] = formulario
 
@@ -113,7 +113,7 @@ def editarPerfil(request, dinamico):
         formulario = EditarPefil(data=request.POST, files=request.FILES, instance=persona)
         if formulario.is_valid():
             formulario.save()
-            return redirect('perfil', username=persona.dinamico,)
+            return redirect('perfil', username=persona.nombre_usuario)
         else:
             data["form"] = formulario
 
@@ -182,3 +182,6 @@ def dashboard(request):
 
     # Pasar el gráfico a la plantilla 'dashboard.html'
     return render(request, 'core/dashboard.html', {'plot_div': plot_div})
+
+def enviado (request):
+    return render(request, 'core/enviado.html')

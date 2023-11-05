@@ -15,13 +15,12 @@
       <h2 class="h4 text-center" >Formulario de contacto e información animal</h2>
       <form action="#" method="post" id="formulario-contacto" class="op-contact-form d-flex flex-wrap justify-content-center">
         {% csrf_token %}
-
         {{ form }}
         <br>
-        
-                <div class="form-group" data-toggle="buttons">
-                  <button class="btn btn-lg btn-outline-primary align-selft-start" type="button" id="limpiar">Limpiar</button>
-                  <button class="btn btn-lg btn-primary" type="submit" id="enviar">Enviar</button>
+                <div class="op-botonera-login d-flex justify-content-between mt-2 flex-wrap">
+                  <button class="btn btn-lg limpiar" type="button" id="limpiar">Limpiar</button>
+                  &nbsp;
+                  <button class="btn btn-lg enviar" type="submit" id="enviar">Enviar</button>
                 </div>
               </form>
               {{mensaje}}

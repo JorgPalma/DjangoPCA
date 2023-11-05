@@ -1,6 +1,6 @@
 from django.urls import path
 from django.contrib.auth.decorators import login_required
-from .views import home, nosotros, contacto, blog, addPost, formulario, registro, consulta, perfil, editarPerfil, noticias, bienvenido, dashboard
+from .views import home, nosotros, contacto, blog, addPost, formulario, registro, consulta, perfil, editarPerfil, noticias, bienvenido, enviado, dashboard
 
 urlpatterns=[
     path('', home, name="home"),
@@ -16,4 +16,5 @@ urlpatterns=[
     path('bienvenido/<dinamico>/', bienvenido, name="bienvenido"),
     path('addPost/', addPost, name="addPost"),
     path('dashboard/', dashboard, name="dashboard"),
+    path('enviado/', enviado, name="enviado")
 ]

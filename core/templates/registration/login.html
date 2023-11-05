@@ -26,8 +26,12 @@
 
                             {{ form }}
                             <div class="op-login-texto d-flex justify-content-center mt-1 flex-wrap">
+                                <p class="op-texto-login text-center">¿Olvidaste tu contraseña?</p>
+                                <a class="op-link-login" href="{% url 'password_reset' %}">Recupérala</a>
+                                <hr>
                                 <p class="op-texto-login text-center">¿No tienes una cuenta?</p>
                                 <a class="op-link-login" href="{% url 'registro' %}">Regístrate</a>
+                                
                             </div>
                             <div class="op-botonera-login d-flex justify-content-between mt-4 flex-wrap">
                                 <a class="btn btn-sm op-btn-volver" href="{% url 'home' %}">Volver</a>

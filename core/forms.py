@@ -22,7 +22,19 @@ class ContactoForm(forms.ModelForm):
 
     class Meta:
         model = Contacto
-        fields = ["nombre_contacto", "email", "asunto", "mensaje"]
+        exclude = ()
+        labels = {
+            'nombre_contacto': ('Nombre'),
+            'email': ('E-mail'),
+            'asunto': ('Asunto'),
+            'mensaje': ('Mensaje'),
+        }
+        widgets = {
+            "nombre_contacto":forms.TextInput(attrs={'placeholder':'Nombre Apellido','name':'nombre','id':'nombre','class':'input-class_name'}),
+            "email":forms.EmailInput(attrs={'placeholder':'E-mail','name':'email','id':'email','class':'input-class_name'}),
+            "asunto":forms.TextInput(attrs={'placeholder':'Asunto','name':'asunto','id':'asunto','class':'input-class_name'}),
+            "mensaje":forms.Textarea(attrs={'placeholder':'¿Cómo podemos ayudarte?','name':'mensaje','id':'mensaje','class':'input-class_name'}),
+                }
 
 class AddPostForms(forms.ModelForm):
 
@@ -35,3 +47,6 @@ class FormularioForm(forms.ModelForm):
     class Meta:
         model = Formulario
         fields = ["vacunas","ac_fisica","comida_tiempo","tiene_sintomas","sintomas","tiene_enfermedad","enferme_ante","tiene_alergias","alergias","tiene_operaciones","operaciones"]
+
+
+
