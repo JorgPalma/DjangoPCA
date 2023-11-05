@@ -258,8 +258,7 @@ input[type=number]:focus,
 }
 
 .op-post-cont-sm {
-    width: 500px; /* Ajusta el ancho de la imagen según tu diseño */
-    margin-right: 20px; /* Espaciado entre la imagen y el texto */
+    width: 300px;
     display: inline-block;
 }
 
@@ -268,17 +267,24 @@ input[type=number]:focus,
     display: inline-block;
 }
 
+.op-post-link {
+    text-decoration: none;
+    width: 100%;
+}
+
 .op-post-img {
-    width: 100%; /* La imagen ocupará el 100% del contenedor */
-    height: 100%; /* La imagen ocupará el 100% del contenedor */border-radius: 20px;
+    width: 250px;
+    height: 250px; border-radius: 20px;
     display: block;
-    aspect-ratio: auto 500 / 500;
+    object-fit: cover;
+    object-position: 50% 25%; 
 }
 .op-post-title {
     color: var(--azul);
     font-size: 20px;
     font-family: var(--quicksans);
     font-weight: bolder;
+    height: 20px;
 }
 
 .op-post-barra {
@@ -287,6 +293,35 @@ input[type=number]:focus,
     background: var(--naranjo);
 }
 
+.op-post-text {
+    margin-top: 10px;
+    height: 170px;
+    width: 100%;
+    float: left;
+    font-family: var(--opensans);
+    font-size: 16px;
+    color: var(--azul);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 7;
+    -webkit-box-orient: vertical;
+}
+
+.op-post-footer-date{
+    color: #072448;
+    font-size: 14px;
+}
+
+.op-post-footer{
+    width: 100%;
+    height: 20px;
+    text-decoration: none;
+    color: var(--azul);
+    font-family: var(--opensans);
+}
+
+
 footer {
     background: var(--azul);
     height: 45vh;
@@ -294,6 +329,40 @@ footer {
 
 .op-footer-ul{
     list-style:none;
+}
+
+.post-perfil {
+    height: auto;
+    max-height: 300px;
+    background: #eeeeee;
+    margin-right: 20px;
+    padding: 10px;
+    border-radius: 20px;
+    position: sticky;
+    top: 0;
+}
+
+.post-perfil:hover {
+    height: auto;
+    background: var(--celeste);
+    margin-right: 20px;
+    padding: 10px;
+    border-radius: 20px;
+    position: sticky;
+    top: 0;
+}
+
+.post-info {
+    height: auto;
+    background: #eeeeee;
+    padding: 10px;
+    border-radius: 20px;
+}
+
+.post-perfil-link{
+    width: 100%;
+    display: inline-block;
+    text-decoration: none;
 }
 
 .op-footer-a{
@@ -524,7 +593,8 @@ footer {
     height: 200px;
     border-radius: 100px;
     object-fit: cover;
-    object-position: 50% 25%; 
+    object-position: 50% 25%;
+    border: 2px solid var(--celeste);
 }
 
 .nombre-op-perfil {

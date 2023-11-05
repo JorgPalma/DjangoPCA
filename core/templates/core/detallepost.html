@@ -1,0 +1,44 @@
+{% extends 'core/template.html' %}
+
+{% block title %}
+  <title>PetCareAnalytics | Mi perfil</title>
+{% endblock %}
+
+{% block content %}
+{% load static %}
+<div class="container container-op-perfil pt-3 pb-5">
+  <div class="row d-flex justify-content-center">
+    {% if validacion == True %}
+      <div class="col-12 d-flex justify-content-end">
+        <a href="{% url 'editarPerfil' persona.dinamico %}" class="btn btn-lg btn-op-perfil">Editar</a>
+      </div>
+    {% endif %}
+    
+      <div class="col-3 d-flex flex-wrap justify-content-center pt-3 post-perfil">
+        <a class="post-perfil-link d-flex flex-wrap justify-content-center pt-3" href="{% url 'perfil' usuario.nombre_usuario %}">
+          <img class="img-op-perfil" src='{{usuario.imagen.url}}'' alt="Foto usuario" width="200px">
+          <h2 class="text-center nombre-op-perfil">@{{ post.nombre_usuario }}</h2>
+        </a>
+      </div>
+    
+    <div class="col-7 post-info">
+      <h2 class="mb-2">{{post.titulo}}</h2>
+      <div class="op-post-barra"></div>
+      <p class="mt-2">
+        {{post.informacion}}
+      </p>
+      <hr>
+      <h3>Imágenes</h3>
+        <div class="row">
+          <div class="col-4">
+            <img src="{{post.imagen.url}}" alt="">
+          </div>
+        </div>
+      <hr>
+      <p>
+        {{ post.timestamp }}
+      </p>
+    </div>
+  </div>
+</div>
+{% endblock %}

@@ -1,7 +1,7 @@
 {% extends 'core/template.html' %}
 
 {% block title %}
-  <title>PetCareAnalytics | Blog</title>
+  <title>PetCareAnalytics | Blog Alimentación</title>
 {% endblock %}
 
 {% block content %}
@@ -13,19 +13,19 @@
         <div class="col-10">
           <ul class="op-botonera d-flex justify-content-between mx-3 mt-2">
             <li class="op-botonera-boton">
-              <a href="#" class="op-botonera-link"><i class="fa-solid fa-list-ul"></i> Todo</a>
+              <a href="{% url 'blog' %}" class="op-botonera-link"><i class="fa-solid fa-list-ul"></i> Todo</a>
             </li>
             <li class="op-botonera-boton">
               <a href="{% url 'blogperro' %}" class="op-botonera-link"><i class="fa-solid fa-dog"></i> Perros</a>
             </li>
             <li class="op-botonera-boton">
-              <a href="#" class="op-botonera-link"><i class="fa-solid fa-cat"></i> Gatos</a>
+              <a href="{% url 'bloggato' %}" class="op-botonera-link"><i class="fa-solid fa-cat"></i> Gatos</a>
             </li>
             <li class="op-botonera-boton">
-              <a href="#" class="op-botonera-link"><i class="fa-solid fa-bone"></i> Alimentación</a>
+              <a href="{% url 'blogalimentacion' %}" class="op-botonera-link"><i class="fa-solid fa-bone"></i> Alimentación</a>
             </li>
             <li class="op-botonera-boton">
-              <a href="#" class="op-botonera-link"><i class="fa-solid fa-paw"></i> Adopción</a>
+              <a href="{% url 'blogadopcion' %}" class="op-botonera-link"><i class="fa-solid fa-paw"></i> Adopción</a>
             </li>
             {% if user.is_authenticated %}
               <li class="op-botonera-boton">
@@ -38,7 +38,7 @@
       {% for b in blog %}
       <div class="row d-flex justify-content-center">
         <div class="col-8">
-          <a class="op-post-link" href="{% url 'detallepost' b.id %}">
+          <a class="op-post-link" href="#">
             <article class="op-post d-flex justify-content-between mt-2 mb-2">
               <div class="op-post-cont-sm">
                 <img class="op-post-img" src="{{ b.imagen.url }}" alt="">

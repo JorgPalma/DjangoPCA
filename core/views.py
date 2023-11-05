@@ -35,15 +35,39 @@ def contacto(request):
     return render(request, 'core/contacto.html', data)
 
 def blog(request):
-
-    blog = Blog.objects.all()
-
+    blog = Blog.objects.all().order_by('-timestamp')
     data = {
         'blog': blog
     }
-
-
     return render(request, 'core/blog.html', data)
+
+def blogperro(request):
+    blog = Blog.objects.filter(categoria = "1").order_by('-timestamp')
+    data = {
+        'blog': blog
+    }
+    return render(request, 'core/blogperro.html', data)
+
+def bloggato(request):
+    blog = Blog.objects.filter(categoria = "2").order_by('-timestamp')
+    data = {
+        'blog': blog
+    }
+    return render(request, 'core/bloggato.html', data)
+
+def blogalimentacion(request):
+    blog = Blog.objects.filter(categoria = "3").order_by('-timestamp')
+    data = {
+        'blog': blog
+    }
+    return render(request, 'core/blogalimentacion.html', data)
+
+def blogadopcion(request):
+    blog = Blog.objects.filter(categoria = "4").order_by('-timestamp')
+    data = {
+        'blog': blog
+    }
+    return render(request, 'core/blogadopcion.html', data)
 
 def formulario(request):
     return render(request, 'core/formulario.html')
@@ -161,12 +185,13 @@ def addPost(request):
             post = formulario.save(commit=False)
             usuario = get_object_or_404(User, pk=request.user.pk)
             post.nombre_usuario = usuario
-            post.id = usuario.id
             post.save()
             formulario.save()
             return redirect('blog')
         else:
             data["form"] = formulario
+
+    return render(request, 'core/addpost.html', data)
     
 import csv
 import plotly.graph_objs as go
@@ -222,3 +247,13 @@ def dashboard(request):
 
 def enviado (request):
     return render(request, 'core/enviado.html')
+
+def detallepost (request, id):
+    post = get_object_or_404(Blog, id = id)
+    usuario = get_object_or_404(Persona, nombre_usuario = post.nombre_usuario )
+    
+    data = {
+        'post': post,
+        'usuario': usuario,
+    }
+    return render(request, 'core/detallepost.html', data)
