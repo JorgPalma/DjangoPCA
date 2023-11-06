@@ -7,7 +7,7 @@ import random
 from django.shortcuts import render
 import plotly.graph_objs as go
 import csv
-
+from django.contrib import messages
 
 
 def home(request):
@@ -137,7 +137,9 @@ def editarPerfil(request, dinamico):
         formulario = EditarPefil(data=request.POST, files=request.FILES, instance=persona)
         if formulario.is_valid():
             formulario.save()
+            messages.success(request, "Bien, lo hiciste excelente!")
             return redirect('perfil', username=persona.nombre_usuario)
+            
         else:
             data["form"] = formulario
 
@@ -187,6 +189,7 @@ def addPost(request):
             post.nombre_usuario = usuario
             post.save()
             formulario.save()
+            messages.success(request, "Post creado con exito!")
             return redirect('blog')
         else:
             data["form"] = formulario
