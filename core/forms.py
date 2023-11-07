@@ -15,8 +15,28 @@ class EditarPefil(forms.ModelForm):
     
     class Meta:
         model = Persona
-        fields = ["imagen", "primer_nombre", "segundo_nombre", "apellido_pat", "apellido_mate", "rut", "digito_ver", "telefono", "edad"]
+        fields = ["primer_nombre", "segundo_nombre", "apellido_pat", "apellido_mate", "rut", "digito_ver", "telefono", "edad", "imagen" ]
+        labels = {
+            'primer_nombre': ('Primer nombre'),
+            'segundo_nombre': ('Segundo nombre'),
+            'apellido_pat': ('Apellido paterno'),
+            'apellido_mate': ('Apellido materno'),
+            'rut': ('Rut (sin puntos)'),
+            'digito_ver': ('Dígito verificador'),
+            'telefono': ('Número de contacto'),
+            'edad': ('Edad'),
+        }
 
+        widgets = {
+            "primer_nombre":forms.TextInput(attrs={'placeholder':'Primer Nombre','name':'p_nombre','id':'p_nombre','class':'input-class_name'}),
+            "segundo_nombre":forms.TextInput(attrs={'placeholder':'Segundo Nombre','name':'s_nombre','id':'s_nombre','class':'input-class_name'}),
+            "apellido_pat":forms.TextInput(attrs={'placeholder':'Apellido Paterno','name':'p_apellido','id':'p_apellido','class':'input-class_name'}),
+            "apellido_mate":forms.TextInput(attrs={'placeholder':'Apellido Materno','name':'m_apellido','id':'m_apellido','class':'input-class_name'}),
+            "rut":forms.NumberInput(attrs={'placeholder':'11111111','name':'rut','id':'rut','class':'input-class_name'}),
+            "digito_ver":forms.NumberInput(attrs={'placeholder':'1','name':'dv','id':'dv','class':'input-class_name'}),
+            "telefono":forms.NumberInput(attrs={'placeholder':'964782354','name':'telefono','id':'telefono','class':'input-class_name'}),
+            "edad":forms.NumberInput(attrs={'placeholder':'18','name':'edad','id':'edad','class':'input-class_name'}),
+            }
 
 class ContactoForm(forms.ModelForm):
 

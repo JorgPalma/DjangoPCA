@@ -9,21 +9,17 @@
 {% load crispy_forms_tags %}
 <div class="container container-op-perfil pt-3 pb-5">
   <div class="row d-flex justify-content-center">
-    <div class="col-12 d-flex justify-content-end">
-      <h2 class="text-center nombre-op-perfil">@{{ persona.nombre_usuario }}</h2>
-    </div>
     <div class="col-6">
-      <div class="card text-center">
-        <div class="card-header">
-          Editar información
-        </div>
-        <div class="card-body">
-          <form action="" method="post" enctype="multipart/form-data">
+      <h4 class="text-center editar-perfil-titulo">Editar información personal</h4>
+        <form action="" class="op-editarperfil-form d-flex flex-wrap justify-content-around" method="post" enctype="multipart/form-data">
             {% csrf_token %}
             {{ form | crispy }}
-            <button type="submit" class="btn btn-lg">Actualizar</button>
-          </form>
-        </div>
+            <br>
+            <div class="op-botonera-login d-flex justify-content-between mt-4 flex-wrap">
+              <input type="reset" class="btn btn-sm op-btn-volver" value="Limpiar">
+              <input type="submit" class="btn btn-sm op-btn-login" value="Actualizar">
+            </div>
+        </form>
       </div>
     </div>
   </div>

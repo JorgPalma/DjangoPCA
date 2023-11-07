@@ -480,6 +480,71 @@ footer {
     resize: none;
 }
 
+.op-editarperfil-form {
+    width: 100%;
+    padding: 0;
+    margin: 0;
+}
+
+.op-editarperfil-form label,
+.form-label {
+    width: 100%;
+    text-align: start;
+    padding-left: 5px;
+    height: 20px;
+    line-height: 20px;
+    color: var(--azul);
+    font-size: 16px;
+    margin-top: 0px;
+}
+
+#div_id_imagen{
+    width: 85% !important;
+    align-self: center; 
+    margin: auto;
+}
+
+#div_id_imagen .input-group-text{
+    font-family: var(--quicksans);
+    border: 2px solid var(--azul);
+    border-radius: 0px, 8px, 8px, 0px;
+}
+#div_id_imagen .h-auto {
+    font-family: var(--quicksans);
+    border: 2px solid var(--azul);
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    font-size: 16px;
+    border-radius: 8px, 0px, 0px, 8px;
+}
+
+.op-editarperfil-form input{
+    height: 40px;
+    width: 100%;
+    padding-left: 5px;
+    font-family:var(--quicksans);
+    border: 2px solid var(--azul);
+    border-radius: 8px;
+    margin-bottom: -2px
+}
+.op-editarperfil-form input[type="reset"],
+.op-editarperfil-form input[type="submit"] {
+    width: 40% !important;
+}
+
+.editar-perfil-titulo {
+    font-family: var(--quicksans);
+}
+
+
+.op-editarperfil-form input:focus{
+    font-family:var(--quicksans);
+    border: 2px solid var(--azul);
+    border-radius: 8px;
+    outline: 1px solid var(--azul);
+}
+
 .op-post d-flex justify-content-between mt-2 mb-2{
     display: grid;
     grid-column-gap: var(--grid-column-gap);
