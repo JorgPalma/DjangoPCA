@@ -8,11 +8,6 @@
 {% load static %}
 <div class="container container-op-perfil pt-3 pb-5">
   <div class="row d-flex justify-content-center">
-    {% if validacion == True %}
-      <div class="col-12 d-flex justify-content-end">
-        <a href="{% url 'editarPerfil' persona.dinamico %}" class="btn btn-lg btn-op-perfil">Editar</a>
-      </div>
-    {% endif %}
     
       <div class="col-3 d-flex flex-wrap justify-content-center pt-3 post-perfil">
         <a class="post-perfil-link d-flex flex-wrap justify-content-center pt-3" href="{% url 'perfil' usuario.nombre_usuario %}">
@@ -27,17 +22,36 @@
       <p class="mt-2">
         {{post.informacion}}
       </p>
-      <hr>
+      <div class="op-post-barra"></div>
       <h3>Imágenes</h3>
         <div class="row">
           <div class="col-4">
-            <img src="{{post.imagen.url}}" alt="">
+            <img class="op-post-img-detalle" src="{{post.imagen.url}}" alt="" width="">
           </div>
         </div>
-      <hr>
-      <p>
+        <div class="op-post-barra"></div>
+      <p class="text-end">
         {{ post.timestamp }}
       </p>
+    </div>
+  </div>
+  <div class="row d-flex justify-content-center">
+    <div class="col-10 d-flex justify-content-center flex-wrap">
+      <h2>Comentarios</h2>
+      <div class="col-10 comentario-post">
+        <div class="row d-flex justify-content-center flex-wrap">
+          <div class="col-1">
+            <img class="op-comentario-img-detalle" src="{{usuario.imagen.url}}" alt="" width="">
+          </div>
+          <div class="col-8 d-flex justify-content-around flex-wrap">
+            <a class="op-comentario-nombre" href="{% url 'perfil' usuario.nombre_usuario %}">@{{ post.nombre_usuario }}</a>
+            <input class="op-comentario-nuevo" placeholder="Pa que po" type="text">
+          </div>
+          <div class="col-2 d-flex align-self-center">
+            <input class="btn op-btn-login mt-2" type="submit" value="Publicar">
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </div>

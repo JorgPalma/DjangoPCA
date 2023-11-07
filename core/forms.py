@@ -62,6 +62,11 @@ class AddPostForms(forms.ModelForm):
         model = Blog
         fields = ["titulo", "informacion", "categoria", "imagen"]
 
+        widgets = {
+            "titulo":forms.TextInput(attrs={'placeholder':'Título de la publicación','name':'titulo','id':'titulo','class':'input-class_name'}),
+            "informacion":forms.Textarea(attrs={'placeholder':'¿Qué quieres comentar con la comunidad?','name':'informacion','id':'informacion','class':'input-class_name'}),
+                }
+
 
 class FormularioForm(forms.ModelForm):
     class Meta:

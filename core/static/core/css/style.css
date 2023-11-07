@@ -288,7 +288,7 @@ input[type=number]:focus,
 }
 
 .op-post-barra {
-    width: 90%;
+    width: 100%;
     height: 2px;
     background: var(--naranjo);
 }
@@ -340,16 +340,7 @@ footer {
     border-radius: 20px;
     position: sticky;
     top: 0;
-}
-
-.post-perfil:hover {
-    height: auto;
-    background: var(--celeste);
-    margin-right: 20px;
-    padding: 10px;
-    border-radius: 20px;
-    position: sticky;
-    top: 0;
+    border: 1px solid var(--azul);
 }
 
 .post-info {
@@ -357,12 +348,29 @@ footer {
     background: #eeeeee;
     padding: 10px;
     border-radius: 20px;
+    border: 1px solid var(--azul);
 }
+
+.op-post-img-detalle {
+    width: 250px;
+    height: 250px; 
+    border-radius: 20px;
+    display: block;
+    object-fit: cover;
+    object-position: 50% 25%;
+    margin-bottom: 10px;
+}
+
+
 
 .post-perfil-link{
     width: 100%;
     display: inline-block;
     text-decoration: none;
+}
+
+.post-perfil-link a {
+    font-family: var(--quicksans);
 }
 
 .op-footer-a{
@@ -545,6 +553,60 @@ footer {
     outline: 1px solid var(--azul);
 }
 
+.op-addpost-form {
+    width: 100%;
+    padding: 0;
+    margin: 0;
+}
+
+.op-addpost-form label {
+    width: 100%;
+    text-align: start;
+    padding-left: 5px;
+    height: 20px;
+    line-height: 20px;
+    color: var(--azul);
+    font-size: 16px;
+}
+
+.op-addpost-form input,
+select{
+    height: 40px;
+    width: 100%;
+    padding-left: 5px;
+    font-family:var(--quicksans);
+    border: 2px solid var(--azul);
+    border-radius: 8px;
+    margin-bottom: 5px;
+}
+
+.op-addpost-form select option {
+    background: white;
+}
+
+.op-addpost-form input:focus{
+    font-family:var(--quicksans);
+    border: 2px solid var(--azul);
+    border-radius: 8px;
+    outline: 1px solid var(--azul);
+}
+
+.op-addpost-form textarea {
+    height: 200px;
+    width: 100%;
+    padding-left: 5px;
+    font-family:var(--quicksans);
+    border: 2px solid var(--azul);
+    border-radius: 8px;
+    margin-bottom: 10px;
+    resize: none;
+}
+
+.op-addpost-form input[type="reset"],
+.op-addpost-form input[type="submit"] {
+    width: 40% !important;
+}
+
 .op-post d-flex justify-content-between mt-2 mb-2{
     display: grid;
     grid-column-gap: var(--grid-column-gap);
@@ -659,7 +721,6 @@ footer {
     border-radius: 100px;
     object-fit: cover;
     object-position: 50% 25%;
-    border: 2px solid var(--celeste);
 }
 
 .nombre-op-perfil {
@@ -730,4 +791,49 @@ footer {
     color: white;
     text-decoration: none;
     text-align: center;
+}
+
+.comentario-post{
+    border: 1px solid var(--azul);
+    width: 100%;
+    height: 80px;
+    border-radius: 20px;
+    padding: 10px;
+    background: #eeeeee;
+}
+
+.comentario-post input[type="submit"]{
+    background: var(--celeste);
+    font-family: var(--quicksans);
+    color: var(--azul);
+    width: 100%;
+}
+
+.op-comentario-img-detalle{
+    width: 60px;
+    height: 60px; 
+    border-radius: 30px;
+    display: block;
+    object-fit: cover;
+    object-position: 50% 25%;
+    margin-bottom: 10px;
+}
+
+.op-comentario-nombre{
+    text-decoration: none;
+    font-family: var(--quicksans);
+    width: 100%;
+    font-size: 14px;
+    line-height: 14px;
+    color: var(--naranjo)
+}
+
+.op-comentario-nuevo {
+    height: 40px;
+    width: 100%;
+    padding-left: 5px;
+    font-family:var(--quicksans);
+    border: 2px solid var(--azul);
+    border-radius: 8px;
+    margin-bottom: 5px;
 }
