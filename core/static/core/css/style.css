@@ -334,21 +334,19 @@ footer {
 .post-perfil {
     height: auto;
     max-height: 300px;
-    background: #eeeeee;
+    background: white;
     margin-right: 20px;
     padding: 10px;
     border-radius: 20px;
     position: sticky;
-    top: 0;
-    border: 1px solid var(--azul);
+    top: 0; 
 }
 
 .post-info {
     height: auto;
-    background: #eeeeee;
+    background: white;
     padding: 10px;
     border-radius: 20px;
-    border: 1px solid var(--azul);
 }
 
 .op-post-img-detalle {
@@ -794,19 +792,12 @@ select{
 }
 
 .comentario-post{
-    border: 1px solid var(--azul);
     width: 100%;
     height: 80px;
     border-radius: 20px;
     padding: 10px;
-    background: #eeeeee;
-}
-
-.comentario-post input[type="submit"]{
-    background: var(--celeste);
-    font-family: var(--quicksans);
-    color: var(--azul);
-    width: 100%;
+    background: white;
+    margin-bottom: 10px;
 }
 
 .op-comentario-img-detalle{
@@ -831,9 +822,53 @@ select{
 .op-comentario-nuevo {
     height: 40px;
     width: 100%;
+}
+
+.op-comentario-nuevo form{
+    height: 40px;
+    width: 100%;
+}
+.op-comentario-nuevo input[type="text"] {
+    height: 40px;
+    width: 90%;
     padding-left: 5px;
     font-family:var(--quicksans);
     border: 2px solid var(--azul);
     border-radius: 8px;
     margin-bottom: 5px;
+}
+
+.op-comentario-nuevo input[type="submit"]{
+    width: 8%;
+    height: 40px;
+    background: var(--celeste);
+    font-family: var(--quicksans);
+    color: var(--azul);
+}
+
+.op-comentario-nuevo label {
+    display: none;
+}
+
+.op-comentario-antiguo {
+    height: 40px;
+    width: 100%;
+}
+
+.op-comentario-antiguo input[type="text"] {
+    height: 40px;
+    width: 100%;
+    padding-left: 5px;
+    font-family:var(--quicksans);
+    border: 2px solid var(--azul);
+    border-radius: 8px;
+    margin-bottom: 5px;
+}
+
+.fa-heart {
+    color: var(--rojo);
+}
+
+.op-blog-likes {
+    color: var(--azul);
 }

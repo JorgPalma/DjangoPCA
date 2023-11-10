@@ -1,7 +1,7 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
-from .models import Persona, Contacto, Blog, Formulario
+from .models import Persona, Contacto, Blog, Formulario, Comentario
 
 
 class RegistroForm(UserCreationForm):
@@ -75,3 +75,10 @@ class FormularioForm(forms.ModelForm):
 
 
 
+class ComentarioForm(forms.ModelForm):
+    class Meta:
+        model = Comentario
+        fields = ["comentario"]
+        widgets = {
+            "comentario":forms.TextInput(attrs={'placeholder':'Añadir un comentario'}),
+                }

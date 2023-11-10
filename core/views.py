@@ -1,8 +1,8 @@
 from django.shortcuts import redirect, render, get_object_or_404
 from .forms import RegistroForm
 from django.contrib.auth import authenticate, login
-from .models import User, Persona, Blog
-from .forms import EditarPefil, ContactoForm, AddPostForms
+from .models import User, Persona, Blog, Comentario
+from .forms import EditarPefil, ContactoForm, AddPostForms, ComentarioForm
 import random
 from django.shortcuts import render
 import plotly.graph_objs as go
@@ -253,10 +253,27 @@ def enviado (request):
 
 def detallepost (request, id):
     post = get_object_or_404(Blog, id = id)
-    usuario = get_object_or_404(Persona, nombre_usuario = post.nombre_usuario )
-    
+    usuario = get_object_or_404(Persona, nombre_usuario = post.nombre_usuario)
+    comentario = Comentario.objects.filter(post = post)
+
     data = {
+        'comentario': comentario,
         'post': post,
         'usuario': usuario,
+        'form': ComentarioForm(),
     }
+
+    if request.method == "POST":
+        formulario = ComentarioForm(data=request.POST, files=request.FILES)
+        if formulario.is_valid():
+            comentario = formulario.save(commit=False)
+            usuario = get_object_or_404(User, pk=request.user.pk)
+            comentario.nombre_usuario = usuario
+            comentario.post = post
+            post.save()
+            formulario.save()
+            return redirect('detallepost', post.id)
+        else:
+            data["form"] = formulario
+
     return render(request, 'core/detallepost.html', data)

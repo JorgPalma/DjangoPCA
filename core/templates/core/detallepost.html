@@ -6,15 +6,17 @@
 
 {% block content %}
 {% load static %}
-<div class="container container-op-perfil pt-3 pb-5">
-  <div class="row d-flex justify-content-center">
+{% load crispy_forms_tags %}
+<main class="pb-3 pt-3 op-destacados">
+  <div class="container container-op-perfil pt-3 pb-5">
+    <div class="row d-flex justify-content-center">
     
-      <div class="col-3 d-flex flex-wrap justify-content-center pt-3 post-perfil">
-        <a class="post-perfil-link d-flex flex-wrap justify-content-center pt-3" href="{% url 'perfil' usuario.nombre_usuario %}">
-          <img class="img-op-perfil" src='{{usuario.imagen.url}}'' alt="Foto usuario" width="200px">
-          <h2 class="text-center nombre-op-perfil">@{{ post.nombre_usuario }}</h2>
-        </a>
-      </div>
+        <div class="col-3 d-flex flex-wrap justify-content-center pt-3 post-perfil">
+          <a class="post-perfil-link d-flex flex-wrap justify-content-center pt-3" href="{% url 'perfil' usuario.nombre_usuario %}">
+            <img class="img-op-perfil" src='{{usuario.imagen.url}}'' alt="Foto usuario" width="200px">
+            <h2 class="text-center nombre-op-perfil">@{{ post.nombre_usuario }}</h2>
+         </a>
+        </div>
     
     <div class="col-7 post-info">
       <h2 class="mb-2">{{post.titulo}}</h2>
@@ -30,29 +32,59 @@
           </div>
         </div>
         <div class="op-post-barra"></div>
-      <p class="text-end">
-        {{ post.timestamp }}
-      </p>
+        <div class="row mt-3">
+          <div class="col-12 d-flex justify-content-between">
+            <h5 class="op-blog-likes mx-2">{{post.likes}} <i class="fa-solid fa-heart"></i></h5>
+            <h5 class="op-blog-likes mx-2">{{post.likes}} <i class="fa-regular fa-heart"></i></h5>
+            <p class="text-end">
+              {{ post.timestamp }}
+            </p>
+          </div>
+        </div>
     </div>
   </div>
   <div class="row d-flex justify-content-center">
     <div class="col-10 d-flex justify-content-center flex-wrap">
       <h2>Comentarios</h2>
-      <div class="col-10 comentario-post">
-        <div class="row d-flex justify-content-center flex-wrap">
-          <div class="col-1">
-            <img class="op-comentario-img-detalle" src="{{usuario.imagen.url}}" alt="" width="">
+        {% for c in comentario %}
+          <div class="col-10 comentario-post">
+            <div class="row d-flex justify-content-between flex-wrap">
+              <div class="col-1">
+                <img class="op-comentario-img-detalle" src="{{usuario.imagen.url}}" alt="" width="">
+              </div>
+              <div class="col-10 d-flex justify-content-around flex-wrap">
+                <a class="op-comentario-nombre" href="{% url 'perfil' c.nombre_usuario %}">@{{ c.nombre_usuario }}</a>
+                <div class="op-comentario-antiguo d-flex flex-wrap align-items-center">
+                  <input type="text" readonly value="{{ c.comentario }}">
+                </div>
+              </div>  
+              <div class="col-1 flex-wrap d-flex align-items-center">
+                <h5 class="op-blog-likes mx-2">{{ c.likes}} <i class="fa-solid fa-heart"></i></h5>
+              </div>
+            </div>
           </div>
-          <div class="col-8 d-flex justify-content-around flex-wrap">
-            <a class="op-comentario-nombre" href="{% url 'perfil' usuario.nombre_usuario %}">@{{ post.nombre_usuario }}</a>
-            <input class="op-comentario-nuevo" placeholder="Pa que po" type="text">
+        {% endfor %}
+        {% if user.is_authenticated %}
+          <div class="col-10 comentario-post">
+            <div class="row d-flex justify-content-between flex-wrap">
+              <div class="col-1">
+                <img class="op-comentario-img-detalle" src="{{usuario.imagen.url}}" alt="" width="">
+              </div>
+              <div class="col-11 d-flex justify-content-around flex-wrap">
+                <a class="op-comentario-nombre" href="{% url 'perfil' usuario.nombre_usuario %}">@{{ post.nombre_usuario }}</a>
+                  <div class="op-comentario-nuevo d-flex flex-wrap align-items-center">
+                  <form action="" class="d-flex flex-wrap justify-content-around" method="post" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    {{ form }}
+                      <input class="btn op-btn-login" type="submit" value="+">
+                  </form>
+                </div>
+              </div>
+            </div>
           </div>
-          <div class="col-2 d-flex align-self-center">
-            <input class="btn op-btn-login mt-2" type="submit" value="Publicar">
-          </div>
-        </div>
+        {% endif %}
       </div>
     </div>
   </div>
-</div>
+</main>
 {% endblock %}

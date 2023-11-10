@@ -20,6 +20,7 @@ class Persona(models.Model):
     def __str__(self):
         return f'Perfil de: {self.nombre_usuario}'
 
+
     
 class Blog(models.Model):
     nombre_usuario = models.ForeignKey(User, on_delete=models.CASCADE, related_name='user_post')
@@ -34,21 +35,27 @@ class Blog(models.Model):
                                 choices=Categoria_Choices.choices,
                                 default=Categoria_Choices.PER)
     timestamp = models.DateTimeField(default=timezone.now)
+    likes = models.IntegerField(default=0)
+    like = models.BooleanField(default=False)
     imagen = models.ImageField(upload_to="fotos", null=True)
 
     def __str__(self):
-        return f'Post de: {self.nombre_usuario}'
+        return f'Post { self.id } de: {self.nombre_usuario}'
     
 class Comentario(models.Model):
-    nombre_usuario = models.OneToOneField(User, on_delete=models.CASCADE, related_name='user_comentario')
+    nombre_usuario = models.ForeignKey(User, on_delete=models.CASCADE, related_name='user_comentario')
     timestamp = models.DateTimeField(default=timezone.now)
     comentario = models.CharField(max_length=150)
+    likes = models.IntegerField(default=0)
+    like = models.BooleanField(default=False)
+    post = models.ForeignKey(Blog, null=True, on_delete=models.CASCADE, related_name="comentario_post")
     
     def __str__(self):
-        return self.nombre_usuario
+        return f'Comentrio { self.id } de: {self.nombre_usuario}'
+
     
 class Mascota(models.Model):
-    nombre_usuario = models.OneToOneField(User, on_delete=models.CASCADE, related_name='user_mascota')
+    nombre_usuario = models.ForeignKey(User, on_delete=models.CASCADE, related_name='user_mascota')
     nombre_masc = models.CharField(max_length=30)
     especie = models.CharField(max_length=30)
     raza = models.CharField(max_length=30)
