@@ -251,7 +251,7 @@ def dashboard(request):
 def enviado (request):
     return render(request, 'core/enviado.html')
 
-def detallepost (request, id):
+def detallepost(request, id):
     post = get_object_or_404(Blog, id = id)
     usuario = get_object_or_404(Persona, nombre_usuario = post.nombre_usuario)
     comentario = Comentario.objects.filter(post = post)
@@ -277,3 +277,36 @@ def detallepost (request, id):
             data["form"] = formulario
 
     return render(request, 'core/detallepost.html', data)
+
+
+def likepost (request, id):
+    post = get_object_or_404(Blog, id = id)
+
+    if post.like == False:
+        current_likes = post.likes
+        post.likes = current_likes + 1
+        post.like = True
+        post.save()
+    elif post.like == True:
+        current_likes = post.likes
+        post.likes = current_likes - 1
+        post.like = False
+        post.save()
+
+    return detallepost(request, id)
+
+def likecomentario (request, id):
+    comentario = get_object_or_404(Comentario, id = id)
+
+    if comentario.like == False:
+        current_likes = comentario.likes
+        comentario.likes = current_likes + 1
+        comentario.like = True
+        comentario.save()
+    elif comentario.like == True:
+        current_likes = comentario.likes
+        comentario.likes = current_likes - 1
+        comentario.like = False
+        comentario.save()
+
+    return detallepost(request, id)

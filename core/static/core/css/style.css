@@ -816,7 +816,8 @@ select{
     width: 100%;
     font-size: 14px;
     line-height: 14px;
-    color: var(--naranjo)
+    color: var(--naranjo);
+    margin-bottom: 5px;
 }
 
 .op-comentario-nuevo {
@@ -871,4 +872,6 @@ select{
 
 .op-blog-likes {
     color: var(--azul);
+    text-decoration: none;
+    font-family: var(--quicksans);
 }

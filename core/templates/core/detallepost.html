@@ -34,8 +34,11 @@
         <div class="op-post-barra"></div>
         <div class="row mt-3">
           <div class="col-12 d-flex justify-content-between">
-            <h5 class="op-blog-likes mx-2">{{post.likes}} <i class="fa-solid fa-heart"></i></h5>
-            <h5 class="op-blog-likes mx-2">{{post.likes}} <i class="fa-regular fa-heart"></i></h5>
+            {% if post.like == True %}
+              <a href="{% url 'likepost' post.id %}" class="op-blog-likes mx-2">{{post.likes}} <i class="fa-solid fa-heart"></i></a>
+            {% elif post.like == False%}
+              <a href="{% url 'likepost' post.id %}" class="op-blog-likes mx-2">{{post.likes}} <i class="fa-regular fa-heart"></i></a>
+            {% endif %}
             <p class="text-end">
               {{ post.timestamp }}
             </p>
@@ -49,17 +52,18 @@
         {% for c in comentario %}
           <div class="col-10 comentario-post">
             <div class="row d-flex justify-content-between flex-wrap">
-              <div class="col-1">
-                <img class="op-comentario-img-detalle" src="{{usuario.imagen.url}}" alt="" width="">
-              </div>
-              <div class="col-10 d-flex justify-content-around flex-wrap">
+              <div class="col-11 d-flex justify-content-around flex-wrap">
                 <a class="op-comentario-nombre" href="{% url 'perfil' c.nombre_usuario %}">@{{ c.nombre_usuario }}</a>
                 <div class="op-comentario-antiguo d-flex flex-wrap align-items-center">
                   <input type="text" readonly value="{{ c.comentario }}">
                 </div>
               </div>  
-              <div class="col-1 flex-wrap d-flex align-items-center">
-                <h5 class="op-blog-likes mx-2">{{ c.likes}} <i class="fa-solid fa-heart"></i></h5>
+              <div class="col-1 d-flex align-items-center flex-wrap mt-3">
+                {% if c.like == True %}
+                  <a href="{% url 'likecomentario' c.id %}" class="op-blog-likes mx-2">{{c.likes}} <i class="fa-solid fa-heart"></i></a>
+                {% elif c.like == False %}
+                  <a href="{% url 'likecomentario' c.id %}" class="op-blog-likes mx-2">{{c.likes}} <i class="fa-regular fa-heart"></i></a>
+                {% endif %}
               </div>
             </div>
           </div>
@@ -67,16 +71,13 @@
         {% if user.is_authenticated %}
           <div class="col-10 comentario-post">
             <div class="row d-flex justify-content-between flex-wrap">
-              <div class="col-1">
-                <img class="op-comentario-img-detalle" src="{{usuario.imagen.url}}" alt="" width="">
-              </div>
-              <div class="col-11 d-flex justify-content-around flex-wrap">
-                <a class="op-comentario-nombre" href="{% url 'perfil' usuario.nombre_usuario %}">@{{ post.nombre_usuario }}</a>
+              <div class="col-12 d-flex justify-content-around flex-wrap">
+                <a class="op-comentario-nombre mb-1" href="{% url 'perfil' usuario.nombre_usuario %}">@{{ post.nombre_usuario }}</a>
                   <div class="op-comentario-nuevo d-flex flex-wrap align-items-center">
                   <form action="" class="d-flex flex-wrap justify-content-around" method="post" enctype="multipart/form-data">
                     {% csrf_token %}
                     {{ form }}
-                      <input class="btn op-btn-login" type="submit" value="+">
+                    <input class="btn op-btn-login" type="submit" value="+">
                   </form>
                 </div>
               </div>
