@@ -11,10 +11,13 @@
   <div class="row d-flex justify-content-center">
     <div class="col-6">
       <h4 class="text-center editar-perfil-titulo">Editar información personal</h4>
-        <form action="" class="op-editarperfil-form d-flex flex-wrap justify-content-around" method="post" enctype="multipart/form-data">
+        <form name="editform" action="" class="op-editarperfil-form d-flex flex-wrap justify-content-around" method="post" enctype="multipart/form-data">
             {% csrf_token %}
             {{ form | crispy }}
             <br>
+            <!-- Agrega este div para mostrar mensajes de error -->
+            <div id="error-message" class="text-danger"></div>
+
             <div class="op-botonera-login d-flex justify-content-between mt-4 flex-wrap">
               <input type="reset" class="btn btn-sm op-btn-volver" value="Limpiar">
               <input type="submit" class="btn btn-sm op-btn-login" value="Actualizar">
