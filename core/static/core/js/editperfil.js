@@ -20,6 +20,8 @@ function validateInputs() {
     const segundoApellidoValue = apellido_mate.value.trim();
     const rutValue = id_rut.value.trim();
     const digitoValue = id_digito_ver.value.trim();
+    const telefonoValue = id_telefono.value.trim();
+    const edadValue = id_edad.value.trim();
 
     if (primerNombreValue === '') {
         errorMessageElement.textContent = 'Por favor, completa el campo del primer nombre.';
@@ -83,9 +85,28 @@ function validateInputs() {
     }
 
 
+    if (telefonoValue === '') {
+        errorMessageElement.textContent = 'Por favor, completa el campo de numero de telefono.';
+        return false;  
+    } else if (telefonoValue.length > 9) {
+        errorMessageElement.textContent = 'El rut no debe tener más de 9 numeros.';
+        return false; 
+    } else if (telefonoValue.length < 9) {
+        errorMessageElement.textContent = 'El rut no debe tener menos de 9 numeros.';
+        return false;  
+    } else {
+        errorMessageElement.textContent = '';     
+    }
 
-
-
+    if (edadValue === '') {
+        errorMessageElement.textContent = 'Por favor, completa el campo de edad.';
+        return false;  
+    } else if (edadValue.length > 3) {
+        errorMessageElement.textContent = 'El rut no debe tener más de 3 caracteres.';
+        return false; 
+    } else {
+        errorMessageElement.textContent = '';     
+    }
 
 
     return true;  
