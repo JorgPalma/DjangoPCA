@@ -57,7 +57,12 @@ class Comentario(models.Model):
 class Mascota(models.Model):
     nombre_usuario = models.ForeignKey(User, on_delete=models.CASCADE, related_name='user_mascota')
     nombre_masc = models.CharField(max_length=30)
-    especie = models.CharField(max_length=30)
+    class Especie_Choices(models.TextChoices):
+        PER = "1", "Perro"
+        GAT = "2", "Gato"
+    especie = models.CharField(max_length=2,
+                            choices=Especie_Choices.choices,
+                            default=Especie_Choices.PER)
     raza = models.CharField(max_length=30)
     edad = models.IntegerField()
     tamanio = models.IntegerField()

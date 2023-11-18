@@ -38,7 +38,7 @@
       {% for b in blog %}
       <div class="row d-flex justify-content-center">
         <div class="col-8">
-          <a class="op-post-link" href="#">
+          <a class="op-post-link" href="{% url 'detallepost' b.id %}">
             <article class="op-post d-flex justify-content-between mt-2 mb-2">
               <div class="op-post-cont-sm">
                 <img class="op-post-img" src="{{ b.imagen.url }}" alt="">

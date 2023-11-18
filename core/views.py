@@ -11,7 +11,13 @@ from django.contrib import messages
 
 
 def home(request):
-    return render(request, 'core/home.html')
+    post = Blog.objects.last()
+
+    data = {
+        'post': post
+    }
+
+    return render(request, 'core/home.html', data)
 
 
 
@@ -292,21 +298,5 @@ def likepost (request, id):
         post.likes = current_likes - 1
         post.like = False
         post.save()
-
-    return detallepost(request, id)
-
-def likecomentario (request, id):
-    comentario = get_object_or_404(Comentario, id = id)
-
-    if comentario.like == False:
-        current_likes = comentario.likes
-        comentario.likes = current_likes + 1
-        comentario.like = True
-        comentario.save()
-    elif comentario.like == True:
-        current_likes = comentario.likes
-        comentario.likes = current_likes - 1
-        comentario.like = False
-        comentario.save()
 
     return detallepost(request, id)

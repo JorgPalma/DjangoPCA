@@ -5,11 +5,12 @@
 {% endblock %}
 
 {% block content %}
+{% load humanize %}
 {% load static %}
         <section class="op-cta d-flex">
           <div class="container d-flex align-self-center">
             <div class="row d-flex justify-content-center">
-              <div class="col-5 op-cta-text d-flex flex-wrap">
+              <div class="col-12 col-md-6 op-cta-text d-flex flex-wrap mb-2">
                   <h1 class="op-cta-title">Cuida a tus mascotas</h1>
                   <div class="op-barra-divisora-sm mt-1 mb-2"></div>
                   <p class="op-cta-p">Lorem ipsum dolor sit amet, consectetur adipiscing elit, 
@@ -20,8 +21,8 @@
                   </p>
                   <a class="op-cta-button" href="#">Haz tu plan</a>
               </div>
-              <div class="col-6 op-cta-text d-flex flex-wrap">
-                <img class="op-cta-img" src="{% static 'core/img/1.jpeg' %}" alt="Gatito y perrito bonito" width="500"> 
+              <div class="col-12 col-md-6 op-cta-text d-flex flex-wrap justify-content-center">
+                <img class="op-cta-img align-self-center" src="{% static 'core/img/1.jpeg' %}" alt="Gatito y perrito bonito" width="100%"> 
                 
               </div>
             </div>
@@ -31,7 +32,7 @@
         <aside class="op-nosotros pb-3" id="nosotros">
           <div class="container">
             <div class="row d-flex justify-content-center">
-              <div class="col-8">
+              <div class="col-10 col-md-8">
                 <h2 class="op-nosotros-title text-center mt-3 mb-3">Nosotros</h2>
                 <div class="op-barra-divisora-xg mb-4"></div>
                 <p class="op-nosotros-p">
@@ -73,28 +74,36 @@
         <main class="pb-3 op-destacados">
           <div class="container">
             <div class="row d-flex justify-content-center">
-              <div class="col-8">
+              <div class="col-sm-12 col-md-8">
                 <h2 class="op-blog-title text-center mt-3 mb-3">Última publicación</h2>
                 <div class="op-barra-divisora-xg mb-4"></div>
-                <article class="op-post d-flex justify-content-between">
-                  <div class="op-post-cont-sm">
-                    <img class="op-post-img" src="{% static 'core/img/bellota.jpg' %}" alt="Bellota">
-                  </div>
-                  <div class="op-post-cont-xl">
-                    <h3 class="op-post-title">Lorem ipsum, dolor sit</h3>
-                    <div class="op-post-barra"></div>
-                    <p class="op-post-text">
-                      Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum ducimus, 
-                      id esse aliquid fugit voluptas veniam cumque, eaque iste repellat est error
-                      eveniet sit! Est suscipit pariatur dolor animi reprehenderit. Lorem ipsum 
-                      dolor sit amet consectetur adipisicing elit. Quia aliquid sint quae quaerat 
-                      cum sed porro, sit, expedita velit dolor voluptas ipsam necessitatibus
-                      blanditiis repudiandae molestiae autem ipsum provident assumenda.a
-                    </p>
-        
-                  </div>
-                  
-                </article>
+              </div>
+            </div>
+            <div class="row d-flex justify-content-center">
+              <div class="col-sm-10 col-md-8 justify-content-center align-self-center">
+                <a class="op-post-link" href="{% url 'detallepost' post.id %}">
+                  <article class="op-post d-flex justify-content-between mt-2 mb-2 row">
+                    <div class="op-post-cont-sm">
+                      <img class="op-post-img" src="{{ post.imagen.url }}" alt="" width="100%">
+                    </div>
+                    <div class="op-post-cont-xl">
+                      <h3 class="op-post-title">{{ post.titulo }}</h3>
+                      <h5 class="op-blog-likes">{{post.likes}} <i class="fa-solid fa-heart"></i></h5>
+                      <div class="op-post-barra"></div>
+                      <p class="op-post-text">
+                        {{ post.informacion }}
+                      </p>
+                      <div class="op-post-footer d-flex justify-content-between row">
+                        <div class="op-post-left-footer col-12 col-md-5">
+                          <p class="op-post-footer-autor">@{{ post.nombre_usuario }}</p>
+                        </div>
+                        <div class="op-post-right-footer col-12 col-md-5">
+                          <p class="op-post-footer-date">{{ post.timestamp | naturaltime }}</p>
+                        </div>
+                      </div>
+                    </div>
+                  </article>
+                </a>
               </div>
             </div>
           </div>
