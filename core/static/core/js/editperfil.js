@@ -8,8 +8,12 @@ const id_telefono = document.getElementById("telefono")
 const id_edad = document.getElementById("edad")
 const id_imagen = document.getElementById("id_imagen")
 
-const errorMessageElement = document.getElementById("error-message");
+const nombre_contact = document.getElementById("nombre")
+const email_contact = document.getElementById("email")
+const asunto_contact = document.getElementById("asunto")
+const mensaje_contact = document.getElementById("mensaje")
 
+const errorMessageElement = document.getElementById("error-message");
 const editForm = document.forms['editform'];  // Obtén el formulario por su nombre
 
 function validateInputs() {
@@ -31,8 +35,7 @@ function validateInputs() {
         return false;  
     } else {
         errorMessageElement.textContent = '';     
-    }
-   
+    }  
 
     if (segundoNombreValue.length > 25) {
         errorMessageElement.textContent = 'El Segundo Nombre no debe tener más de 25 caracteres.';
@@ -51,14 +54,12 @@ function validateInputs() {
         errorMessageElement.textContent = '';     
     }
 
-
     if (segundoApellidoValue.length > 25) {
         errorMessageElement.textContent = 'El Segundo Apellido no debe tener más de 25 caracteres.';
         return false;  
     } else {
         errorMessageElement.textContent = '';      
     }
-
 
     if (rutValue === '') {
         errorMessageElement.textContent = 'Por favor, completa el campo del rut.';
@@ -73,7 +74,6 @@ function validateInputs() {
         errorMessageElement.textContent = '';     
     }
 
-
     if (!/^[0-9kK]{1}$/.test(digitoValue)) {
         errorMessageElement.textContent = 'El dígito verificador solo puede ser un número del 0 al 9 o la letra "k".';
         return false;
@@ -84,15 +84,14 @@ function validateInputs() {
         errorMessageElement.textContent = '';     
     }
 
-
     if (telefonoValue === '') {
         errorMessageElement.textContent = 'Por favor, completa el campo de numero de telefono.';
         return false;  
     } else if (telefonoValue.length > 9) {
-        errorMessageElement.textContent = 'El rut no debe tener más de 9 numeros.';
+        errorMessageElement.textContent = 'El numero de telefono no debe tener más de 9 numeros.';
         return false; 
     } else if (telefonoValue.length < 9) {
-        errorMessageElement.textContent = 'El rut no debe tener menos de 9 numeros.';
+        errorMessageElement.textContent = 'El numero de telefono no debe tener menos de 9 numeros.';
         return false;  
     } else {
         errorMessageElement.textContent = '';     
@@ -102,14 +101,64 @@ function validateInputs() {
         errorMessageElement.textContent = 'Por favor, completa el campo de edad.';
         return false;  
     } else if (edadValue.length > 3) {
-        errorMessageElement.textContent = 'El rut no debe tener más de 3 caracteres.';
+        errorMessageElement.textContent = 'La edad no debe tener más de 3 caracteres.';
+        return false; 
+    } else {
+        errorMessageElement.textContent = '';     
+    }
+
+// CODIGO PARA CONTACTO
+
+    if (nombre_contact === '') {
+        errorMessageElement.textContent = 'Por favor, completa el campo de Nombre Apellido.';
+        return false;  
+    } else if (nombre_contact.length > 35) {
+        errorMessageElement.textContent = 'El nombre apellido no debe tener más de 35 caracteres.';
+        return false; 
+    } else {
+        errorMessageElement.textContent = '';     
+    }
+
+    if (email_contact === '') {
+        errorMessageElement.textContent = 'Por favor, completa el campo de correo electrónico.';
+        return false;  
+    } else if (!isValidEmail(email_contact)) {
+        errorMessageElement.textContent = 'Por favor, ingresa un correo electrónico válido.';
+        return false;
+    } else {
+        errorMessageElement.textContent = '';     
+    }
+
+    if (asunto_contact === '') {
+        errorMessageElement.textContent = 'Por favor, completa el campo de Asunto.';
+        return false;  
+    } else if (asunto_contact.length > 35) {
+        errorMessageElement.textContent = 'El asunto no debe ser de más de 35 caracteres.';
         return false; 
     } else {
         errorMessageElement.textContent = '';     
     }
 
 
+    if (mensaje_contact === '') {
+        errorMessageElement.textContent = 'Por favor, completa el campo de mensaje.';
+        return false;  
+    } else if (mensaje_contact.length >200) {
+        errorMessageElement.textContent = 'El asunto no debe ser de más de 200 caracteres.';
+        return false; 
+    } else {
+        errorMessageElement.textContent = '';     
+    }
+
+
+
     return true;  
+}
+
+function isValidEmail(email) {
+    // Expresión regular para validar un correo electrónico básico
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(email);
 }
 
 editForm.addEventListener('submit', function (event) {
