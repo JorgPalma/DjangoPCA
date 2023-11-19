@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Persona, Blog, Comentario, Contacto, Mascota, Formulario
+from .models import Persona, Blog, Comentario, Contacto, Mascota, Formulario, Animal, Raza, Categoria
 
 # Register your models here.
 
@@ -9,3 +9,6 @@ admin.site.register(Comentario)
 admin.site.register(Contacto)
 admin.site.register(Mascota)
 admin.site.register(Formulario)
+admin.site.register(Animal)
+admin.site.register(Raza)
+admin.site.register(Categoria)

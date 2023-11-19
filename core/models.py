@@ -20,23 +20,20 @@ class Persona(models.Model):
     def __str__(self):
         return f'Perfil de: {self.nombre_usuario}'
 
+class Categoria(models.Model):
+    nombre_categoria = models.CharField(max_length=20, default="Perro")
 
+    def __str__(self):
+        return self.nombre_categoria
     
 class Blog(models.Model):
     nombre_usuario = models.ForeignKey(User, on_delete=models.CASCADE, related_name='user_post')
     titulo = models.CharField(max_length=30)
     informacion = models.CharField(max_length=800)
-    class Categoria_Choices(models.TextChoices):
-        PER = "1", "Perro"
-        GAT = "2", "Gato"
-        ALI = "3", "Alimentación"
-        ADO = "4", "Adopción"
-    categoria = models.CharField(max_length=2,
-                                choices=Categoria_Choices.choices,
-                                default=Categoria_Choices.PER)
+    categoria = models.ForeignKey(Categoria, on_delete=models.CASCADE, related_name='categoria_post')  
     timestamp = models.DateTimeField(default=timezone.now)
     likes = models.IntegerField(default=0)
-    like = models.BooleanField(default=False)
+    is_like = models.BooleanField(default=False)
     imagen = models.ImageField(upload_to="fotos", null=True)
 
     def __str__(self):
@@ -46,28 +43,30 @@ class Comentario(models.Model):
     nombre_usuario = models.ForeignKey(User, on_delete=models.CASCADE, related_name='user_comentario')
     timestamp = models.DateTimeField(default=timezone.now)
     comentario = models.CharField(max_length=150)
-    likes = models.IntegerField(default=0)
-    like = models.BooleanField(default=False)
     post = models.ForeignKey(Blog, null=True, on_delete=models.CASCADE, related_name="comentario_post")
     
     def __str__(self):
         return f'Comentrio { self.id } de: {self.nombre_usuario}'
+    
+class Animal(models.Model):
+    nombre_animal = models.CharField(max_length=20, default="Perro")
 
+    def __str__(self):
+        return self.nombre_animal
+    
+class Raza(models.Model):
+    nombre_raza = models.CharField(max_length=20, default="Chihuahua")
+
+    def __str__(self):
+        return self.nombre_raza
     
 class Mascota(models.Model):
     nombre_usuario = models.ForeignKey(User, on_delete=models.CASCADE, related_name='user_mascota')
     nombre_masc = models.CharField(max_length=30)
-    class Especie_Choices(models.TextChoices):
-        PER = "1", "Perro"
-        GAT = "2", "Gato"
-    especie = models.CharField(max_length=2,
-                            choices=Especie_Choices.choices,
-                            default=Especie_Choices.PER)
-    raza = models.CharField(max_length=30)
-    edad = models.IntegerField()
-    tamanio = models.IntegerField()
-    peso = models.IntegerField()
-    genero = models.CharField(max_length=1)
+    sexo = models.CharField(max_length=1)
+    anio_nac = models.IntegerField()
+    animal = models.ForeignKey(Animal, on_delete=models.CASCADE, related_name='animal_mascota')
+    raza = models.ForeignKey(Raza, on_delete=models.CASCADE, related_name='raza_mascota')
 
     def __str__(self):
         return self.nombre_masc

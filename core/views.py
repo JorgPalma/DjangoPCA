@@ -288,15 +288,15 @@ def detallepost(request, id):
 def likepost (request, id):
     post = get_object_or_404(Blog, id = id)
 
-    if post.like == False:
+    if post.is_like == False:
         current_likes = post.likes
         post.likes = current_likes + 1
-        post.like = True
+        post.is_like = True
         post.save()
-    elif post.like == True:
+    elif post.is_like == True:
         current_likes = post.likes
         post.likes = current_likes - 1
-        post.like = False
+        post.is_like = False
         post.save()
 
     return detallepost(request, id)

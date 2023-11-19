@@ -34,9 +34,9 @@
         <div class="op-post-barra"></div>
         <div class="row mt-3">
           <div class="col-12 d-flex justify-content-between">
-            {% if post.like == True %}
+            {% if post.is_like == True %}
               <a href="{% url 'likepost' post.id %}" class="op-blog-likes mx-2">{{post.likes}} <i class="fa-solid fa-heart"></i></a>
-            {% elif post.like == False%}
+            {% elif post.is_like == False%}
               <a href="{% url 'likepost' post.id %}" class="op-blog-likes mx-2">{{post.likes}} <i class="fa-regular fa-heart"></i></a>
             {% endif %}
             <p class="text-end">
