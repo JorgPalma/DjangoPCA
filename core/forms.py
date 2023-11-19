@@ -33,7 +33,7 @@ class EditarPefil(forms.ModelForm):
             "apellido_pat":forms.TextInput(attrs={'placeholder':'Apellido Paterno','name':'p_apellido','id':'p_apellido','class':'input-class_name'}),
             "apellido_mate":forms.TextInput(attrs={'placeholder':'Apellido Materno','name':'m_apellido','id':'m_apellido','class':'input-class_name'}),
             "rut":forms.NumberInput(attrs={'placeholder':'11111111','name':'rut','id':'rut','class':'input-class_name'}),
-            "digito_ver":forms.NumberInput(attrs={'placeholder':'1','name':'dv','id':'dv','class':'input-class_name'}),
+            "digito_ver":forms.TextInput(attrs={'placeholder':'1','name':'dv','id':'dv','class':'input-class_name'}),
             "telefono":forms.NumberInput(attrs={'placeholder':'964782354','name':'telefono','id':'telefono','class':'input-class_name'}),
             "edad":forms.NumberInput(attrs={'placeholder':'18','name':'edad','id':'edad','class':'input-class_name'}),
             }

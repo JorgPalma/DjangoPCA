@@ -1,3 +1,4 @@
+//EDITAR PERFIL
 const primer_nombre = document.getElementById("p_nombre")
 const segundo_nombre = document.getElementById("s_nombre")
 const apellido_pat = document.getElementById("p_apellido")
@@ -8,15 +9,24 @@ const id_telefono = document.getElementById("telefono")
 const id_edad = document.getElementById("edad")
 const id_imagen = document.getElementById("id_imagen")
 
+//EDITAR PERFIL
 const nombre_contact = document.getElementById("nombre")
 const email_contact = document.getElementById("email")
 const asunto_contact = document.getElementById("asunto")
 const mensaje_contact = document.getElementById("mensaje")
 
+//#############
 const errorMessageElement = document.getElementById("error-message");
-const editForm = document.forms['editform'];  // Obtén el formulario por su nombre
+const editForm = document.forms['editform'];
+const contactform = document.forms['contactform'];
 
-function validateInputs() {
+function isValidEmail(email) {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(email);
+}
+
+//FUNCIÓN EDITAR PERFIL
+function validateInputsEditarPerfil() {
 
     const primerNombreValue = primer_nombre.value.trim();
     const segundoNombreValue = segundo_nombre.value.trim();
@@ -107,62 +117,74 @@ function validateInputs() {
         errorMessageElement.textContent = '';     
     }
 
-// CODIGO PARA CONTACTO
+    return true;  
+}
 
-    if (nombre_contact === '') {
-        errorMessageElement.textContent = 'Por favor, completa el campo de Nombre Apellido.';
+//FUNCIÓN CONTACTO
+function validateInputsContacto() {
+
+    const nombre_contactValue = nombre_contact.value.trim();
+    const email_contactValue = email_contact.value.trim();
+    const asunto_contactValue = asunto_contact.value.trim();
+    const mensaje_contactValue = mensaje_contact.value.trim();
+
+    if (nombre_contactValue === '') {
+        errorMessageElement.textContent = 'Por favor, completa el campo de Nombre';
         return false;  
-    } else if (nombre_contact.length > 35) {
-        errorMessageElement.textContent = 'El nombre apellido no debe tener más de 35 caracteres.';
-        return false; 
+    } else if (nombre_contactValue.length > 1) {
+        errorMessageElement.textContent = 'El Nombre no debe tener más de 35 caracteres.';
+        return false;  
     } else {
         errorMessageElement.textContent = '';     
-    }
+    }  
 
-    if (email_contact === '') {
+    if (email_contactValue === '') {
         errorMessageElement.textContent = 'Por favor, completa el campo de correo electrónico.';
         return false;  
-    } else if (!isValidEmail(email_contact)) {
+    } else if (!isValidEmail(email_contactValue)) {
         errorMessageElement.textContent = 'Por favor, ingresa un correo electrónico válido.';
         return false;
     } else {
         errorMessageElement.textContent = '';     
     }
 
-    if (asunto_contact === '') {
-        errorMessageElement.textContent = 'Por favor, completa el campo de Asunto.';
+    if (asunto_contactValue === '') {
+        errorMessageElement.textContent = 'Por favor, completa el campo de Asunto';
         return false;  
-    } else if (asunto_contact.length > 35) {
-        errorMessageElement.textContent = 'El asunto no debe ser de más de 35 caracteres.';
-        return false; 
+    } else if (asunto_contactValue.length > 1) {
+        errorMessageElement.textContent = 'El Asunto no debe tener más de 40 caracteres.';
+        return false;  
     } else {
         errorMessageElement.textContent = '';     
     }
-
-
-    if (mensaje_contact === '') {
-        errorMessageElement.textContent = 'Por favor, completa el campo de mensaje.';
+    
+    if (mensaje_contactValue === '') {
+        errorMessageElement.textContent = 'Por favor, completa el campo de Mensaje';
         return false;  
-    } else if (mensaje_contact.length >200) {
-        errorMessageElement.textContent = 'El asunto no debe ser de más de 200 caracteres.';
-        return false; 
+    } else if (mensaje_contactValue.length > 40) {
+        errorMessageElement.textContent = 'El Mensaje no debe tener más de 200 caracteres.';
+        return false;  
     } else {
         errorMessageElement.textContent = '';     
-    }
+    }  
 
-
-
-    return true;  
+    return true;      
 }
 
-function isValidEmail(email) {
-    // Expresión regular para validar un correo electrónico básico
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    return emailRegex.test(email);
-}
 
-editForm.addEventListener('submit', function (event) {
-    if (!validateInputs()) {
+
+document.addEventListener('DOMContentLoaded', function() {
+    // Tu código aquí
+    editForm.addEventListener('submit', function (event) {
+        if (!validateInputsEditarPerfil()) {
+            event.preventDefault();  // Previene el envío del formulario si hay un error
+        }
+    });
+});
+
+
+contactform.addEventListener('submit', function (event) {
+    if (!validateInputsContacto()) {
         event.preventDefault();  // Previene el envío del formulario si hay un error
     }
 });
