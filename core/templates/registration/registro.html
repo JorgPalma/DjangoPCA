@@ -21,7 +21,7 @@
                         <div class="card-body">
                           <h5 class="card-title text-center">Registro</h5>
                           <hr>
-                          <form class="d-flex flex-wrap op-login-form justify-content-center" action="" method="POST">
+                          <form name= "registroform" class="d-flex flex-wrap op-login-form justify-content-center" action="" method="POST">
                             {% csrf_token %}
 
                             {{ form }}
@@ -29,6 +29,8 @@
                                 <p class="op-texto-login text-center">¿Ya tienes una cuenta?</p>
                                 <a class="op-link-login" href="{% url 'login' %}">Iniciar Sesión</a>
                             </div>
+                            <br>
+                            <div id="error-message" class="text-danger"></div>
                             <div class="op-botonera-login d-flex justify-content-between mt-4 flex-wrap">
                                 <a class="btn btn-sm op-btn-volver" href="{% url 'home' %}">Volver</a>
                                 <input type="submit" class="btn btn-sm op-btn-login" value="Registrarme">
