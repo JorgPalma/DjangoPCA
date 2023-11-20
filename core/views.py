@@ -1,8 +1,8 @@
 from django.shortcuts import redirect, render, get_object_or_404
 from .forms import RegistroForm
 from django.contrib.auth import authenticate, login
-from .models import User, Persona, Blog, Comentario
-from .forms import EditarPefil, ContactoForm, AddPostForms, ComentarioForm
+from .models import User, Persona, Blog, Comentario, Mascota
+from .forms import EditarPefil, ContactoForm, AddPostForms, ComentarioForm, AddMascotaForms
 import random
 from django.shortcuts import render
 import plotly.graph_objs as go
@@ -120,12 +120,15 @@ def perfil(request, username = None):
     else:
         user = current_user
         persona = Persona.objects.get(nombre_usuario = user)
+        mascota = Mascota.objects.filter(nombre_usuario = user)
         validacion = True
+    
 
     data = {
         'user': user,
         'persona': persona,
-        'validacion': validacion
+        'validacion': validacion,
+        'mascota': mascota
     }
 
     return render(request, 'core/perfil.html', data)
@@ -300,3 +303,24 @@ def likepost (request, id):
         post.save()
 
     return detallepost(request, id)
+
+def addMascota(request):
+
+    data = {
+        'form': AddMascotaForms(),
+    }
+
+    if request.method == "POST":
+        formulario = AddMascotaForms(data=request.POST, files=request.FILES)
+        if formulario.is_valid():
+            post = formulario.save(commit=False)
+            usuario = get_object_or_404(User, pk=request.user.pk)
+            post.nombre_usuario = usuario
+            post.save()
+            formulario.save()
+            messages.success(request, "¡Mascota agregada con éxito!")
+            return redirect('home')
+        else:
+            data["form"] = formulario
+
+    return render(request, 'core/addMascota.html', data)

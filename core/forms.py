@@ -1,7 +1,7 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
-from .models import Persona, Contacto, Blog, Formulario, Comentario
+from .models import Persona, Contacto, Blog, Formulario, Comentario, Mascota
 
 
 class RegistroForm(UserCreationForm):
@@ -81,4 +81,22 @@ class ComentarioForm(forms.ModelForm):
         fields = ["comentario"]
         widgets = {
             "comentario":forms.TextInput(attrs={'placeholder':'Añadir un comentario'}),
+                }
+        
+class AddMascotaForms(forms.ModelForm):
+
+    class Meta:
+        model = Mascota
+        fields = ["nombre_masc", "sexo", "anio_nac", "animal", "raza", "imagen"]
+
+        labels = {
+            'nombre_masc': ('Nombre de tu masctoa'),
+            'sexo': ('M (macho) o H (hembra)'),
+            'anio_nac': ('Año de nacimiento'),
+        }
+
+        widgets = {
+            "nombre_masc":forms.TextInput(attrs={'placeholder':'Nombre','name':'nombre','id':'nombre','class':'input-class_name'}),
+            "sexo":forms.TextInput(attrs={'placeholder':'H','name':'sexo','id':'sexo','class':'input-class_name'}),
+            "anio_nac":forms.NumberInput(attrs={'placeholder':'2010','name':'anio_nac','id':'anio_nac','class':'input-class_name'}),
                 }

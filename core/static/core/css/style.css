@@ -875,3 +875,61 @@ select{
     text-decoration: none;
     font-family: var(--quicksans);
 }
+
+.mascota-card {
+    width: 21%;
+    margin-left: 10px;
+    margin-right: 10px;
+    border-radius: 20px;
+}
+
+.icono-mascota-card {
+    list-style: none;
+    display: inline-block;
+}
+
+.fa-card-icono {
+    color: var(--azul);
+    font-size: 30px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    padding-left: 10px;
+}
+
+.fa-venus {
+    color: var(--rojo);
+    font-size: 30px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    padding-right: 10px;
+}
+.fa-mars {
+    color: var(--celeste);
+    font-size: 30px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    padding-right: 10px;
+}
+
+.img-card-mascota {
+    width: 200px;
+    height: 200px;
+    border-radius: 100px;
+    object-fit: cover;
+    object-position: 50% 25%;
+}
+
+.card-title-mascota {
+    width: 100%;
+
+}
+
+.mascota-edit {
+    background: var(--amarillo);
+    color: var(--azul);
+}
+
+.mascota-delete {
+    background: var(--rojo);
+    color: white;
+}

@@ -67,6 +67,7 @@ class Mascota(models.Model):
     anio_nac = models.IntegerField()
     animal = models.ForeignKey(Animal, on_delete=models.CASCADE, related_name='animal_mascota')
     raza = models.ForeignKey(Raza, on_delete=models.CASCADE, related_name='raza_mascota')
+    imagen = models.ImageField(upload_to="fotos", null=True)
 
     def __str__(self):
         return self.nombre_masc
