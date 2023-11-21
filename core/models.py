@@ -47,18 +47,18 @@ class Comentario(models.Model):
     
     def __str__(self):
         return f'Comentrio { self.id } de: {self.nombre_usuario}'
-    
-class Animal(models.Model):
-    nombre_animal = models.CharField(max_length=20, default="Perro")
-
-    def __str__(self):
-        return self.nombre_animal
-    
 class Raza(models.Model):
     nombre_raza = models.CharField(max_length=20, default="Chihuahua")
 
     def __str__(self):
         return self.nombre_raza
+    
+class Animal(models.Model):
+    nombre_animal = models.CharField(max_length=20, default="Perro")
+    raza = models.ForeignKey(Raza, on_delete=models.CASCADE, related_name='raza_mascota')
+
+    def __str__(self):
+        return self.nombre_animal
     
 class Mascota(models.Model):
     nombre_usuario = models.ForeignKey(User, on_delete=models.CASCADE, related_name='user_mascota')
@@ -66,7 +66,6 @@ class Mascota(models.Model):
     sexo = models.CharField(max_length=1)
     anio_nac = models.IntegerField()
     animal = models.ForeignKey(Animal, on_delete=models.CASCADE, related_name='animal_mascota')
-    raza = models.ForeignKey(Raza, on_delete=models.CASCADE, related_name='raza_mascota')
     imagen = models.ImageField(upload_to="fotos", null=True)
 
     def __str__(self):

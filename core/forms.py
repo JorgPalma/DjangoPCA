@@ -87,7 +87,7 @@ class AddMascotaForms(forms.ModelForm):
 
     class Meta:
         model = Mascota
-        fields = ["nombre_masc", "sexo", "anio_nac", "animal", "raza", "imagen"]
+        fields = ["nombre_masc", "sexo", "anio_nac", "animal", "imagen"]
 
         labels = {
             'nombre_masc': ('Nombre de tu masctoa'),
