@@ -56,6 +56,7 @@ class Animal(models.Model):
     
 class Raza(models.Model):
     nombre_raza = models.CharField(max_length=20, default="Chihuahua")
+    animal = models.ForeignKey(Animal, on_delete=models.CASCADE, related_name='animal_mascota')
 
     def __str__(self):
         return self.nombre_raza
@@ -65,7 +66,6 @@ class Mascota(models.Model):
     nombre_masc = models.CharField(max_length=30)
     sexo = models.CharField(max_length=1)
     anio_nac = models.IntegerField()
-    animal = models.ForeignKey(Animal, on_delete=models.CASCADE, related_name='animal_mascota')
     raza = models.ForeignKey(Raza, on_delete=models.CASCADE, related_name='raza_mascota')
     imagen = models.ImageField(upload_to="fotos", null=True)
 
