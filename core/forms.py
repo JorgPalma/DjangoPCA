@@ -71,7 +71,7 @@ class AddPostForms(forms.ModelForm):
 class FormularioForm(forms.ModelForm):
     class Meta:
         model = Formulario
-        fields = ["vacunas","ac_fisica","comida_tiempo","tiene_sintomas","sintomas","tiene_enfermedad","enferme_ante","tiene_alergias","alergias","tiene_operaciones","operaciones"]
+        fields = ["num_vacunas","act_fisica","comida_tiempo","sintomas","antec_enfermedades","operaciones","peso","tamanio","edad","alergia"]
 
 
 

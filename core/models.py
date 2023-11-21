@@ -47,18 +47,18 @@ class Comentario(models.Model):
     
     def __str__(self):
         return f'Comentrio { self.id } de: {self.nombre_usuario}'
+    
+class Animal(models.Model):
+    nombre_animal = models.CharField(max_length=20, default="Perro")
+
+    def __str__(self):
+        return self.nombre_animal
+    
 class Raza(models.Model):
     nombre_raza = models.CharField(max_length=20, default="Chihuahua")
 
     def __str__(self):
         return self.nombre_raza
-    
-class Animal(models.Model):
-    nombre_animal = models.CharField(max_length=20, default="Perro")
-    raza = models.ForeignKey(Raza, on_delete=models.CASCADE, related_name='raza_mascota')
-
-    def __str__(self):
-        return self.nombre_animal
     
 class Mascota(models.Model):
     nombre_usuario = models.ForeignKey(User, on_delete=models.CASCADE, related_name='user_mascota')
@@ -66,24 +66,31 @@ class Mascota(models.Model):
     sexo = models.CharField(max_length=1)
     anio_nac = models.IntegerField()
     animal = models.ForeignKey(Animal, on_delete=models.CASCADE, related_name='animal_mascota')
+    raza = models.ForeignKey(Raza, on_delete=models.CASCADE, related_name='raza_mascota')
     imagen = models.ImageField(upload_to="fotos", null=True)
 
     def __str__(self):
         return self.nombre_masc
     
+class Alergia(models.Model):
+    tipo_alergia = models.CharField(max_length=15, default="No")
+
+    def __str__(self):
+        return self.tipo_alergia
+    
 class Formulario(models.Model):
-    nombre_usuario = models.OneToOneField(User, on_delete=models.CASCADE, related_name='user_formulario')
-    vacunas = models.IntegerField()
-    ac_fisica = models.CharField(max_length=1)
+    nombre_usuario = models.ForeignKey(User, on_delete=models.CASCADE, related_name='user_formulario')
+    num_vacunas = models.IntegerField()
+    act_fisica = models.CharField(max_length=1)
     comida_tiempo = models.IntegerField()
-    tiene_sintomas = models.CharField(max_length=1)
-    sintomas = models.CharField(max_length=20)
-    tiene_enfermedad = models.CharField(max_length=1)
-    enferme_ante = models.CharField(max_length=20)
-    tiene_alergias = models.CharField(max_length=1)
-    alergias = models.CharField(max_length=15)
-    tiene_operaciones = models.CharField(max_length=1)
-    operaciones = models.CharField(max_length=2)
+    sintomas = models.CharField(max_length=30)
+    antec_enfermedades = models.CharField(max_length=20)
+    operaciones = models.IntegerField()
+    peso = models.IntegerField()
+    tamanio = models.IntegerField()
+    edad = models.IntegerField()
+    alergia = models.ForeignKey(Alergia, on_delete=models.CASCADE, related_name='alergia')
+    
 
     def __str__(self):
         return self.nombre_usuario
