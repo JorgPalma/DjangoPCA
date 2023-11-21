@@ -20,7 +20,7 @@ function validateInputsRegistro() {
     if (iduserValue === '') {
         alert('Por favor, completa el campo de nombre de usuario.');
         return false;  
-    } else if (iduserValue.length > 25) {
+    } else if (iduserValue.length > 30) {
         alert('El Nombre de usuario no debe tener más de 30 caracteres.');
         return false;  
     } 
@@ -32,6 +32,23 @@ function validateInputsRegistro() {
         alert('Por favor, ingresa un correo electrónico válido.');
         return false;
     }
+
+    if (iduser_password1Value === '') {
+        alert('Por favor, completa el campo de contraseña.');
+        return false;  
+    } else if (iduser_password1Value.length > 30) {
+        alert('La contraseña no debe tener más de 30 caracteres.');
+        return false;  
+    } 
+
+    if (iduser_password2Value === '') {
+        alert('Por favor, completa el campo de confirmación de contraseña.');
+        return false;  
+    } else if (iduser_password2Value.length > 30) {
+        alert('La contraseña no debe tener más de 30 caracteres.');
+        return false;  
+    } 
+
 
     return true; 
 }

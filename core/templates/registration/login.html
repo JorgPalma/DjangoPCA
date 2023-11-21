@@ -21,7 +21,7 @@
                         <div class="card-body">
                           <h5 class="card-title text-center">Iniciar Sesión</h5>
                           <hr>
-                          <form class="d-flex flex-wrap op-login-form justify-content-center" action="" method="POST">
+                          <form name="loginform" class="d-flex flex-wrap op-login-form justify-content-center" action="" method="POST">
                             {% csrf_token %}
 
                             {{ form }}
