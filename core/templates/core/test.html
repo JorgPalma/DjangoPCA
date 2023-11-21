@@ -1,0 +1,15 @@
+{% extends 'core/template.html' %}
+
+{% block title %}
+  <title>PetCareAnalytics | TEST</title>
+{% endblock %}
+
+{% block content %}
+{% load static %}
+
+<!-- Aquí puedes mostrar la información de las noticias -->
+<div>
+  {{ noticias|safe }}
+</div>
+
+{% endblock %}

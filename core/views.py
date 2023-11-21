@@ -324,3 +324,13 @@ def addMascota(request):
             data["form"] = formulario
 
     return render(request, 'core/addMascota.html', data)
+
+
+def test(request):
+    post = Blog.objects.last()
+
+    data = {
+        'post': post
+    }
+
+    return render(request, 'core/test.html', data)
