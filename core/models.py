@@ -94,7 +94,7 @@ class Formulario(models.Model):
     
 
     def __str__(self):
-        return self.nombre_usuario
+        return f'Formulario { self.id }'
 
 class Contacto(models.Model):
     nombre_contacto = models.CharField(max_length=50)
