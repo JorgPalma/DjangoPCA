@@ -973,3 +973,12 @@ select{
     background-color: var(--celeste) !Important;
     border: solid 1px var(--celeste);
 }
+
+
+.op-noticias article .op-post-cont-xl h6 {
+    margin-top: 50px !important;
+}
+
+.op-noticias {
+    height: auto;
+}
