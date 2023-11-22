@@ -1,23 +1,18 @@
-<!-- test.html -->
-{% extends 'core/template.html' %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tu Página</title>
+    <!-- Agrega jQuery desde un CDN (Content Delivery Network) -->
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+</head>
+<body>
 
-{% block title %}
-  <title>PetCareAnalytics | TEST</title>
-{% endblock %}
+    <!-- Contenido de tu página -->
 
-{% block content %}
-{% load static %}
+    <h1>Bienvenido a mi página</h1>
+    <p>Esta es una página de prueba.</p>
 
-<h1>Últimas Noticias</h1>
-
-<ul>
-  {% for noticia in noticias %}
-    <li>
-      <strong>{{ noticia.title }}</strong>
-      <p>{{ noticia.description }}</p>
-      <a href="{{ noticia.url }}" target="_blank">Leer más</a>
-    </li>
-  {% endfor %}
-</ul>
-
-{% endblock %}
+</body>
+</html>
