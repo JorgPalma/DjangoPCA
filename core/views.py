@@ -503,3 +503,13 @@ def eliminarPost(request, id):
     blog.delete()
 
     return redirect(to="verPosts")
+
+
+def test(request):
+    post = Blog.objects.last()
+
+    data = {
+        'post': post
+    }
+
+    return render(request, 'core/test.html', data)
