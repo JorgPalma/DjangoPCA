@@ -90,6 +90,7 @@ class Formulario(models.Model):
     tamanio = models.IntegerField()
     edad = models.IntegerField()
     alergia = models.ForeignKey(Alergia, on_delete=models.CASCADE, related_name='alergia')
+    mascota = models.ForeignKey(Mascota, on_delete=models.CASCADE, related_name='mascota')
     
 
     def __str__(self):
