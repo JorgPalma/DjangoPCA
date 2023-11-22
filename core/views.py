@@ -205,9 +205,7 @@ def addPost(request):
 
     return render(request, 'core/addpost.html', data)
     
-import csv
-import plotly.graph_objs as go
-from django.shortcuts import render
+
 
 def convertir_a_entero(valor, valor_por_defecto=0):
     try:

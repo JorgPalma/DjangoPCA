@@ -4,7 +4,7 @@ os.environ.setdefault("DJANGO_SETTINGS_MODULE", "PetCareAnalytics.settings")
 import django
 django.setup()
 from django.contrib.auth.models import User
-from core.models import Persona, Raza, Mascota, Animal
+from core.models import Persona, Raza, Mascota, Animal, Alergia, Formulario
 
 def poblar_db():
     # Poblar la tabla Usuario (COMENTAR CODIGO 'CTRL+K+C')(DESCOMENTAR 'CTRL+K+U')
@@ -73,11 +73,39 @@ def poblar_db():
     Mascota.objects.create(nombre_usuario=user12, nombre_masc="Sable", sexo='H', anio_nac=2015, raza=Pug)
     Mascota.objects.create(nombre_usuario=user13, nombre_masc="Tongo", sexo='M', anio_nac=2021, raza=Pug)
     
-    #Mascota.objects.create(User.objects.get(username='deffnert1'), vacunas=2, ac_fisica=) 
 
 
+    
+
+    Alergia.objects.create(tipo_alergia="N/A")
+    Alergia.objects.create(tipo_alergia="Orina")
+    Alergia.objects.create(tipo_alergia="Caspa")
+    Alergia.objects.create(tipo_alergia="Saliva")
+    Alergia.objects.create(tipo_alergia="Alimentaria")
+    Alergia.objects.create(tipo_alergia="Ambiental")
+    Alergia.objects.create(tipo_alergia="Picadura")
+    Alergia.objects.create(tipo_alergia="Medicamento")
+    Alergia.objects.create(tipo_alergia="Producto quimico")
 
 
+    Formulario.objects.create(nombre_usuario=User.objects.get(id=1), mascota=Mascota.objects.get(id=1), alergia=Alergia.objects.get(id=1), act_fisica="S", sintomas="NO", antec_enfermedades="NO", edad=8, tamanio=972476108, peso=25, operaciones=1, comida_tiempo=25, num_vacunas=1)
+    Formulario.objects.create(nombre_usuario=User.objects.get(id=2), mascota=Mascota.objects.get(id=2), alergia=Alergia.objects.get(id=1), act_fisica="S", sintomas="NO", antec_enfermedades="NO", edad=7, tamanio=972476108, peso=25, operaciones=0, comida_tiempo=25, num_vacunas=1)
+    Formulario.objects.create(nombre_usuario=User.objects.get(id=3), mascota=Mascota.objects.get(id=3), alergia=Alergia.objects.get(id=3), act_fisica="S", sintomas="Tiene mucho dolor", antec_enfermedades="NO", edad=9, tamanio=972476108, peso=25, operaciones=2, comida_tiempo=25, num_vacunas=1)
+    Formulario.objects.create(nombre_usuario=User.objects.get(id=4), mascota=Mascota.objects.get(id=4), alergia=Alergia.objects.get(id=1), act_fisica="N", sintomas="NO", antec_enfermedades="NO", edad=2, tamanio=972476108, peso=25, operaciones=2, comida_tiempo=25, num_vacunas=1)
+    Formulario.objects.create(nombre_usuario=User.objects.get(id=5), mascota=Mascota.objects.get(id=5), alergia=Alergia.objects.get(id=1), act_fisica="N", sintomas="NO", antec_enfermedades="NO", edad=3, tamanio=972476108, peso=25, operaciones=3, comida_tiempo=25, num_vacunas=1)
+    Formulario.objects.create(nombre_usuario=User.objects.get(id=6), mascota=Mascota.objects.get(id=6), alergia=Alergia.objects.get(id=1), act_fisica="S", sintomas="NO", antec_enfermedades="NO", edad=5, tamanio=972476108, peso=25, operaciones=5, comida_tiempo=25, num_vacunas=1)
+    Formulario.objects.create(nombre_usuario=User.objects.get(id=7), mascota=Mascota.objects.get(id=7), alergia=Alergia.objects.get(id=7), act_fisica="N", sintomas="Tiene mucho dolor", antec_enfermedades="NO", edad=5, tamanio=972476108, peso=25, operaciones=1, comida_tiempo=25, num_vacunas=1)
+    Formulario.objects.create(nombre_usuario=User.objects.get(id=8), mascota=Mascota.objects.get(id=8), alergia=Alergia.objects.get(id=7), act_fisica="S", sintomas="Se le hincho la cara", antec_enfermedades="NO", edad=6, tamanio=972476108, peso=25, operaciones=1, comida_tiempo=25, num_vacunas=1)
+    Formulario.objects.create(nombre_usuario=User.objects.get(id=9), mascota=Mascota.objects.get(id=9), alergia=Alergia.objects.get(id=1), act_fisica="N", sintomas="NO", antec_enfermedades="NO", edad=7, tamanio=972476108, peso=25, operaciones=1, comida_tiempo=25, num_vacunas=1)
+    Formulario.objects.create(nombre_usuario=User.objects.get(id=10), mascota=Mascota.objects.get(id=10), alergia=Alergia.objects.get(id=7), act_fisica="S", sintomas="Tiene mucho dolor", antec_enfermedades="NO", edad=8, tamanio=972476108, peso=25, operaciones=0, comida_tiempo=25, num_vacunas=1)
+    Formulario.objects.create(nombre_usuario=User.objects.get(id=11), mascota=Mascota.objects.get(id=11), alergia=Alergia.objects.get(id=4), act_fisica="N", sintomas="Se le hincho la cara", antec_enfermedades="NO", edad=4, tamanio=972476108, peso=25, operaciones=0, comida_tiempo=25, num_vacunas=1)
+    Formulario.objects.create(nombre_usuario=User.objects.get(id=12), mascota=Mascota.objects.get(id=12), alergia=Alergia.objects.get(id=2), act_fisica="N", sintomas="Tiene mucho dolor", antec_enfermedades="NO", edad=4, tamanio=972476108, peso=25, operaciones=1, comida_tiempo=25, num_vacunas=1)
+    Formulario.objects.create(nombre_usuario=User.objects.get(id=13), mascota=Mascota.objects.get(id=13), alergia=Alergia.objects.get(id=1), act_fisica="S", sintomas="NO", antec_enfermedades="NO", edad=5, tamanio=972476108, peso=25, operaciones=1, comida_tiempo=25, num_vacunas=1)
+    
+    
+    # print(Mascota.objects.get(id=1))
+    
+    
 
 
 poblar_db()
