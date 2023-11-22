@@ -1,7 +1,7 @@
 from django.shortcuts import redirect, render, get_object_or_404
 from .forms import RegistroForm
 from django.contrib.auth import authenticate, login
-from .models import User, Persona, Blog, Comentario, Mascota, Contacto
+from .models import User, Persona, Blog, Comentario, Mascota, Formulario, Contacto
 from .forms import EditarPefil, ContactoForm, AddPostForms, ComentarioForm, AddMascotaForms
 import random
 from django.shortcuts import render
@@ -270,45 +270,68 @@ def convertir_a_entero(valor, valor_por_defecto=0):
 
 def dashboard(request):
     # Ruta al archivo CSV
-    csv_file_path = 'core/templates/CSV/csv.csv'
+    # csv_file_path = 'core/templates/CSV/csv.csv'
 
+    formulariomodel= Formulario.objects.all()
+    mascotamodel= Mascota.objects.all()
     # Listas para almacenar los datos del archivo CSV
     vacunas = []
-    ac_fisica = []
+    
     comida_tiempo = []
-    tiene_sintomas = []
-    sintomas = []
-    tiene_enfermedad = []
-    enferme_ante = []
-    tiene_alergias = []
-    alergias = []
-    tiene_operaciones = []
-    operaciones = []
+    
+    labels = ['H','M']
+    sexo = []
+    
+    contador_H = 0
+    contador_M = 0
 
+    for c in formulariomodel:
+        comida_tiempo.append(convertir_a_entero(c.comida_tiempo))
+        vacunas.append(c.id)
+    
+    for mas in mascotamodel:
+        if mas.sexo == 'H':
+            contador_H += 1
+        elif mas.sexo == 'M':
+            contador_M += 1
+        
+    sexo.append(contador_H)
+    sexo.append(contador_M)
     # Leer datos desde el archivo CSV y manejar valores no numéricos
-    with open(csv_file_path, 'r') as csvfile:
-        csvreader = csv.DictReader(csvfile)
-        for row in csvreader:
-            vacunas.append(convertir_a_entero(row['vacunas']))
-            ac_fisica.append(row['ac_fisica'])
-            comida_tiempo.append(convertir_a_entero(row['comida_tiempo'], valor_por_defecto=0))
-            tiene_sintomas.append(row['tiene_sintomas'])
-            sintomas.append(row['sintomas'])
-            tiene_enfermedad.append(row['tiene_enfermedad'])
-            enferme_ante.append(row['enferme_ante'])
-            tiene_alergias.append(row['tiene_alergias'])
-            alergias.append(row['alergias'])
-            tiene_operaciones.append(row['tiene_operaciones'])
-            operaciones.append(row['operaciones'])
+    # with open(csv_file_path, 'r') as csvfile:
+    #     csvreader = csv.DictReader(csvfile)
+    #     for row in csvreader:
+    #         vacunas.append(convertir_a_entero(row['vacunas']))
+    #         ac_fisica.append(row['ac_fisica'])
+    #         comida_tiempo.append(convertir_a_entero(row['comida_tiempo'], valor_por_defecto=0))
+    #         tiene_sintomas.append(row['tiene_sintomas'])
+    #         sintomas.append(row['sintomas'])
+    #         tiene_enfermedad.append(row['tiene_enfermedad'])
+    #         enferme_ante.append(row['enferme_ante'])
+    #         tiene_alergias.append(row['tiene_alergias'])
+    #         alergias.append(row['alergias'])
+    #         tiene_operaciones.append(row['tiene_operaciones'])
+    #         operaciones.append(row['operaciones'])
 
-    # Crear el gráfico usando Plotly
-    trace = go.Scatter(x=comida_tiempo, y=vacunas, mode='markers+lines')
+ # Crear el pie chart con Plotly
+    trace = go.Pie(labels=labels, values=sexo)
     data = [trace]
-    layout = go.Layout(title='Mi Gráfico Plotly', xaxis=dict(title='Comida a Tiempo'), yaxis=dict(title='Vacunas'))
-    plot_div = go.Figure(data=data, layout=layout).to_html(full_html=False)
+    layout = go.Layout(title='Distribución de sexo por Mascota registrada', margin=dict(l=0, r=0, b=0, t=30))  # Ajusta los márgenes según tus preferencias
+    fig = go.Figure(data=data, layout=layout)
+    plot_div = fig.to_html(full_html=False)
 
     # Pasar el gráfico a la plantilla 'dashboard.html'
     return render(request, 'core/dashboard.html', {'plot_div': plot_div})
+    fig.write_html('pie_chart.html')
+
+    # # Crear el gráfico usando Plotly
+    # trace = go.Scatter(x=vacunas, y=comida_tiempo, mode='markers+lines')
+    # data = [trace]
+    # layout = go.Layout(title='Mi Gráfico Plotly', xaxis=dict(title='Comida a Tiempo'), yaxis=dict(title='Vacunas'))
+    # plot_div = go.Figure(data=data, layout=layout).to_html(full_html=False)
+
+    # # Pasar el gráfico a la plantilla 'dashboard.html'
+    # return render(request, 'core/dashboard.html', {'plot_div': plot_div})
 
 def enviado (request):
     return render(request, 'core/enviado.html')
