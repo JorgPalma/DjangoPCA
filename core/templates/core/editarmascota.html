@@ -1,0 +1,31 @@
+{% extends 'core/template.html' %}
+
+{% block title %}
+  <title>PetCareAnalytics | Editar Mascota</title>
+{% endblock %}
+
+{% block content %}
+{% load static %}
+{% load crispy_forms_tags %}
+<div class="container container-op-perfil pt-3 pb-5">
+  <div class="row d-flex justify-content-center">
+    <div class="col-6">
+      <h4 class="text-center editar-perfil-titulo">Editar información de {{ mascota.nombre_masc }}</h4>
+        <form name="editform" action="" class="op-editarperfil-form d-flex flex-wrap justify-content-around" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ form | crispy }}
+            <br>
+            <!-- Agrega este div para mostrar mensajes de error -->
+            <div id="error-message" class="text-danger"></div>
+
+            <div class="op-botonera-login d-flex justify-content-between mt-4 flex-wrap">
+              <input type="reset" class="btn btn-sm op-btn-volver" value="Limpiar">
+              <input type="submit" class="btn btn-sm op-btn-login" value="Actualizar">
+            </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

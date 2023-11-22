@@ -334,3 +334,32 @@ def test(request):
     }
 
     return render(request, 'core/test.html', data)
+
+def editarMascota(request, id):
+
+    mascota = get_object_or_404(Mascota, id = id)
+    
+    data = {
+        'form': AddMascotaForms(instance = mascota),
+        'mascota': mascota,
+    }
+
+    if request.method == 'POST':
+        formulario = AddMascotaForms(data=request.POST, files=request.FILES, instance=mascota)
+        if formulario.is_valid():
+            formulario.save()
+            messages.success(request, "Los datos de tu mascota se han actualizado")
+            return redirect('home')
+            
+        else:
+            data["form"] = formulario
+
+    return render(request, 'core/editarmascota.html', data)
+
+def eliminarMascota(request, id):
+
+    mascota = get_object_or_404(Mascota, id = id)
+    mascota.delete()
+    messages.success(request, "Realizado")
+
+    return redirect(to="home")
