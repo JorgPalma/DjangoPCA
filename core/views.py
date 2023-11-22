@@ -1,13 +1,17 @@
 from django.shortcuts import redirect, render, get_object_or_404
 from .forms import RegistroForm
 from django.contrib.auth import authenticate, login
-from .models import User, Persona, Blog, Comentario, Mascota, Formulario
+from .models import User, Persona, Blog, Comentario, Mascota, Formulario, Contacto
 from .forms import EditarPefil, ContactoForm, AddPostForms, ComentarioForm, AddMascotaForms
 import random
 from django.shortcuts import render
 import plotly.graph_objs as go
 import csv
 from django.contrib import messages
+from django.contrib.auth.decorators import login_required, permission_required
+from django.core.paginator import Paginator
+from django.http import Http404
+from django.db.models import Q
 
 
 def home(request):
@@ -41,37 +45,88 @@ def contacto(request):
     return render(request, 'core/contacto.html', data)
 
 def blog(request):
-    blog = Blog.objects.all().order_by('-timestamp')
+
+    search_query = request.GET.get('search', '')
+
+    if search_query:
+        blog = Blog.objects.filter(Q(informacion__icontains=search_query) | Q(titulo__icontains=search_query)).order_by('-timestamp')
+    else:
+        blog = Blog.objects.all().order_by('-timestamp')
+
+    page = request.GET.get('page', 1)
+
+    try:
+        paginator = Paginator(blog, 10)
+        blog = paginator.page(page)
+    except:
+        raise Http404
+
     data = {
-        'blog': blog
+        'blog': blog,
+        'paginator': paginator
     }
     return render(request, 'core/blog.html', data)
 
 def blogperro(request):
     blog = Blog.objects.filter(categoria = "1").order_by('-timestamp')
+
+    page = request.GET.get('page', 1)
+
+    try:
+        paginator = Paginator(blog, 10)
+        blog = paginator.page(page)
+    except:
+        raise Http404
+
     data = {
-        'blog': blog
+        'blog': blog,
+        'paginator': paginator
     }
     return render(request, 'core/blogperro.html', data)
 
 def bloggato(request):
     blog = Blog.objects.filter(categoria = "2").order_by('-timestamp')
+    page = request.GET.get('page', 1)
+
+    try:
+        paginator = Paginator(blog, 10)
+        blog = paginator.page(page)
+    except:
+        raise Http404
+
     data = {
-        'blog': blog
+        'blog': blog,
+        'paginator': paginator
     }
     return render(request, 'core/bloggato.html', data)
 
 def blogalimentacion(request):
-    blog = Blog.objects.filter(categoria = "3").order_by('-timestamp')
+    page = request.GET.get('page', 1)
+
+    try:
+        paginator = Paginator(blog, 10)
+        blog = paginator.page(page)
+    except:
+        raise Http404
+
     data = {
-        'blog': blog
+        'blog': blog,
+        'paginator': paginator
     }
     return render(request, 'core/blogalimentacion.html', data)
 
 def blogadopcion(request):
-    blog = Blog.objects.filter(categoria = "4").order_by('-timestamp')
+    page = request.GET.get('page', 1)
+
+    try:
+        paginator = Paginator(blog, 10)
+        blog = paginator.page(page)
+    except:
+        raise Http404
+
     data = {
-        'blog': blog
+        'blog': blog,
+        'paginator': paginator
     }
     return render(request, 'core/blogadopcion.html', data)
 
@@ -384,3 +439,67 @@ def eliminarMascota(request, id):
     messages.success(request, "Realizado")
 
     return redirect(to="home")
+
+@permission_required("core.view_contacto")
+def mensajes(request):
+
+    blog = Contacto.objects.all()
+    page = request.GET.get('page', 1)
+
+    try:
+        paginator = Paginator(blog, 10)
+        blog = paginator.page(page)
+    except:
+        raise Http404
+
+    data = {
+        'blog': blog,
+        'paginator': paginator
+    }
+
+    return render(request, 'core/mensajes.html', data)
+
+@permission_required("core.change_contacto")
+def verMensaje(request, id):
+    mensaje = get_object_or_404(Contacto, id = id)
+
+    data = {
+        'mensaje': mensaje,
+    }
+
+    return render(request, 'core/verMensaje.html', data)
+
+@permission_required("core.delete_contacto")
+def eliminarMensaje(request, id):
+
+    mensaje = get_object_or_404(Contacto, id = id)
+    mensaje.delete()
+
+    return redirect(to="mensajes")
+
+@permission_required("core.view_blog")
+def verPosts(request):
+    blog = Blog.objects.all()
+
+    page = request.GET.get('page', 1)
+
+    try:
+        paginator = Paginator(blog, 10)
+        blog = paginator.page(page)
+    except:
+        raise Http404
+
+    data = {
+        'blog': blog,
+        'paginator': paginator
+    }
+
+    return render(request, 'core/verPosts.html', data)
+
+@permission_required("core.delete_blog")
+def eliminarPost(request, id):
+
+    blog = get_object_or_404(Blog, id = id)
+    blog.delete()
+
+    return redirect(to="verPosts")
