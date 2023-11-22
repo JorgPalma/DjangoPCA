@@ -1,0 +1,45 @@
+{% extends 'core/template.html' %}
+
+{% block title %}
+  <title>PetCareAnalytics | Mensajes</title>
+{% endblock %}
+
+{% block content %}
+{% load static %}
+<div class="container container-op-perfil pt-3 pb-5">
+  <div class="row d-flex justify-content-center">
+    <div class="col-10">
+      <h2 class="text-center mensaje-text">Administrar mensajes</h2>
+      {% if mensaje.count == 0 %}
+      <hr>
+      <h3 class="text-center mensaje-text">Aún no has recibido mensajes</h3>
+      {% else %}
+      <hr>
+      <table class="table table-hover table-striped">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Nombre</th>
+            <th scope="col">Asunto</th>
+            <th scope="col">Ver</th>
+            <th scope="col">Eliminar</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for m in blog %}
+            <tr>
+              <th scope="row">{{ m.id }}</th>
+              <th scope="row">{{ m.nombre_contacto }}</th>
+              <th scope="row">{{ m.asunto }}</th>
+              <th scope="row"><a href="{% url 'verMensaje' m.id %}" class="btn btn-sm mascota-edit"><i class="fa-solid fa-eye"></i></a></th>
+              <th scope="row"><a href="{% url 'eliminarMensaje' m.id %}" class="btn btn-sm mascota-delete"><i class="fa-solid fa-trash-can"></i></a></th>
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+      {% endif %}
+    </div>
+  </div>
+  <div> {% include 'core/paginator.html' %}  </div>
+</div>
+{% endblock %}
