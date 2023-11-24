@@ -129,7 +129,25 @@
             <a href="{% url 'eliminarMascota' m.id %}" class="card-link mascota-delete btn btn-sm"><i class="fa-solid fa-trash-can"></i></a>
           </div>
         </div>
-        {% endfor %}
+        <br>
+        <br>
+
+        {% if m.sexo == "M" %}
+        <main class="pb-3 pt-3 op-destacados">
+          <div class="container">
+            <div class="row d-flex justify-content-center">
+              <div class="col-12">
+                <h2 class="text-center h1">Esto es para ti</h2>
+                <div class="row d-flex flex-wrap">
+                  <div id="blogContainer" class="col-12 flex-wrap op-noticias"></div>
+                </div>         
+              </div>
+            </div>  
+          </div>
+        </main>
+        {% endif %}
+
+        {% endfor %} 
       {% endif %}
           <div class="col-12 d-flex justify-content-center">
             <a href="{% url 'addMascota' %}" class="btn btn-lg btn-op-perfil mt-3">Añadir máscota</a>
@@ -141,18 +159,7 @@
 <br>
 <br>
 
-<main class="pb-3 pt-3 op-destacados">
-  <div class="container">
-    <div class="row d-flex justify-content-center">
-      <div class="col-12">
-        <h2 class="text-center h1">Esto es para ti</h2>
-        <div class="row d-flex flex-wrap">
-          <div id="blogContainer" class="col-12 flex-wrap op-noticias"></div>
-        </div>         
-      </div>
-    </div>  
-  </div>
-</main>
+
 
 
   
