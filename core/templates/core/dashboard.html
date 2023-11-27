@@ -6,10 +6,26 @@
 
 {% block content %}
 <h2 class="text-center h1">Dashboard</h2>
-  <div id="plotly-chart">
+  <!-- <div id="plotly-chart">
     {{ plot_div|safe }}
-  </div>
+  </div> -->
   
+<div style="display: inline-block; width: 48%;">
+  <h2>Gráfico 1</h2>
+    {{ plot_div4|safe }}
+</div>
+<div style="display: inline-block; width: 48%;">
+    <h2>Gráfico 2</h2>
+    {{ plot_div2|safe }}
+</div>
+<div style="display: inline-block; width: 48%;">
+  <h2>Gráfico 3</h2>
+  {{ plot_div3|safe }}
+</div>
+<div style="display: inline-block; width: 48%;">
+  <h2>Viviendas con mascotas</h2>
+  {{ plot_div|safe }}
+</div>
 {% endblock %}
 
 {% block scripts %}

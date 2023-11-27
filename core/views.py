@@ -282,6 +282,9 @@ def dashboard(request):
     labels = ['H','M']
     sexo = []
     
+    lblanimal = ['Perro' , 'Gato']
+    contador= [95, 28]
+
     contador_H = 0
     contador_M = 0
 
@@ -314,24 +317,41 @@ def dashboard(request):
     #         operaciones.append(row['operaciones'])
 
  # Crear el pie chart con Plotly
-    trace = go.Pie(labels=labels, values=sexo)
+    trace = go.Pie(labels=labels, values=sexo, hole=.3)
     data = [trace]
     layout = go.Layout(title='Distribución de sexo por Mascota registrada', margin=dict(l=0, r=0, b=0, t=30))  # Ajusta los márgenes según tus preferencias
     fig = go.Figure(data=data, layout=layout)
     plot_div = fig.to_html(full_html=False)
 
+
+    trace2 = go.Pie(labels=lblanimal, values=contador, hole=.3, textinfo='label+percent')
+    data2 = [trace2]
+    layout2 = go.Layout(title='Distribución', margin=dict(l=0, r=0, b=0, t=30))  # Ajusta los márgenes según tus preferencias
+    fig2 = go.Figure(data=data2, layout=layout2)
+    plot_div2 = fig2.to_html(full_html=False)
+
+
+    animals=['giraffes', 'orangutans', 'monkeys']
+    fig3 = go.Figure(data=[
+        go.Bar(name='SF Zoo', x=animals, y=[20, 14, 23]),
+        go.Bar(name='LA Zoo', x=animals, y=[12, 18, 29])
+    ])
+    # Change the bar mode
+    fig3.update_layout(barmode='group')
+    plot_div3 = fig3.to_html(full_html=False)
+
+    animals=['Perro', 'Gato', 'Ambas especies', 'Otras especies']
+    trace3= go.Bar(x=animals, y=[4062, 1956, 1300, 176])
+    data3= [trace3]
+    layout3 = go.Layout(title='Viviendas con Mascotas', margin=dict(l=0, r=0, b=0, t=30))
+    fig4 = go.Figure(data= data3, layout= layout3)
+    plot_div4 = fig4.to_html(full_html=False)
+
+
     # Pasar el gráfico a la plantilla 'dashboard.html'
-    return render(request, 'core/dashboard.html', {'plot_div': plot_div})
+    return render(request, 'core/dashboard.html', {'plot_div': plot_div, 'plot_div2': plot_div2, 'plot_div3': plot_div3, 'plot_div4': plot_div4})
     fig.write_html('pie_chart.html')
 
-    # # Crear el gráfico usando Plotly
-    # trace = go.Scatter(x=vacunas, y=comida_tiempo, mode='markers+lines')
-    # data = [trace]
-    # layout = go.Layout(title='Mi Gráfico Plotly', xaxis=dict(title='Comida a Tiempo'), yaxis=dict(title='Vacunas'))
-    # plot_div = go.Figure(data=data, layout=layout).to_html(full_html=False)
-
-    # # Pasar el gráfico a la plantilla 'dashboard.html'
-    # return render(request, 'core/dashboard.html', {'plot_div': plot_div})
 
 def enviado (request):
     return render(request, 'core/enviado.html')

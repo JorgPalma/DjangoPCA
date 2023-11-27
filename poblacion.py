@@ -103,45 +103,5 @@ def poblar_db():
     Formulario.objects.create(nombre_usuario=User.objects.get(id=13), mascota=Mascota.objects.get(id=13), alergia=Alergia.objects.get(id=1), act_fisica="S", sintomas="NO", antec_enfermedades="NO", edad=5, tamanio=972476108, peso=25, operaciones=1, comida_tiempo=25, num_vacunas=1)
     
     
-    # print(Mascota.objects.get(id=1))
-    
-    # formulariomodel= Formulario.objects.all()
-
-    # mascotamodel= Mascota.objects.all()
-    # # Listas para almacenar los datos del archivo CSV
-    # vacunas = []
-    # comida_tiempo = []
-
-    # labels = ['H','M']
-    # sexo = []
-    
-    # contador_H = 0
-    # contador_M = 0
-
-    
-
-    # for c in formulariomodel:
-    #     comida_tiempo.append(c.comida_tiempo)
-    #     vacunas.append(c.id)
-    
-    # for mas in mascotamodel:
-    #     if mas.sexo == 'H':
-    #         contador_H += 1
-    #     elif mas.sexo == 'M':
-    #         contador_M += 1
-        
-    # sexo.append(contador_H)
-    # sexo.append(contador_M)
-    #     # jk = 0
-    #     # kj = 0
-    #     # if mas.sexo == "H":
-    #     #     jk=jk+1
-    #     #     sexo[0]=sexo[0]+jk
-    #     # if mas.sexo == "M":
-    #     #     kj = kj+1
-    #     #     sexo[1]=sexo[1]+kj
-
-
-    # print(sexo)
 
 poblar_db()
