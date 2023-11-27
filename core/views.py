@@ -533,3 +533,19 @@ def test(request):
     }
 
     return render(request, 'core/test.html', data)
+
+#Codigo toferxo geolocalizacion
+# mi_aplicacion/views.py
+
+# core/views.py
+
+from django.shortcuts import render
+from .utils import get_user_location, get_nearby_veterinaries
+
+def veterinaries_nearby(request):
+    lat, lon = get_user_location(request)
+    nearby_veterinaries = get_nearby_veterinaries(lat, lon)
+
+    print(nearby_veterinaries)  # Agrega esta línea para imprimir los datos en la consola
+
+    return render(request, 'core/test.html', {'nearby_veterinaries': nearby_veterinaries})

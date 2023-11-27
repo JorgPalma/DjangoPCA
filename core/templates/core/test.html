@@ -1,13 +1,22 @@
+<!-- core/templates/test.html -->
+
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>News API Example</title>
+    <title>Veterinarias Cercanas</title>
 </head>
 <body>
-    <h1>News API Results</h1>
-    <div id="newsResults"></div>
-
+    <h2>Veterinarias Cercanas</h2>
+    <ul>
+        {% for veterinary in nearby_veterinaries %}
+            <li>
+                <strong>{{ veterinary.name }}</strong><br>
+                {{ veterinary.address }}<br>
+                Distancia: {{ veterinary.distance }} metros
+            </li>
+        {% endfor %}
+    </ul>
 </body>
 </html>
