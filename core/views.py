@@ -272,6 +272,33 @@ def dashboard(request):
     # Ruta al archivo CSV
     # csv_file_path = 'core/templates/CSV/csv.csv'
 
+    # # Cargar datos geoespaciales de Chile desde el archivo GeoJSON
+    # with open('core/templates/CSV/map.geojson') as geojson_file:
+    #     geojson_data = geojson_file.read()
+
+    # # Crear un gráfico de dispersión en el mapa de Chile con Plotly Go
+    # fig8 = go.Figure(go.Scattergeo(
+    #     geojson=geojson_data,
+    #     featureidkey= 'properties.Region',
+    #     locations=["Región de Arica y Parinacota", "Región de Tarapacá", "Región de Antofagasta", "Región de Magallanes y Antártica Chilena", "Región de Aysén del Gral.Ibañez del Campo", "Región de Atacama", "Región de Coquimbo", "Región de Valparaíso", "Región Metropolitana de Santiago", "Región de Los Lagos", "Región de Los Ríos", "Región de La Araucanía", "Región del Bío-Bío", "Región de Ñuble", "Región del Maule", "Región del Libertador Bernardo O'Higgins"],
+    #     mode='markers',
+    #     marker=dict(
+    #         size=10,
+    #         color='red',
+    #         opacity=0.8,
+    #     ),
+    #     text=[],
+    # ))
+
+    
+    
+    # fig8.update_geos(fitbounds="locations", visible=False, showcountries=True, showcoastlines=True)
+
+    # # Convierte el gráfico a HTML
+    # graph_html = fig8.to_html(full_html=False)
+
+
+
     formulariomodel= Formulario.objects.all()
     mascotamodel= Mascota.objects.all()
     # Listas para almacenar los datos del archivo CSV
