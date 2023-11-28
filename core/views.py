@@ -297,6 +297,76 @@ def dashboard(request):
         
     sexo.append(contador_H)
     sexo.append(contador_M)
+
+
+    razap = []
+    razag = []
+    print(mascotamodel)
+    for m in mascotamodel:
+        print(m)
+        if m.raza.animal.nombre_animal == "Perro":
+            razap.append(m.raza)
+        elif m.raza.animal.nombre_animal == "Gato":
+            razag.append(m.raza)
+
+    mestizo=0
+    poodle=0
+    pastorale=0
+    yorkshire=0
+    foxterrier=0
+    beagle=0
+    labradorre=0
+    goldenre=0
+    pug=0
+    bulldog=0
+    quiltro=0
+    otrop=0
+    lblrazaperro= ['Mestizo', 'Poodle o caniche', 'Pastor alemán', 'Yorkshire', 'Fox terrier', 'Beagle', 'Labrador retriever', 'Golden retriever', 'Pug', 'Bulldog', 'Quiltro', 'Otras']
+
+    for ra in razap:
+        print(ra)
+        if str(ra) == 'Mestizo':
+            mestizo += 1
+        elif str(ra) == 'Poodle o caniche':
+            poodle += 1
+        elif str(ra) == 'Pastor alemán':
+            pastorale += 1
+        elif str(ra) == 'Yorkshire':
+            yorkshire += 1
+        elif str(ra) == 'Fox terrier':
+            foxterrier += 1
+        elif str(ra) == 'Beagle':
+            beagle += 1
+        elif str(ra) == 'Labrador retriever':
+            labradorre += 1
+        elif str(ra) == 'Golden retriever':
+            goldenre += 1
+        elif str(ra) == 'Pug':
+            pug += 1
+        elif str(ra) == 'Bulldog':
+            bulldog += 1
+        elif str(ra) == 'Quiltro':
+            quiltro += 1
+        else:
+            otrop += 1
+    
+
+    trace9 = go.Pie(labels=lblrazaperro, values=[mestizo, poodle, pastorale, yorkshire, foxterrier, beagle, labradorre, goldenre, pug, bulldog, quiltro, otrop], hole=.3)
+    data9 = [trace9]
+    layout9 = go.Layout(title='Distribución de razas caninas registrada', margin=dict(l=0, r=0, b=0, t=30))  # Ajusta los márgenes según tus preferencias
+    fig9 = go.Figure(data=data9, layout=layout9)
+    plot_div9 = fig9.to_html(full_html=False)
+
+
+    siames=0
+    maine=0
+    esfinge=0
+    bengali=0
+    expelocorto=0
+    british=0
+    otrog=0
+
+
     # Leer datos desde el archivo CSV y manejar valores no numéricos
     # with open(csv_file_path, 'r') as csvfile:
     #     csvreader = csv.DictReader(csvfile)
@@ -331,7 +401,7 @@ def dashboard(request):
     raza_gato=['Domestico P. Corto', 'Domestico P. Largo', 'Americano P. Corto', 'Siames', 'Británico P. Corto', 'Persa', 'Europeo', 'Angora Turco', 'Británico P. Largo', 'Curl Americano']
     trace7= go.Bar(x=raza_gato, y=[297316, 98800, 6920, 3175, 2311, 2283, 1893, 1622, 1165, 671])
     data7= [trace7]
-    layout7 = go.Layout(title='Razas Populares de Perros', margin=dict(l=0, r=0, b=0, t=30))
+    layout7 = go.Layout(title='Razas Populares de Gatos', margin=dict(l=0, r=0, b=0, t=30))
     fig7 = go.Figure(data= data7, layout= layout7)
     plot_div7 = fig7.to_html(full_html=False)
 
@@ -378,7 +448,7 @@ def dashboard(request):
 
 
     # Pasar el gráfico a la plantilla 'dashboard.html'
-    return render(request, 'core/dashboard.html', {'plot_div': plot_div, 'plot_div2': plot_div2, 'plot_div3': plot_div3, 'plot_div4': plot_div4, 'plot_div5': plot_div5, 'plot_div6': plot_div6, 'plot_div7': plot_div7, 'plot_div8': plot_div8})
+    return render(request, 'core/dashboard.html', {'plot_div': plot_div, 'plot_div2': plot_div2, 'plot_div3': plot_div3, 'plot_div4': plot_div4, 'plot_div5': plot_div5, 'plot_div6': plot_div6, 'plot_div7': plot_div7, 'plot_div8': plot_div8, 'plot_div9': plot_div9})
     fig.write_html('pie_chart.html')
 
 
