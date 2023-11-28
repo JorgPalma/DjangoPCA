@@ -1,22 +1,69 @@
-<!-- core/templates/test.html -->
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Veterinarias Cercanas</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://api.mapbox.com/mapbox-gl-js/v2.6.1/mapbox-gl.js"></script>
+  <link
+    href="https://api.mapbox.com/mapbox-gl-js/v2.6.1/mapbox-gl.css"
+    rel="stylesheet"
+  />
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+    }
+    #map {
+      height: 100vh;
+    }
+  </style>
+  <title>Mapbox Example</title>
 </head>
 <body>
-    <h2>Veterinarias Cercanas</h2>
-    <ul>
-        {% for veterinary in nearby_veterinaries %}
-            <li>
-                <strong>{{ veterinary.name }}</strong><br>
-                {{ veterinary.address }}<br>
-                Distancia: {{ veterinary.distance }} metros
-            </li>
-        {% endfor %}
-    </ul>
+  <div id="map"></div>
+
+  <script>
+    mapboxgl.accessToken = 'pk.eyJ1IjoicGV0Y2FyZWFkbWluIiwiYSI6ImNscGgzYW9qZDAzc2kyanFtZmNodWIybmEifQ.-Fr7wMapvDTi9VuQIWuODg';
+
+    // Obtener la ubicación del usuario dentro de Santiago de Chile
+    navigator.geolocation.getCurrentPosition(successLocation, errorLocation, {
+      enableHighAccuracy: true
+    });
+
+    function successLocation(position) {
+      const { latitude, longitude } = position.coords;
+
+      const map = new mapboxgl.Map({
+        container: 'map',
+        style: 'mapbox://styles/mapbox/streets-v11',
+        center: [longitude, latitude],
+        zoom: 10
+      });
+
+      // Realizar una búsqueda de clínicas veterinarias y parques en Santiago de Chile
+      const searchText = 'Clinica veterinaria, veterinaria, clinica para animales';
+      const bbox = '-70.6482,-33.5692,-70.3327,-33.2891'; // Santiago de Chile bounding box
+      const limit = 100;
+
+      fetch(`https://api.mapbox.com/geocoding/v5/mapbox.places/${searchText}.json?bbox=${bbox}&types=poi&limit=${limit}&access_token=${mapboxgl.accessToken}`)
+        .then(response => response.json())
+        .then(data => {
+          data.features.forEach(location => {
+            const [lng, lat] = location.center;
+            const name = location.text;
+
+            new mapboxgl.Marker()
+              .setLngLat([lng, lat])
+              .setPopup(new mapboxgl.Popup().setHTML(`<h3>${name}</h3>`))
+              .addTo(map);
+          });
+        })
+        .catch(error => console.error('Error fetching location data:', error));
+    }
+
+    function errorLocation() {
+      console.log('Unable to retrieve your location');
+    }
+  </script>
 </body>
 </html>
