@@ -365,7 +365,30 @@ def dashboard(request):
     expelocorto=0
     british=0
     otrog=0
+    lblrazagato=['Siamés', 'Maine Coon', 'Esfinge', 'Bengalí', 'Exótico Pelo Corto', 'British Shorthair', 'Otras']
 
+    for ra in razag:
+        print(ra)
+        if str(ra) == 'Siamés':
+            siames += 1
+        elif str(ra) == 'Maine Coon':
+            maine += 1
+        elif str(ra) == 'Esfinge':
+            esfinge += 1
+        elif str(ra) == 'Bengalí':
+            bengali += 1
+        elif str(ra) == 'Exótico Pelo Corto':
+            expelocorto += 1
+        elif str(ra) == 'British Shorthair':
+            british += 1
+        else:
+            otrog += 1
+
+    trace10 = go.Pie(labels=lblrazagato, values=[siames, maine, esfinge, bengali, expelocorto, british, otrog], hole=.3)
+    data10 = [trace10]
+    layout10 = go.Layout(title='Distribución de razas caninas registrada', margin=dict(l=0, r=0, b=0, t=30))  # Ajusta los márgenes según tus preferencias
+    fig10 = go.Figure(data=data10, layout=layout10)
+    plot_div10 = fig10.to_html(full_html=False)
 
     # Leer datos desde el archivo CSV y manejar valores no numéricos
     # with open(csv_file_path, 'r') as csvfile:
@@ -448,7 +471,7 @@ def dashboard(request):
 
 
     # Pasar el gráfico a la plantilla 'dashboard.html'
-    return render(request, 'core/dashboard.html', {'plot_div': plot_div, 'plot_div2': plot_div2, 'plot_div3': plot_div3, 'plot_div4': plot_div4, 'plot_div5': plot_div5, 'plot_div6': plot_div6, 'plot_div7': plot_div7, 'plot_div8': plot_div8, 'plot_div9': plot_div9})
+    return render(request, 'core/dashboard.html', {'plot_div': plot_div, 'plot_div2': plot_div2, 'plot_div3': plot_div3, 'plot_div4': plot_div4, 'plot_div5': plot_div5, 'plot_div6': plot_div6, 'plot_div7': plot_div7, 'plot_div8': plot_div8, 'plot_div9': plot_div9, 'plot_div10': plot_div10})
     fig.write_html('pie_chart.html')
 
 
