@@ -39,34 +39,43 @@
   { name: 'Puerto Montt, Chile', coordinates: [-73.1242, -41.4718] },
   { name: 'Temuco, Chile', coordinates: [-72.6097, -38.7397] },
   { name: 'Chillán, Chile', coordinates: [-72.1034, -36.6060] },
-  { name: 'Isla de Pascua, Chile', coordinates: [-109.4275, -27.1212] },
+  
   { name: 'Coquimbo, Chile', coordinates: [-71.3395, -29.9533] },
   { name: 'Viña del Mar, Chile', coordinates: [-71.5523, -33.0154] },
   { name: 'Pucon, Chile', coordinates: [-71.9757, -39.2723] },
-  { name: 'Los Ángeles, Chile', coordinates: [-72.3482, -37.4626] },
-  { name: 'Copiapó, Chile', coordinates: [-70.3314, -27.3668] },
-  { name: 'Quillota, Chile', coordinates: [-71.2489, -32.8796] },
-  { name: 'Curicó, Chile', coordinates: [-71.2282, -34.9829] },
-  { name: 'Osorno, Chile', coordinates: [-73.1350, -40.5734] },
-  { name: 'Valdivia, Chile', coordinates: [-73.2452, -39.8196] },
-  { name: 'Aysén, Chile', coordinates: [-72.6897, -45.9864] },
-  { name: 'Puerto Natales, Chile', coordinates: [-72.5117, -51.7188] },
-  { name: 'Coyhaique, Chile', coordinates: [-72.0700, -45.5712] },
-  // Puedes agregar más ubicaciones según sea necesario
+ 
+ 
+  
+  { name: 'Providencia, Santiago, Chile', coordinates: [-70.628, -33.4264] },
+  { name: 'Ñuñoa, Santiago, Chile', coordinates: [-70.6006, -33.4548] },
+  { name: 'Maipú, Santiago, Chile', coordinates: [-70.7653, -33.5201] },
+  { name: 'Puente Alto, Santiago, Chile', coordinates: [-70.5757, -33.6119] },
+  { name: 'La Florida, Santiago, Chile', coordinates: [-70.5508, -33.5218] },
+  { name: 'Peñalolén, Santiago, Chile', coordinates: [-70.5354, -33.485] },
+  { name: 'La Cisterna, Santiago, Chile', coordinates: [-70.6687, -33.5226] },
+  { name: 'Macul, Santiago, Chile', coordinates: [-70.5992, -33.4917] },
+  { name: 'Pudahuel, Santiago, Chile', coordinates: [-70.738, -33.4483] },
+  { name: 'Renca, Santiago, Chile', coordinates: [-70.7273, -33.4116] },
+  { name: 'Quinta Normal, Santiago, Chile', coordinates: [-70.6997, -33.4317] },
+  { name: 'Conchalí, Santiago, Chile', coordinates: [-70.6777, -33.3969] },
+  { name: 'El Bosque, Santiago, Chile', coordinates: [-70.6763, -33.5662] },
+  { name: 'San Ramón, Santiago, Chile', coordinates: [-70.6392, -33.5385] },
+  // Puedes agregar más comunas de Santiago según sea necesario
 ];
+
 
 
     const map = new mapboxgl.Map({
       container: 'map',
       style: 'mapbox://styles/mapbox/streets-v11',
       center: locations[0].coordinates, // Centro del mapa en la primera ubicación
-      zoom: 10
+      zoom: 13
     });
 
     // Realizar solicitudes de geocodificación para cada ubicación
     locations.forEach(location => {
       const { coordinates } = location;
-      const limit = 30;
+      const limit = 10;
       const searchTerms = ['Veterinaria', 'Clínica veterinaria', 'Veterinario','Urgencia veterinaria', 'Hospital veterinario', 'Veterinario particular','Centro de Especialidades Médico Veterinario','Vet'];
       
       searchTerms.forEach(searchTerm => {
