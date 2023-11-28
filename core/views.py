@@ -331,10 +331,13 @@ def dashboard(request):
     plot_div2 = fig2.to_html(full_html=False)
 
 
-    animals=['giraffes', 'orangutans', 'monkeys']
+    regiones=['Arica y Parinacota', 'Tarapaca', 'Antofagasta', 'Atacama', 'Coquimbo', 'Valparaiso',
+              'Metropolitana de Santiago', 'Libertador General Bernardo Ohiggins', 'Maule', 'Ñuble',
+              'Biobio', 'La Araucania', 'Los Rios', 'Los Lagos', 'Aysen del general Carlos Ibañez del Campo',
+              'Magallanes y de la Antartica chilena']
     fig3 = go.Figure(data=[
-        go.Bar(name='SF Zoo', x=animals, y=[20, 14, 23]),
-        go.Bar(name='LA Zoo', x=animals, y=[12, 18, 29])
+        go.Bar(name='Gatos', x=regiones, y=[3188, 6761, 13339, 9860, 13534, 48168, 147606, 23163, 23857, 10701, 32691, 28621, 16272, 31674, 7887, 5198]),
+        go.Bar(name='Perros', x=regiones, y=[10659, 31500, 46493, 33017, 49414, 164790, 508302, 106686, 112212, 44433, 113607, 77315, 37735, 75067, 15092, 13250])
     ])
     # Change the bar mode
     fig3.update_layout(barmode='group')
