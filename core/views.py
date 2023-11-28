@@ -281,9 +281,6 @@ def dashboard(request):
     
     labels = ['H','M']
     sexo = []
-    
-    lblanimal = ['Perro' , 'Gato']
-    contador= [95, 28]
 
     contador_H = 0
     contador_M = 0
@@ -323,13 +320,20 @@ def dashboard(request):
     fig = go.Figure(data=data, layout=layout)
     plot_div = fig.to_html(full_html=False)
 
-
-    trace2 = go.Pie(labels=lblanimal, values=contador, hole=.3, textinfo='label+percent')
-    data2 = [trace2]
-    layout2 = go.Layout(title='Distribución', margin=dict(l=0, r=0, b=0, t=30))  # Ajusta los márgenes según tus preferencias
-    fig2 = go.Figure(data=data2, layout=layout2)
+    
+    raza_perro=['Mestizo', 'Poodle', 'Pastor Aleman', 'Yorkshire', 'Dachshund', 'Fox Terrier', 'Beagle', 'Labrador Retriever', 'Golden Retriever', 'Boxer']
+    trace2= go.Bar(x=raza_perro, y=[736648, 174868, 62291, 56997, 37195, 33979, 23178, 21965, 19947, 18573])
+    data2= [trace2]
+    layout2 = go.Layout(title='Razas Populares de Perros', margin=dict(l=0, r=0, b=0, t=30))
+    fig2 = go.Figure(data= data2, layout= layout2)
     plot_div2 = fig2.to_html(full_html=False)
 
+    raza_gato=['Domestico P. Corto', 'Domestico P. Largo', 'Americano P. Corto', 'Siames', 'Británico P. Corto', 'Persa', 'Europeo', 'Angora Turco', 'Británico P. Largo', 'Curl Americano']
+    trace7= go.Bar(x=raza_gato, y=[297316, 98800, 6920, 3175, 2311, 2283, 1893, 1622, 1165, 671])
+    data7= [trace7]
+    layout7 = go.Layout(title='Razas Populares de Perros', margin=dict(l=0, r=0, b=0, t=30))
+    fig7 = go.Figure(data= data7, layout= layout7)
+    plot_div7 = fig7.to_html(full_html=False)
 
     regiones=['Arica y Parinacota', 'Tarapaca', 'Antofagasta', 'Atacama', 'Coquimbo', 'Valparaiso',
               'Metropolitana de Santiago', 'Libertador General Bernardo Ohiggins', 'Maule', 'Ñuble',
@@ -359,14 +363,14 @@ def dashboard(request):
     plot_div5 = fig5.to_html(full_html=False)
 
     nomb_gato=['Luna', 'Pelusa', 'Tom', 'Princesa', 'Minina', 'Kitty', 'Mia', 'Niña', 'Michi', 'Negra']
-    trace6= go.Bar(x=nomb_gato, y=[30079, 14709, 12971, 12146, 10856, 8908, 8538, 8482, 7897, 7850])
+    trace6= go.Bar(x=nomb_gato, y=[8690, 5108, 3217, 2813, 2450, 2213, 2114, 2094, 1940, 1809])
     data6= [trace6]
     layout6 = go.Layout(title='Nombres Populares de Gatos', margin=dict(l=0, r=0, b=0, t=30))
     fig6 = go.Figure(data= data6, layout= layout6)
     plot_div6 = fig6.to_html(full_html=False)
 
     # Pasar el gráfico a la plantilla 'dashboard.html'
-    return render(request, 'core/dashboard.html', {'plot_div': plot_div, 'plot_div2': plot_div2, 'plot_div3': plot_div3, 'plot_div4': plot_div4, 'plot_div5': plot_div5, 'plot_div6': plot_div6})
+    return render(request, 'core/dashboard.html', {'plot_div': plot_div, 'plot_div2': plot_div2, 'plot_div3': plot_div3, 'plot_div4': plot_div4, 'plot_div5': plot_div5, 'plot_div6': plot_div6, 'plot_div7': plot_div7})
     fig.write_html('pie_chart.html')
 
 
