@@ -369,8 +369,16 @@ def dashboard(request):
     fig6 = go.Figure(data= data6, layout= layout6)
     plot_div6 = fig6.to_html(full_html=False)
 
+    animales=['Gatos', 'Perros', 'Aves Ornamentales', 'Pequeños mamiferos', 'Peces ornamentales', 'Reptiles']
+    trace8= go.Bar(x=animales, y=[127161000, 104348000, 53091000, 29317000, 21903000, 11632000])
+    data8= [trace8]
+    layout8 = go.Layout(title='Animales populares en Europa', margin=dict(l=0, r=0, b=0, t=30))
+    fig8 = go.Figure(data= data8, layout= layout8)
+    plot_div8 = fig8.to_html(full_html=False)
+
+
     # Pasar el gráfico a la plantilla 'dashboard.html'
-    return render(request, 'core/dashboard.html', {'plot_div': plot_div, 'plot_div2': plot_div2, 'plot_div3': plot_div3, 'plot_div4': plot_div4, 'plot_div5': plot_div5, 'plot_div6': plot_div6, 'plot_div7': plot_div7})
+    return render(request, 'core/dashboard.html', {'plot_div': plot_div, 'plot_div2': plot_div2, 'plot_div3': plot_div3, 'plot_div4': plot_div4, 'plot_div5': plot_div5, 'plot_div6': plot_div6, 'plot_div7': plot_div7, 'plot_div8': plot_div8})
     fig.write_html('pie_chart.html')
 
 

@@ -36,7 +36,6 @@ def poblar_db():
     Persona.objects.create(nombre_usuario=user12, rut=24282881, digito_ver=3, primer_nombre="Kristin", segundo_nombre="Paolo", apellido_pat="Sweedland", apellido_mate="Messiter", telefono=972476108, edad=25, dinamico="a15v15a897asf")
     Persona.objects.create(nombre_usuario=user13, rut=11064590, digito_ver=1, primer_nombre="Kathie", segundo_nombre="Caron", apellido_pat="Redit", apellido_mate="Luffman", telefono=972476108, edad=25, dinamico="asgv211gv89q4f8")
     
-
     perro = Animal.objects.create(nombre_animal="Perro")
     gato = Animal.objects.create(nombre_animal="Gato")
 
@@ -58,7 +57,6 @@ def poblar_db():
     Raza.objects.create(animal = perro, nombre_raza="Bulldog")
     Quiltro=Raza.objects.create(animal = perro, nombre_raza="Quiltro")
 
-
     Mascota.objects.create(nombre_usuario=user1, nombre_masc="Cachupin", sexo='M', anio_nac=2010, raza=Esfinge)
     Mascota.objects.create(nombre_usuario=user2, nombre_masc="Pelet", sexo='H', anio_nac=2013, raza=Esfinge)
     Mascota.objects.create(nombre_usuario=user3, nombre_masc="Rodilla", sexo='H', anio_nac=2013, raza=British)
@@ -72,10 +70,6 @@ def poblar_db():
     Mascota.objects.create(nombre_usuario=user11, nombre_masc="Maria", sexo='H', anio_nac=2017, raza=Pug)
     Mascota.objects.create(nombre_usuario=user12, nombre_masc="Sable", sexo='H', anio_nac=2015, raza=Pug)
     Mascota.objects.create(nombre_usuario=user13, nombre_masc="Tongo", sexo='M', anio_nac=2021, raza=Pug)
-    
-
-
-    
 
     Alergia.objects.create(tipo_alergia="N/A")
     Alergia.objects.create(tipo_alergia="Orina")
@@ -86,7 +80,6 @@ def poblar_db():
     Alergia.objects.create(tipo_alergia="Picadura")
     Alergia.objects.create(tipo_alergia="Medicamento")
     Alergia.objects.create(tipo_alergia="Producto quimico")
-
 
     Formulario.objects.create(nombre_usuario=User.objects.get(id=1), mascota=Mascota.objects.get(id=1), alergia=Alergia.objects.get(id=1), act_fisica="S", sintomas="NO", antec_enfermedades="NO", edad=8, tamanio=972476108, peso=25, operaciones=1, comida_tiempo=25, num_vacunas=1)
     Formulario.objects.create(nombre_usuario=User.objects.get(id=2), mascota=Mascota.objects.get(id=2), alergia=Alergia.objects.get(id=1), act_fisica="S", sintomas="NO", antec_enfermedades="NO", edad=7, tamanio=972476108, peso=25, operaciones=0, comida_tiempo=25, num_vacunas=1)
@@ -101,7 +94,6 @@ def poblar_db():
     Formulario.objects.create(nombre_usuario=User.objects.get(id=11), mascota=Mascota.objects.get(id=11), alergia=Alergia.objects.get(id=4), act_fisica="N", sintomas="Se le hincho la cara", antec_enfermedades="NO", edad=4, tamanio=972476108, peso=25, operaciones=0, comida_tiempo=25, num_vacunas=1)
     Formulario.objects.create(nombre_usuario=User.objects.get(id=12), mascota=Mascota.objects.get(id=12), alergia=Alergia.objects.get(id=2), act_fisica="N", sintomas="Tiene mucho dolor", antec_enfermedades="NO", edad=4, tamanio=972476108, peso=25, operaciones=1, comida_tiempo=25, num_vacunas=1)
     Formulario.objects.create(nombre_usuario=User.objects.get(id=13), mascota=Mascota.objects.get(id=13), alergia=Alergia.objects.get(id=1), act_fisica="S", sintomas="NO", antec_enfermedades="NO", edad=5, tamanio=972476108, peso=25, operaciones=1, comida_tiempo=25, num_vacunas=1)
-    
     
 
 poblar_db()
