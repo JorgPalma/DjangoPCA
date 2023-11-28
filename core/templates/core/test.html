@@ -1,5 +1,4 @@
-<!DOCTYPE html>
-<html lang="es">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -44,9 +43,6 @@
       { name: 'Coquimbo, Chile', coordinates: [-71.3395, -29.9533] },
       { name: 'Viña del Mar, Chile', coordinates: [-71.5523, -33.0154] },
       { name: 'Pucon, Chile', coordinates: [-71.9757, -39.2723] },
-      { name: 'Coquimbo, Chile', coordinates: [-71.3395, -29.9533] },
-      { name: 'Viña del Mar, Chile', coordinates: [-71.5523, -33.0154] },
-      { name: 'Pucon, Chile', coordinates: [-71.9757, -39.2723] },
       { name: 'Los Ángeles, Chile', coordinates: [-72.3482, -37.4626] },
       { name: 'Copiapó, Chile', coordinates: [-70.3314, -27.3668] },
       { name: 'Quillota, Chile', coordinates: [-71.2489, -32.8796] },
@@ -65,24 +61,27 @@
     // Realizar solicitudes de geocodificación para cada ubicación
     locations.forEach(location => {
       const { coordinates } = location;
-      const limit = 20;
-      const searchTerm = 'vet'; // Término de búsqueda específico para veterinarias
+      const limit = 50;
+      const searchTerms = ['veterinaria', 'clinica veterinaria', 'veterinario'];
       const bbox = [-74, -35, -70, -32];
-      fetch(`https://api.mapbox.com/geocoding/v5/mapbox.places/${searchTerm}.json?proximity=${coordinates[0]},${coordinates[1]}&limit=${limit}&access_token=${mapboxgl.accessToken}`)
-        .then(response => response.json())
-        .then(data => {
-          data.features.forEach(feature => {
-            const [lng, lat] = feature.center;
-            const name = feature.text;
+      searchTerms.forEach(searchTerm => {
+        fetch(`https://api.mapbox.com/geocoding/v5/mapbox.places/${searchTerm}.json?proximity=${coordinates[0]},${coordinates[1]}&limit=${limit}&access_token=${mapboxgl.accessToken}`)
+          .then(response => response.json())
+          .then(data => {
+            data.features.forEach(feature => {
+              const [lng, lat] = feature.center;
+              const name = feature.text;
 
-            new mapboxgl.Marker()
-              .setLngLat([lng, lat])
-              .setPopup(new mapboxgl.Popup().setHTML(`<h3>${name}</h3>`))
-              .addTo(map);
-          });
-        })
-        .catch(error => console.error('Error fetching location data:', error));
+              new mapboxgl.Marker()
+                .setLngLat([lng, lat])
+                .setPopup(new mapboxgl.Popup().setHTML(`<h3>${name}</h3>`))
+                .addTo(map);
+            });
+          })
+          .catch(error => console.error('Error fetching location data:', error));
+      });
     });
   </script>
 </body>
 </html>
+
