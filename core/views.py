@@ -671,3 +671,12 @@ def veterinaries_nearby(request):
     print(nearby_veterinaries)  # Agrega esta línea para imprimir los datos en la consola
 
     return render(request, 'core/test.html', {'nearby_veterinaries': nearby_veterinaries})
+
+def eltest(request):
+    post = Blog.objects.last()
+
+    data = {
+        'post': post
+    }
+
+    return render(request, 'core/eltest.html', data)
