@@ -26,30 +26,35 @@
 
     // Ubicaciones para las que se realizarán solicitudes de geocodificación
     const locations = [
-      { name: 'Santiago, Chile', coordinates: [-70.6482, -33.4569] },
-      { name: 'Valparaíso, Chile', coordinates: [-71.6485, -33.0472] },
-      { name: 'Concepción, Chile', coordinates: [-73.0405, -36.8271] },
-      { name: 'Rancagua, Chile', coordinates: [-70.7398, -34.1708] },
-      { name: 'Talagante, Chile', coordinates: [-70.9303, -33.6616] },
-      { name: 'Paine, Chile', coordinates: [-70.7516, -33.8144] },
-      { name: 'Arica, Chile', coordinates: [-70.3015, -18.4783] },
-      { name: 'Iquique, Chile', coordinates: [-70.1431, -20.2208] },
-      { name: 'Antofagasta, Chile', coordinates: [-70.6483, -23.6509] },
-      { name: 'La Serena, Chile', coordinates: [-71.2538, -29.9013] },
-      { name: 'Puerto Montt, Chile', coordinates: [-73.1242, -41.4718] },
-      { name: 'Temuco, Chile', coordinates: [-72.6097, -38.7397] },
-      { name: 'Chillán, Chile', coordinates: [-72.1034, -36.6060] },
-      { name: 'Isla de Pascua, Chile', coordinates: [-109.4275, -27.1212] },
-      { name: 'Coquimbo, Chile', coordinates: [-71.3395, -29.9533] },
-      { name: 'Viña del Mar, Chile', coordinates: [-71.5523, -33.0154] },
-      { name: 'Pucon, Chile', coordinates: [-71.9757, -39.2723] },
-      { name: 'Los Ángeles, Chile', coordinates: [-72.3482, -37.4626] },
-      { name: 'Copiapó, Chile', coordinates: [-70.3314, -27.3668] },
-      { name: 'Quillota, Chile', coordinates: [-71.2489, -32.8796] },
-      { name: 'Curicó, Chile', coordinates: [-71.2282, -34.9829] },
-      { name: 'Osorno, Chile', coordinates: [-73.1350, -40.5734] },
-      // Puedes agregar más ubicaciones según sea necesario
-    ];
+  { name: 'Santiago, Chile', coordinates: [-70.6482, -33.4569] },
+  { name: 'Valparaíso, Chile', coordinates: [-71.6485, -33.0472] },
+  { name: 'Concepción, Chile', coordinates: [-73.0405, -36.8271] },
+  { name: 'Rancagua, Chile', coordinates: [-70.7398, -34.1708] },
+  { name: 'Talagante, Chile', coordinates: [-70.9303, -33.6616] },
+  { name: 'Paine, Chile', coordinates: [-70.7516, -33.8144] },
+  { name: 'Arica, Chile', coordinates: [-70.3015, -18.4783] },
+  { name: 'Iquique, Chile', coordinates: [-70.1431, -20.2208] },
+  { name: 'Antofagasta, Chile', coordinates: [-70.6483, -23.6509] },
+  { name: 'La Serena, Chile', coordinates: [-71.2538, -29.9013] },
+  { name: 'Puerto Montt, Chile', coordinates: [-73.1242, -41.4718] },
+  { name: 'Temuco, Chile', coordinates: [-72.6097, -38.7397] },
+  { name: 'Chillán, Chile', coordinates: [-72.1034, -36.6060] },
+  { name: 'Isla de Pascua, Chile', coordinates: [-109.4275, -27.1212] },
+  { name: 'Coquimbo, Chile', coordinates: [-71.3395, -29.9533] },
+  { name: 'Viña del Mar, Chile', coordinates: [-71.5523, -33.0154] },
+  { name: 'Pucon, Chile', coordinates: [-71.9757, -39.2723] },
+  { name: 'Los Ángeles, Chile', coordinates: [-72.3482, -37.4626] },
+  { name: 'Copiapó, Chile', coordinates: [-70.3314, -27.3668] },
+  { name: 'Quillota, Chile', coordinates: [-71.2489, -32.8796] },
+  { name: 'Curicó, Chile', coordinates: [-71.2282, -34.9829] },
+  { name: 'Osorno, Chile', coordinates: [-73.1350, -40.5734] },
+  { name: 'Valdivia, Chile', coordinates: [-73.2452, -39.8196] },
+  { name: 'Aysén, Chile', coordinates: [-72.6897, -45.9864] },
+  { name: 'Puerto Natales, Chile', coordinates: [-72.5117, -51.7188] },
+  { name: 'Coyhaique, Chile', coordinates: [-72.0700, -45.5712] },
+  // Puedes agregar más ubicaciones según sea necesario
+];
+
 
     const map = new mapboxgl.Map({
       container: 'map',
@@ -61,9 +66,9 @@
     // Realizar solicitudes de geocodificación para cada ubicación
     locations.forEach(location => {
       const { coordinates } = location;
-      const limit = 50;
-      const searchTerms = ['veterinaria', 'clinica veterinaria', 'veterinario'];
-      const bbox = [-74, -35, -70, -32];
+      const limit = 30;
+      const searchTerms = ['Veterinaria', 'Clínica veterinaria', 'Veterinario','Urgencia veterinaria', 'Hospital veterinario', 'Veterinario particular','Centro de Especialidades Médico Veterinario','Vet'];
+      
       searchTerms.forEach(searchTerm => {
         fetch(`https://api.mapbox.com/geocoding/v5/mapbox.places/${searchTerm}.json?proximity=${coordinates[0]},${coordinates[1]}&limit=${limit}&access_token=${mapboxgl.accessToken}`)
           .then(response => response.json())
