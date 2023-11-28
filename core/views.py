@@ -351,8 +351,22 @@ def dashboard(request):
     plot_div4 = fig4.to_html(full_html=False)
 
 
+    nomb_perro=['Luna', 'Princesa', 'Canela', 'Pelusa', 'Toby', 'Perla', 'Jack', 'Rocky', 'Lucas', 'Max']
+    trace5= go.Bar(x=nomb_perro, y=[30079, 14709, 12971, 12146, 10856, 8908, 8538, 8482, 7897, 7850])
+    data5= [trace5]
+    layout5 = go.Layout(title='Nombres Populares de Perros', margin=dict(l=0, r=0, b=0, t=30))
+    fig5 = go.Figure(data= data5, layout= layout5)
+    plot_div5 = fig5.to_html(full_html=False)
+
+    nomb_gato=['Luna', 'Pelusa', 'Tom', 'Princesa', 'Minina', 'Kitty', 'Mia', 'Niña', 'Michi', 'Negra']
+    trace6= go.Bar(x=nomb_gato, y=[30079, 14709, 12971, 12146, 10856, 8908, 8538, 8482, 7897, 7850])
+    data6= [trace6]
+    layout6 = go.Layout(title='Nombres Populares de Gatos', margin=dict(l=0, r=0, b=0, t=30))
+    fig6 = go.Figure(data= data6, layout= layout6)
+    plot_div6 = fig6.to_html(full_html=False)
+
     # Pasar el gráfico a la plantilla 'dashboard.html'
-    return render(request, 'core/dashboard.html', {'plot_div': plot_div, 'plot_div2': plot_div2, 'plot_div3': plot_div3, 'plot_div4': plot_div4})
+    return render(request, 'core/dashboard.html', {'plot_div': plot_div, 'plot_div2': plot_div2, 'plot_div3': plot_div3, 'plot_div4': plot_div4, 'plot_div5': plot_div5, 'plot_div6': plot_div6})
     fig.write_html('pie_chart.html')
 
 
