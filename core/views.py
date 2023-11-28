@@ -281,9 +281,6 @@ def dashboard(request):
     
     labels = ['H','M']
     sexo = []
-    
-    lblanimal = ['Perro' , 'Gato']
-    contador= [95, 28]
 
     contador_H = 0
     contador_M = 0
@@ -300,6 +297,99 @@ def dashboard(request):
         
     sexo.append(contador_H)
     sexo.append(contador_M)
+
+
+    razap = []
+    razag = []
+    print(mascotamodel)
+    for m in mascotamodel:
+        print(m)
+        if m.raza.animal.nombre_animal == "Perro":
+            razap.append(m.raza)
+        elif m.raza.animal.nombre_animal == "Gato":
+            razag.append(m.raza)
+
+    mestizo=0
+    poodle=0
+    pastorale=0
+    yorkshire=0
+    foxterrier=0
+    beagle=0
+    labradorre=0
+    goldenre=0
+    pug=0
+    bulldog=0
+    quiltro=0
+    otrop=0
+    lblrazaperro= ['Mestizo', 'Poodle o caniche', 'Pastor alemán', 'Yorkshire', 'Fox terrier', 'Beagle', 'Labrador retriever', 'Golden retriever', 'Pug', 'Bulldog', 'Quiltro', 'Otras']
+
+    for ra in razap:
+        print(ra)
+        if str(ra) == 'Mestizo':
+            mestizo += 1
+        elif str(ra) == 'Poodle o caniche':
+            poodle += 1
+        elif str(ra) == 'Pastor alemán':
+            pastorale += 1
+        elif str(ra) == 'Yorkshire':
+            yorkshire += 1
+        elif str(ra) == 'Fox terrier':
+            foxterrier += 1
+        elif str(ra) == 'Beagle':
+            beagle += 1
+        elif str(ra) == 'Labrador retriever':
+            labradorre += 1
+        elif str(ra) == 'Golden retriever':
+            goldenre += 1
+        elif str(ra) == 'Pug':
+            pug += 1
+        elif str(ra) == 'Bulldog':
+            bulldog += 1
+        elif str(ra) == 'Quiltro':
+            quiltro += 1
+        else:
+            otrop += 1
+    
+
+    trace9 = go.Pie(labels=lblrazaperro, values=[mestizo, poodle, pastorale, yorkshire, foxterrier, beagle, labradorre, goldenre, pug, bulldog, quiltro, otrop], hole=.3)
+    data9 = [trace9]
+    layout9 = go.Layout(title='Distribución de razas caninas registrada (PetCareAnalytics)', margin=dict(l=0, r=0, b=0, t=30))  # Ajusta los márgenes según tus preferencias
+    fig9 = go.Figure(data=data9, layout=layout9)
+    plot_div9 = fig9.to_html(full_html=False)
+
+
+    siames=0
+    maine=0
+    esfinge=0
+    bengali=0
+    expelocorto=0
+    british=0
+    otrog=0
+    lblrazagato=['Siamés', 'Maine Coon', 'Esfinge', 'Bengalí', 'Exótico Pelo Corto', 'British Shorthair', 'Otras']
+
+    for ra in razag:
+        print(ra)
+        if str(ra) == 'Siamés':
+            siames += 1
+        elif str(ra) == 'Maine Coon':
+            maine += 1
+        elif str(ra) == 'Esfinge':
+            esfinge += 1
+        elif str(ra) == 'Bengalí':
+            bengali += 1
+        elif str(ra) == 'Exótico Pelo Corto':
+            expelocorto += 1
+        elif str(ra) == 'British Shorthair':
+            british += 1
+        else:
+            otrog += 1
+
+    trace10 = go.Pie(labels=lblrazagato, values=[siames, maine, esfinge, bengali, expelocorto, british, otrog], hole=.3)
+    data10 = [trace10]
+    layout10 = go.Layout(title='Distribución de razas felinas registrada (PetCareAnalytics)', margin=dict(l=0, r=0, b=0, t=30))  # Ajusta los márgenes según tus preferencias
+    fig10 = go.Figure(data=data10, layout=layout10)
+    plot_div10 = fig10.to_html(full_html=False)
+
     # Leer datos desde el archivo CSV y manejar valores no numéricos
     # with open(csv_file_path, 'r') as csvfile:
     #     csvreader = csv.DictReader(csvfile)
@@ -319,17 +409,24 @@ def dashboard(request):
  # Crear el pie chart con Plotly
     trace = go.Pie(labels=labels, values=sexo, hole=.3)
     data = [trace]
-    layout = go.Layout(title='Distribución de sexo por Mascota registrada', margin=dict(l=0, r=0, b=0, t=30))  # Ajusta los márgenes según tus preferencias
+    layout = go.Layout(title='Distribución de sexo por Mascota registrada (PetCareAnalytics)', margin=dict(l=0, r=0, b=0, t=30))  # Ajusta los márgenes según tus preferencias
     fig = go.Figure(data=data, layout=layout)
     plot_div = fig.to_html(full_html=False)
 
-
-    trace2 = go.Pie(labels=lblanimal, values=contador, hole=.3, textinfo='label+percent')
-    data2 = [trace2]
-    layout2 = go.Layout(title='Distribución', margin=dict(l=0, r=0, b=0, t=30))  # Ajusta los márgenes según tus preferencias
-    fig2 = go.Figure(data=data2, layout=layout2)
+    
+    raza_perro=['Mestizo', 'Poodle', 'Pastor Aleman', 'Yorkshire', 'Dachshund', 'Fox Terrier', 'Beagle', 'Labrador Retriever', 'Golden Retriever', 'Boxer']
+    trace2= go.Bar(x=raza_perro, y=[736648, 174868, 62291, 56997, 37195, 33979, 23178, 21965, 19947, 18573])
+    data2= [trace2]
+    layout2 = go.Layout(title='Razas Populares de Perros (Chile 2022)', margin=dict(l=0, r=0, b=0, t=30))
+    fig2 = go.Figure(data= data2, layout= layout2)
     plot_div2 = fig2.to_html(full_html=False)
 
+    raza_gato=['Domestico P. Corto', 'Domestico P. Largo', 'Americano P. Corto', 'Siames', 'Británico P. Corto', 'Persa', 'Europeo', 'Angora Turco', 'Británico P. Largo', 'Curl Americano']
+    trace7= go.Bar(x=raza_gato, y=[297316, 98800, 6920, 3175, 2311, 2283, 1893, 1622, 1165, 671])
+    data7= [trace7]
+    layout7 = go.Layout(title='Razas Populares de Gatos (Chile 2022)', margin=dict(l=0, r=0, b=0, t=30))
+    fig7 = go.Figure(data= data7, layout= layout7)
+    plot_div7 = fig7.to_html(full_html=False)
 
     regiones=['Arica y Parinacota', 'Tarapaca', 'Antofagasta', 'Atacama', 'Coquimbo', 'Valparaiso',
               'Metropolitana de Santiago', 'Libertador General Bernardo Ohiggins', 'Maule', 'Ñuble',
@@ -346,7 +443,7 @@ def dashboard(request):
     animals=['Perro', 'Gato', 'Ambas especies', 'Otras especies']
     trace3= go.Bar(x=animals, y=[4062, 1956, 1300, 176])
     data3= [trace3]
-    layout3 = go.Layout(title='Viviendas con Mascotas', margin=dict(l=0, r=0, b=0, t=30))
+    layout3 = go.Layout(title='Viviendas con Mascotas (Chile 2022)', margin=dict(l=0, r=0, b=0, t=30))
     fig4 = go.Figure(data= data3, layout= layout3)
     plot_div4 = fig4.to_html(full_html=False)
 
@@ -354,19 +451,27 @@ def dashboard(request):
     nomb_perro=['Luna', 'Princesa', 'Canela', 'Pelusa', 'Toby', 'Perla', 'Jack', 'Rocky', 'Lucas', 'Max']
     trace5= go.Bar(x=nomb_perro, y=[30079, 14709, 12971, 12146, 10856, 8908, 8538, 8482, 7897, 7850])
     data5= [trace5]
-    layout5 = go.Layout(title='Nombres Populares de Perros', margin=dict(l=0, r=0, b=0, t=30))
+    layout5 = go.Layout(title='Nombres Populares de Perros (Chile 2022)', margin=dict(l=0, r=0, b=0, t=30))
     fig5 = go.Figure(data= data5, layout= layout5)
     plot_div5 = fig5.to_html(full_html=False)
 
     nomb_gato=['Luna', 'Pelusa', 'Tom', 'Princesa', 'Minina', 'Kitty', 'Mia', 'Niña', 'Michi', 'Negra']
-    trace6= go.Bar(x=nomb_gato, y=[30079, 14709, 12971, 12146, 10856, 8908, 8538, 8482, 7897, 7850])
+    trace6= go.Bar(x=nomb_gato, y=[8690, 5108, 3217, 2813, 2450, 2213, 2114, 2094, 1940, 1809])
     data6= [trace6]
-    layout6 = go.Layout(title='Nombres Populares de Gatos', margin=dict(l=0, r=0, b=0, t=30))
+    layout6 = go.Layout(title='Nombres Populares de Gatos (Chile 2022)', margin=dict(l=0, r=0, b=0, t=30))
     fig6 = go.Figure(data= data6, layout= layout6)
     plot_div6 = fig6.to_html(full_html=False)
 
+    animales=['Gatos', 'Perros', 'Aves Ornamentales', 'Pequeños mamiferos', 'Peces ornamentales', 'Reptiles']
+    trace8= go.Bar(x=animales, y=[127161000, 104348000, 53091000, 29317000, 21903000, 11632000])
+    data8= [trace8]
+    layout8 = go.Layout(title='Animales populares en Europa (2022)', margin=dict(l=0, r=0, b=0, t=30))
+    fig8 = go.Figure(data= data8, layout= layout8)
+    plot_div8 = fig8.to_html(full_html=False)
+
+
     # Pasar el gráfico a la plantilla 'dashboard.html'
-    return render(request, 'core/dashboard.html', {'plot_div': plot_div, 'plot_div2': plot_div2, 'plot_div3': plot_div3, 'plot_div4': plot_div4, 'plot_div5': plot_div5, 'plot_div6': plot_div6})
+    return render(request, 'core/dashboard.html', {'plot_div': plot_div, 'plot_div2': plot_div2, 'plot_div3': plot_div3, 'plot_div4': plot_div4, 'plot_div5': plot_div5, 'plot_div6': plot_div6, 'plot_div7': plot_div7, 'plot_div8': plot_div8, 'plot_div9': plot_div9, 'plot_div10': plot_div10})
     fig.write_html('pie_chart.html')
 
 

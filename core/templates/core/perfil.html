@@ -112,11 +112,12 @@
           </div> 
             <ul class="list-group list-group">
               <div class="d-flex justify-content-between">
-              {% if m.animal.nombre_animal == "Perro" %}
+                {% if m.raza.animal.nombre_animal == "Perro" %}
                 <li class="icono-mascota-card"><i class="fa-solid fa-dog fa-card-icono"></i></li>
-              {% elif m.animal.nombre_animal == "Gato" %}
+             {% elif m.raza.animal.nombre_animal == "Gato" %}
                 <li class="icono-mascota-card"><i class="fa-solid fa-cat fa-card-icono"></i></li>
-              {% endif %}
+             {% endif %}
+             
               {% if m.sexo == "H" %}
                 <li class="icono-mascota-card"><i class="fa-solid fa-venus"></i></li>
               {% elif m.sexo == "M" %}
@@ -133,33 +134,37 @@
         <br>
 
         {% if m.sexo == "M" %}
-        <main class="pb-3 pt-3 op-destacados">
-          <div class="container">
-            <div class="row d-flex justify-content-center">
-              <div class="col-12">
-                <h2 class="text-center h1">Esto es para ti</h2>
-                <div class="row d-flex flex-wrap">
-                  <div id="blogContainer" class="col-12 flex-wrap op-noticias"></div>
-                </div>         
-              </div>
-            </div>  
-          </div>
-        </main>
-        <br>
-        <!--{% elif  m.sexo == "Gato" %}
-        <main class="pb-3 pt-3 op-destacados">
-          <div class="container">
-            <div class="row d-flex justify-content-center">
-              <div class="col-12">
-                <h2 class="text-center h1">Esto es para ti</h2>
-                <div class="row d-flex flex-wrap">
-                  <div id="blogContainer" class="col-12 flex-wrap op-noticias"></div>
-                </div>         
-              </div>
-            </div>  
-          </div>
-        </main>-->
-        {% endif %}
+  <main class="pb-3 pt-3 op-destacados">
+    <div class="container">
+      <div class="row d-flex justify-content-center">
+        <div class="col-12">
+          <h2 class="text-center h1">Esto es para ti</h2>
+          <div class="row d-flex flex-wrap">
+            <div id="blogContainer" class="col-12 flex-wrap op-noticias"></div>
+          </div>         
+        </div>
+      </div>  
+    </div>
+  </main>
+  <br>
+{% elif m.sexo == "H" %}
+  <!-- Código específico para hembras -->
+  <main class="pb-3 pt-3 op-destacados-hembra">
+    <div class="container">
+      <div class="row d-flex justify-content-center">
+        <div class="col-12">
+          <h2 class="text-center h1">Esto es para ti</h2>
+          <div class="row d-flex flex-wrap">
+            <div id="blogContainerHembra" class="col-12 flex-wrap op-noticias-hembra"></div>
+          </div>         
+        </div>
+      </div>  
+    </div>
+  </main>
+  <br>
+{% endif %}
+
+
 
         {% endfor %} 
       {% endif %}
