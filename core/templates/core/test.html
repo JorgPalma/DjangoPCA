@@ -25,32 +25,55 @@
   <script>
     mapboxgl.accessToken = 'pk.eyJ1IjoicGV0Y2FyZWFkbWluIiwiYSI6ImNscGgzYW9qZDAzc2kyanFtZmNodWIybmEifQ.-Fr7wMapvDTi9VuQIWuODg';
 
-    // Obtener la ubicación del usuario dentro de Santiago de Chile
-    navigator.geolocation.getCurrentPosition(successLocation, errorLocation, {
-      enableHighAccuracy: true
+    // Ubicaciones para las que se realizarán solicitudes de geocodificación
+    const locations = [
+      { name: 'Santiago, Chile', coordinates: [-70.6482, -33.4569] },
+      { name: 'Valparaíso, Chile', coordinates: [-71.6485, -33.0472] },
+      { name: 'Concepción, Chile', coordinates: [-73.0405, -36.8271] },
+      { name: 'Rancagua, Chile', coordinates: [-70.7398, -34.1708] },
+      { name: 'Talagante, Chile', coordinates: [-70.9303, -33.6616] },
+      { name: 'Paine, Chile', coordinates: [-70.7516, -33.8144] },
+      { name: 'Arica, Chile', coordinates: [-70.3015, -18.4783] },
+      { name: 'Iquique, Chile', coordinates: [-70.1431, -20.2208] },
+      { name: 'Antofagasta, Chile', coordinates: [-70.6483, -23.6509] },
+      { name: 'La Serena, Chile', coordinates: [-71.2538, -29.9013] },
+      { name: 'Puerto Montt, Chile', coordinates: [-73.1242, -41.4718] },
+      { name: 'Temuco, Chile', coordinates: [-72.6097, -38.7397] },
+      { name: 'Chillán, Chile', coordinates: [-72.1034, -36.6060] },
+      { name: 'Isla de Pascua, Chile', coordinates: [-109.4275, -27.1212] },
+      { name: 'Coquimbo, Chile', coordinates: [-71.3395, -29.9533] },
+      { name: 'Viña del Mar, Chile', coordinates: [-71.5523, -33.0154] },
+      { name: 'Pucon, Chile', coordinates: [-71.9757, -39.2723] },
+      { name: 'Coquimbo, Chile', coordinates: [-71.3395, -29.9533] },
+      { name: 'Viña del Mar, Chile', coordinates: [-71.5523, -33.0154] },
+      { name: 'Pucon, Chile', coordinates: [-71.9757, -39.2723] },
+      { name: 'Los Ángeles, Chile', coordinates: [-72.3482, -37.4626] },
+      { name: 'Copiapó, Chile', coordinates: [-70.3314, -27.3668] },
+      { name: 'Quillota, Chile', coordinates: [-71.2489, -32.8796] },
+      { name: 'Curicó, Chile', coordinates: [-71.2282, -34.9829] },
+      { name: 'Osorno, Chile', coordinates: [-73.1350, -40.5734] },
+      // Puedes agregar más ubicaciones según sea necesario
+    ];
+
+    const map = new mapboxgl.Map({
+      container: 'map',
+      style: 'mapbox://styles/mapbox/streets-v11',
+      center: locations[0].coordinates, // Centro del mapa en la primera ubicación
+      zoom: 10
     });
 
-    function successLocation(position) {
-      const { latitude, longitude } = position.coords;
-
-      const map = new mapboxgl.Map({
-        container: 'map',
-        style: 'mapbox://styles/mapbox/streets-v11',
-        center: [longitude, latitude],
-        zoom: 10
-      });
-
-      // Realizar una búsqueda de clínicas veterinarias y parques en Santiago de Chile
-      const searchText = 'Clinica veterinaria, veterinaria, clinica para animales';
-      const bbox = '-70.6482,-33.5692,-70.3327,-33.2891'; // Santiago de Chile bounding box
-      const limit = 100;
-
-      fetch(`https://api.mapbox.com/geocoding/v5/mapbox.places/${searchText}.json?bbox=${bbox}&types=poi&limit=${limit}&access_token=${mapboxgl.accessToken}`)
+    // Realizar solicitudes de geocodificación para cada ubicación
+    locations.forEach(location => {
+      const { coordinates } = location;
+      const limit = 20;
+      const searchTerm = 'vet'; // Término de búsqueda específico para veterinarias
+      const bbox = [-74, -35, -70, -32];
+      fetch(`https://api.mapbox.com/geocoding/v5/mapbox.places/${searchTerm}.json?proximity=${coordinates[0]},${coordinates[1]}&limit=${limit}&access_token=${mapboxgl.accessToken}`)
         .then(response => response.json())
         .then(data => {
-          data.features.forEach(location => {
-            const [lng, lat] = location.center;
-            const name = location.text;
+          data.features.forEach(feature => {
+            const [lng, lat] = feature.center;
+            const name = feature.text;
 
             new mapboxgl.Marker()
               .setLngLat([lng, lat])
@@ -59,11 +82,7 @@
           });
         })
         .catch(error => console.error('Error fetching location data:', error));
-    }
-
-    function errorLocation() {
-      console.log('Unable to retrieve your location');
-    }
+    });
   </script>
 </body>
 </html>
