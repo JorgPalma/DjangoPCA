@@ -112,11 +112,12 @@
           </div> 
             <ul class="list-group list-group">
               <div class="d-flex justify-content-between">
-              {% if m.animal.nombre_animal == "Perro" %}
+                {% if m.raza.animal.nombre_animal == "Perro" %}
                 <li class="icono-mascota-card"><i class="fa-solid fa-dog fa-card-icono"></i></li>
-              {% elif m.animal.nombre_animal == "Gato" %}
+             {% elif m.raza.animal.nombre_animal == "Gato" %}
                 <li class="icono-mascota-card"><i class="fa-solid fa-cat fa-card-icono"></i></li>
-              {% endif %}
+             {% endif %}
+             
               {% if m.sexo == "H" %}
                 <li class="icono-mascota-card"><i class="fa-solid fa-venus"></i></li>
               {% elif m.sexo == "M" %}
@@ -146,6 +147,7 @@
           </div>
         </main>
         <br>
+        
         <!--{% elif  m.sexo == "Gato" %}
         <main class="pb-3 pt-3 op-destacados">
           <div class="container">
