@@ -982,3 +982,85 @@ select{
 .op-noticias {
     height: auto;
 }
+
+.op-circle {
+    width: 150px;
+    height: 150px;
+    border-radius: 75px;
+    border: 1px solid #b8b8b8;
+}
+
+.op-sm-circle {
+    width: 120px;
+    height: 120px;
+    border-radius: 60px;
+    border: 1px solid #b8b8b8;
+}
+
+.op-icono-circle {
+    font-size: 60px;
+    text-align: center;
+    line-height: 110px;
+}
+
+.op-circle-title {
+    font-family: var(--quicksans);
+    font-size: 20px;
+    font-weight: bolder;
+    color: var(--azul);
+}
+
+.op-circle-p {
+    text-align: center;
+    font-size: 15px;
+}
+
+.fa-chart-simple {
+    color: var(--amarillo);
+}
+
+.fa-pawsa {
+    color: var(--celeste);
+}
+
+.fa-bullhorn {
+    color: var(--rojo);
+}
+
+.dashboard-seccion{
+    background: #f3f3f3;
+    height: auto;
+    border-radius: 20px;
+}
+
+.op-dashboard-botones {
+    background: #e9e9e9;
+    height: 80px;
+    border-radius: 20px 20px 0px 0px;
+}
+
+.op-dashboard-botones ul {
+    list-style: none;
+    display: inline-block;
+}
+
+.op-dashboard-botones ul li {
+    text-decoration: none;
+    display: inline-block;
+    margin-top: 18px;
+}
+
+.op-dashboard-botones ul li button{
+    text-decoration: none;
+    background: white;
+    color: var(--azul);
+    font-family: var(--quicksans);
+    font-size: 20px;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.op-dashboard-botones ul li button:hover{
+    color: white;
+    background: var(--azul);
+}
