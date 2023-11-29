@@ -78,24 +78,6 @@ class Alergia(models.Model):
     def __str__(self):
         return self.tipo_alergia
     
-class Formulario(models.Model):
-    nombre_usuario = models.ForeignKey(User, on_delete=models.CASCADE, related_name='user_formulario')
-    num_vacunas = models.IntegerField()
-    act_fisica = models.CharField(max_length=1)
-    comida_tiempo = models.IntegerField()
-    sintomas = models.CharField(max_length=30)
-    antec_enfermedades = models.CharField(max_length=20)
-    operaciones = models.IntegerField()
-    peso = models.IntegerField()
-    tamanio = models.IntegerField()
-    edad = models.IntegerField()
-    alergia = models.ForeignKey(Alergia, on_delete=models.CASCADE, related_name='alergia')
-    mascota = models.ForeignKey(Mascota, on_delete=models.CASCADE, related_name='mascota')
-    
-
-    def __str__(self):
-        return f'Formulario { self.id }'
-
 class Contacto(models.Model):
     nombre_contacto = models.CharField(max_length=50)
     email = models.CharField(max_length=50)

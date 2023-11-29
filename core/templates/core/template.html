@@ -64,7 +64,7 @@
                           <a  
                             {% if request.resolver_match.url_name == 'consulta' %}class="active nav-link"
                             {% elif request.resolver_match.url_name != 'consulta' %}class="nav-link"
-                            {% endif %} aria-current="page" href="{% url 'consulta' %}">Consulta
+                            {% endif %} aria-current="page" href="{% url 'dashboard' %}">Dashboard
                           </a>
                         </li>
                         <li class="nav-item">

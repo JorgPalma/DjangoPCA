@@ -1,7 +1,7 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
-from .models import Persona, Contacto, Blog, Formulario, Comentario, Mascota
+from .models import Persona, Contacto, Blog, Comentario, Mascota
 
 
 class RegistroForm(UserCreationForm):
@@ -66,13 +66,6 @@ class AddPostForms(forms.ModelForm):
             "titulo":forms.TextInput(attrs={'placeholder':'Título de la publicación','name':'titulo','id':'titulo','class':'input-class_name'}),
             "informacion":forms.Textarea(attrs={'placeholder':'¿Qué quieres comentar con la comunidad?','name':'informacion','id':'informacion','class':'input-class_name'}),
                 }
-
-
-class FormularioForm(forms.ModelForm):
-    class Meta:
-        model = Formulario
-        fields = ["num_vacunas","act_fisica","comida_tiempo","sintomas","antec_enfermedades","operaciones","peso","tamanio","edad","alergia"]
-
 
 
 class ComentarioForm(forms.ModelForm):

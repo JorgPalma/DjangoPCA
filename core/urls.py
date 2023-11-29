@@ -1,6 +1,6 @@
 from django.urls import path
 from django.contrib.auth.decorators import login_required
-from .views import home, nosotros, contacto, detallepost, eliminarPost, verPosts, eliminarMensaje, verMensaje, mensajes, eliminarMascota, editarMascota, addMascota, likepost ,blog, blogperro, bloggato, blogalimentacion, blogadopcion, addPost, formulario, registro, consulta, perfil, editarPerfil, noticias, bienvenido, enviado, dashboard, test, eltest
+from .views import home, nosotros, contacto, detallepost, eliminarPost, verPosts, eliminarMensaje, verMensaje, mensajes, eliminarMascota, editarMascota, addMascota, likepost ,blog, blogperro, bloggato, blogalimentacion, blogadopcion, addPost, registro, consulta, perfil, editarPerfil, noticias, bienvenido, enviado, dashboard, test, eltest
 
 urlpatterns=[
     path('', home, name="home"),
@@ -12,7 +12,6 @@ urlpatterns=[
     path('blog/gatos/', bloggato, name="bloggato"),
     path('blog/alimentacion/', blogalimentacion, name="blogalimentacion"),
     path('blog/adopcion/', blogadopcion, name="blogadopcion"),
-    path('formulario/', formulario, name="formulario"),
     path('registro/', registro, name="registro"),
     path('consulta/', consulta, name="consulta"),
     path('perfil/<str:username>/', login_required (perfil), name="perfil"),

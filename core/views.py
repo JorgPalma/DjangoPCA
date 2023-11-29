@@ -1,7 +1,7 @@
 from django.shortcuts import redirect, render, get_object_or_404
 from .forms import RegistroForm
 from django.contrib.auth import authenticate, login
-from .models import User, Persona, Blog, Comentario, Mascota, Formulario, Contacto
+from .models import User, Persona, Blog, Comentario, Mascota, Contacto
 from .forms import EditarPefil, ContactoForm, AddPostForms, ComentarioForm, AddMascotaForms
 import random
 from django.shortcuts import render
@@ -130,8 +130,6 @@ def blogadopcion(request):
     }
     return render(request, 'core/blogadopcion.html', data)
 
-def formulario(request):
-    return render(request, 'core/formulario.html')
 
 def registro(request):
 
@@ -272,7 +270,6 @@ def dashboard(request):
     # Ruta al archivo CSV
     # csv_file_path = 'core/templates/CSV/csv.csv'
     colors= ['#54d2d2', '#ffcb00', '#f8aa4b', '#ff6150', '#e2e2e2','#465B75', '#FCD949', '#FCAC49', '#ffd49e','#FC5B49', '#49FCFC', '#FC5B49']
-    formulariomodel= Formulario.objects.all()
     mascotamodel= Mascota.objects.all()
     # Listas para almacenar los datos del archivo CSV
     vacunas = []
@@ -285,9 +282,6 @@ def dashboard(request):
     contador_H = 0
     contador_M = 0
 
-    for c in formulariomodel:
-        comida_tiempo.append(convertir_a_entero(c.comida_tiempo))
-        vacunas.append(c.id)
     
     for mas in mascotamodel:
         if mas.sexo == 'H':
