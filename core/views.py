@@ -271,7 +271,7 @@ def convertir_a_entero(valor, valor_por_defecto=0):
 def dashboard(request):
     # Ruta al archivo CSV
     # csv_file_path = 'core/templates/CSV/csv.csv'
-
+    colors= ['#54d2d2', '#ffcb00', '#f8aa4b', '#ff6150', '#e2e2e2','#465B75', '#FCD949', '#FCAC49', '#ffd49e','#FC5B49', '#49FCFC', '#FC5B49']
     formulariomodel= Formulario.objects.all()
     mascotamodel= Mascota.objects.all()
     # Listas para almacenar los datos del archivo CSV
@@ -351,12 +351,13 @@ def dashboard(request):
             otrop += 1
     
 
-    trace9 = go.Pie(labels=lblrazaperro, values=[mestizo, poodle, pastorale, yorkshire, foxterrier, beagle, labradorre, goldenre, pug, bulldog, quiltro, otrop], hole=.3)
-    data9 = [trace9]
-    layout9 = go.Layout(title='Distribución de razas caninas registrada (PetCareAnalytics)', margin=dict(l=0, r=0, b=0, t=30))  # Ajusta los márgenes según tus preferencias
-    fig9 = go.Figure(data=data9, layout=layout9)
-    plot_div9 = fig9.to_html(full_html=False)
 
+    trace9= go.Bar(x=lblrazaperro, y=[mestizo, poodle, pastorale, yorkshire, foxterrier, beagle, labradorre, goldenre, pug, bulldog, quiltro, otrop])
+    data9= [trace9]
+    layout9 = go.Layout(title='Distribución de razas caninas registrada (PetCareAnalytics)', margin=dict(l=0, r=0, b=0, t=30))
+    fig9 = go.Figure(data= data9, layout= layout9)
+    
+    plot_div9 = fig9.to_html(full_html=False)
 
     siames=0
     maine=0
@@ -388,6 +389,7 @@ def dashboard(request):
     data10 = [trace10]
     layout10 = go.Layout(title='Distribución de razas felinas registrada (PetCareAnalytics)', margin=dict(l=0, r=0, b=0, t=30))  # Ajusta los márgenes según tus preferencias
     fig10 = go.Figure(data=data10, layout=layout10)
+    fig10.update_traces(marker=dict(colors=colors))
     plot_div10 = fig10.to_html(full_html=False)
 
     # Leer datos desde el archivo CSV y manejar valores no numéricos
@@ -411,6 +413,7 @@ def dashboard(request):
     data = [trace]
     layout = go.Layout(title='Distribución de sexo por Mascota registrada (PetCareAnalytics)', margin=dict(l=0, r=0, b=0, t=30))  # Ajusta los márgenes según tus preferencias
     fig = go.Figure(data=data, layout=layout)
+    fig.update_traces(marker=dict(colors=colors))
     plot_div = fig.to_html(full_html=False)
 
     
@@ -441,11 +444,12 @@ def dashboard(request):
     plot_div3 = fig3.to_html(full_html=False)
 
     animals=['Perro', 'Gato', 'Ambas especies', 'Otras especies']
-
+    
     trace3 = go.Pie(labels=animals, values=[4062, 1956, 1300, 176], hole=.3)
     data3 = [trace3]
     layout3 = go.Layout(title='Viviendas con Mascotas (Chile 2022)', margin=dict(l=0, r=0, b=0, t=30))  # Ajusta los márgenes según tus preferencias
     fig4 = go.Figure(data=data3, layout=layout3)
+    fig4.update_traces(marker=dict(colors=colors))
     plot_div4 = fig4.to_html(full_html=False)
 
 
