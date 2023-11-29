@@ -441,11 +441,13 @@ def dashboard(request):
     plot_div3 = fig3.to_html(full_html=False)
 
     animals=['Perro', 'Gato', 'Ambas especies', 'Otras especies']
-    trace3= go.Bar(x=animals, y=[4062, 1956, 1300, 176])
-    data3= [trace3]
-    layout3 = go.Layout(title='Viviendas con Mascotas (Chile 2022)', margin=dict(l=0, r=0, b=0, t=30))
-    fig4 = go.Figure(data= data3, layout= layout3)
+
+    trace3 = go.Pie(labels=animals, values=[4062, 1956, 1300, 176], hole=.3)
+    data3 = [trace3]
+    layout3 = go.Layout(title='Viviendas con Mascotas (Chile 2022)', margin=dict(l=0, r=0, b=0, t=30))  # Ajusta los márgenes según tus preferencias
+    fig4 = go.Figure(data=data3, layout=layout3)
     plot_div4 = fig4.to_html(full_html=False)
+
 
 
     nomb_perro=['Luna', 'Princesa', 'Canela', 'Pelusa', 'Toby', 'Perla', 'Jack', 'Rocky', 'Lucas', 'Max']
