@@ -133,7 +133,7 @@
         <br>
         <br>
 
-        {% if m.sexo == "M" %}
+        {% if m.raza.animal.nombre_animal == "Perro" %}
   <main class="pb-3 pt-3 op-destacados">
     <div class="container">
       <div class="row d-flex justify-content-center">
@@ -147,7 +147,7 @@
     </div>
   </main>
   <br>
-{% elif m.sexo == "H" %}
+{% elif m.raza.animal.nombre_animal == "Gato" %}
   <!-- Código específico para hembras -->
   <main class="pb-3 pt-3 op-destacados-hembra">
     <div class="container">

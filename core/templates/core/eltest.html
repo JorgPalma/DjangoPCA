@@ -5,18 +5,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Resultados de la búsqueda de libros</title>
 </head>
-<body>
+<body onload="realizarBusqueda()">
     <h1>Buscar libros</h1>
     <label for="busqueda">Ingrese el título del libro:</label>
-    <input type="text" id="busqueda" placeholder="Ingrese el título del libro">
-    <button onclick="realizarBusqueda()">Buscar</button>
+    <input type="hidden" id="busqueda" value="Gato">
+    
 
     <h2>Resultados de la búsqueda de libros</h2>
-    <div id="resultados"></div>
+    <div id="blogContainer"></div>
 
     <script>
         // Función para realizar la búsqueda de libros
-        function buscarLibros(query, maxResultados = 5) {
+        
+        function buscarLibros(query, maxResultados = 3) {
             const apiUrl = `https://www.googleapis.com/books/v1/volumes?q=${encodeURIComponent(query)}&maxResults=${maxResultados}`;
 
             fetch(apiUrl)
@@ -27,7 +28,7 @@
 
         // Función para mostrar los resultados en la página
         function mostrarResultados(libros) {
-            const resultadosDiv = document.getElementById('resultados');
+            const resultadosDiv = document.getElementById('blogContainer');
 
             // Limpiar resultados anteriores
             resultadosDiv.innerHTML = '';
