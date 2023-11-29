@@ -352,7 +352,7 @@ def dashboard(request):
     
 
 
-    trace9= go.Bar(x=lblrazaperro, y=[mestizo, poodle, pastorale, yorkshire, foxterrier, beagle, labradorre, goldenre, pug, bulldog, quiltro, otrop])
+    trace9= go.Bar(x=lblrazaperro, y=[mestizo, poodle, pastorale, yorkshire, foxterrier, beagle, labradorre, goldenre, pug, bulldog, quiltro, otrop], marker_color='#54d2d2')
     data9= [trace9]
     layout9 = go.Layout(title='Distribución de razas caninas registrada (PetCareAnalytics)', margin=dict(l=0, r=0, b=0, t=30))
     fig9 = go.Figure(data= data9, layout= layout9)
@@ -418,14 +418,14 @@ def dashboard(request):
 
     
     raza_perro=['Mestizo', 'Poodle', 'Pastor Aleman', 'Yorkshire', 'Dachshund', 'Fox Terrier', 'Beagle', 'Labrador Retriever', 'Golden Retriever', 'Boxer']
-    trace2= go.Bar(x=raza_perro, y=[736648, 174868, 62291, 56997, 37195, 33979, 23178, 21965, 19947, 18573])
+    trace2= go.Bar(x=raza_perro, y=[736648, 174868, 62291, 56997, 37195, 33979, 23178, 21965, 19947, 18573], marker_color='#54d2d2')
     data2= [trace2]
     layout2 = go.Layout(title='Razas Populares de Perros (Chile 2022)', margin=dict(l=0, r=0, b=0, t=30))
     fig2 = go.Figure(data= data2, layout= layout2)
     plot_div2 = fig2.to_html(full_html=False)
 
     raza_gato=['Domestico P. Corto', 'Domestico P. Largo', 'Americano P. Corto', 'Siames', 'Británico P. Corto', 'Persa', 'Europeo', 'Angora Turco', 'Británico P. Largo', 'Curl Americano']
-    trace7= go.Bar(x=raza_gato, y=[297316, 98800, 6920, 3175, 2311, 2283, 1893, 1622, 1165, 671])
+    trace7= go.Bar(x=raza_gato, y=[297316, 98800, 6920, 3175, 2311, 2283, 1893, 1622, 1165, 671], marker_color='#54d2d2')
     data7= [trace7]
     layout7 = go.Layout(title='Razas Populares de Gatos (Chile 2022)', margin=dict(l=0, r=0, b=0, t=30))
     fig7 = go.Figure(data= data7, layout= layout7)
@@ -436,8 +436,8 @@ def dashboard(request):
               'Biobio', 'La Araucania', 'Los Rios', 'Los Lagos', 'Aysen del general Carlos Ibañez del Campo',
               'Magallanes y de la Antartica chilena']
     fig3 = go.Figure(data=[
-        go.Bar(name='Gatos', x=regiones, y=[3188, 6761, 13339, 9860, 13534, 48168, 147606, 23163, 23857, 10701, 32691, 28621, 16272, 31674, 7887, 5198]),
-        go.Bar(name='Perros', x=regiones, y=[10659, 31500, 46493, 33017, 49414, 164790, 508302, 106686, 112212, 44433, 113607, 77315, 37735, 75067, 15092, 13250])
+        go.Bar(name='Gatos', x=regiones, y=[3188, 6761, 13339, 9860, 13534, 48168, 147606, 23163, 23857, 10701, 32691, 28621, 16272, 31674, 7887, 5198], marker_color='#54d2d2'),
+        go.Bar(name='Perros', x=regiones, y=[10659, 31500, 46493, 33017, 49414, 164790, 508302, 106686, 112212, 44433, 113607, 77315, 37735, 75067, 15092, 13250], marker_color='#ff6150')
     ])
     # Change the bar mode
     fig3.update_layout(barmode='group')
@@ -455,21 +455,21 @@ def dashboard(request):
 
 
     nomb_perro=['Luna', 'Princesa', 'Canela', 'Pelusa', 'Toby', 'Perla', 'Jack', 'Rocky', 'Lucas', 'Max']
-    trace5= go.Bar(x=nomb_perro, y=[30079, 14709, 12971, 12146, 10856, 8908, 8538, 8482, 7897, 7850])
+    trace5= go.Bar(x=nomb_perro, y=[30079, 14709, 12971, 12146, 10856, 8908, 8538, 8482, 7897, 7850], marker_color='#54d2d2')
     data5= [trace5]
     layout5 = go.Layout(title='Nombres Populares de Perros (Chile 2022)', margin=dict(l=0, r=0, b=0, t=30))
     fig5 = go.Figure(data= data5, layout= layout5)
     plot_div5 = fig5.to_html(full_html=False)
 
     nomb_gato=['Luna', 'Pelusa', 'Tom', 'Princesa', 'Minina', 'Kitty', 'Mia', 'Niña', 'Michi', 'Negra']
-    trace6= go.Bar(x=nomb_gato, y=[8690, 5108, 3217, 2813, 2450, 2213, 2114, 2094, 1940, 1809])
+    trace6= go.Bar(x=nomb_gato, y=[8690, 5108, 3217, 2813, 2450, 2213, 2114, 2094, 1940, 1809], marker_color='#54d2d2')
     data6= [trace6]
     layout6 = go.Layout(title='Nombres Populares de Gatos (Chile 2022)', margin=dict(l=0, r=0, b=0, t=30))
     fig6 = go.Figure(data= data6, layout= layout6)
     plot_div6 = fig6.to_html(full_html=False)
 
     animales=['Gatos', 'Perros', 'Aves Ornamentales', 'Pequeños mamiferos', 'Peces ornamentales', 'Reptiles']
-    trace8= go.Bar(x=animales, y=[127161000, 104348000, 53091000, 29317000, 21903000, 11632000])
+    trace8= go.Bar(x=animales, y=[127161000, 104348000, 53091000, 29317000, 21903000, 11632000], marker_color='#54d2d2')
     data8= [trace8]
     layout8 = go.Layout(title='Animales populares en Europa (2022)', margin=dict(l=0, r=0, b=0, t=30))
     fig8 = go.Figure(data= data8, layout= layout8)
