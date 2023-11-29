@@ -132,37 +132,38 @@
         </div>
         <br>
         <br>
-
-        {% if m.raza.animal.nombre_animal == "Perro" %}
-  <main class="pb-3 pt-3 op-destacados">
-    <div class="container">
-      <div class="row d-flex justify-content-center">
-        <div class="col-12">
-          <h2 class="text-center h1">Esto es para ti</h2>
-          <div class="row d-flex flex-wrap">
-            <div id="blogContainer" class="col-12 flex-wrap op-noticias"></div>
-          </div>         
-        </div>
-      </div>  
-    </div>
-  </main>
-  <br>
-{% elif m.raza.animal.nombre_animal == "Gato" %}
-  <!-- Código específico para hembras -->
-  <main class="pb-3 pt-3 op-destacados-hembra">
-    <div class="container">
-      <div class="row d-flex justify-content-center">
-        <div class="col-12">
-          <h2 class="text-center h1">Esto es para ti</h2>
-          <div class="row d-flex flex-wrap">
-            <div id="blogContainerHembra" class="col-12 flex-wrap op-noticias-hembra"></div>
-          </div>         
-        </div>
-      </div>  
-    </div>
-  </main>
-  <br>
-{% endif %}
+        
+        {% if if m.sexo == "H"  %}
+        <!-- m.raza.animal.nombre_animal == "Perro"-->
+        <main class="pb-3 pt-3 op-destacados">
+          <div class="container">
+            <div class="row d-flex justify-content-center">
+              <div class="col-12">
+                <h2 class="text-center h1">Esto es para ti</h2>
+                <div class="row d-flex flex-wrap">
+                  <div id="blogContainer" class="col-12 flex-wrap op-noticias"></div>
+                </div>         
+              </div>
+            </div>  
+          </div>
+        </main>
+        <br>
+      {% if m.sexo == "M"  %}
+        <!-- Código específico para hembras -->
+        <main class="pb-3 pt-3 op-destacados-hembra">
+          <div class="container">
+            <div class="row d-flex justify-content-center">
+              <div class="col-12">
+                <h2 class="text-center h1">Esto es para ti</h2>
+                <div class="row d-flex flex-wrap">
+                  <div id="blogContainerHembra" class="col-12 flex-wrap op-noticias-hembra"></div>
+                </div>         
+              </div>
+            </div>  
+          </div>
+        </main>
+        <br>
+      {% endif %}
 
 
 
