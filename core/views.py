@@ -411,11 +411,14 @@ def dashboard(request):
     plot_div = fig.to_html(full_html=False)
 
     
-    raza_perro=['Mestizo', 'Poodle', 'Pastor Aleman', 'Yorkshire', 'Dachshund', 'Fox Terrier', 'Beagle', 'Labrador Retriever', 'Golden Retriever', 'Boxer']
-    trace2= go.Bar(x=raza_perro, y=[736648, 174868, 62291, 56997, 37195, 33979, 23178, 21965, 19947, 18573], marker_color='#54d2d2')
-    data2= [trace2]
-    layout2 = go.Layout(title='Razas Populares de Perros (Chile 2022)', margin=dict(l=0, r=0, b=0, t=30))
-    fig2 = go.Figure(data= data2, layout= layout2)
+    raza_perro = ['Mestizo', 'Poodle', 'Pastor Aleman', 'Yorkshire', 'Dachshund', 'Fox Terrier', 'Beagle', 'Labrador Retriever', 'Golden Retriever', 'Boxer']
+    trace2 = go.Bar(x=raza_perro, y=[736648, 174868, 62291, 56997, 37195, 33979, 23178, 21965, 19947, 18573], marker_color='#54d2d2')
+    data2 = [trace2]
+
+# Cambia el tamaño del título ajustando la propiedad 'size' dentro de 'font'
+    layout2 = go.Layout(title=dict(text='Razas Populares de Perros (Chile 2022)', font=dict(size=18)), margin=dict(l=0, r=0, b=0, t=30))
+
+    fig2 = go.Figure(data=data2, layout=layout2)
     plot_div2 = fig2.to_html(full_html=False)
 
     raza_gato=['Domestico P. Corto', 'Domestico P. Largo', 'Americano P. Corto', 'Siames', 'Británico P. Corto', 'Persa', 'Europeo', 'Angora Turco', 'Británico P. Largo', 'Curl Americano']
@@ -647,14 +650,14 @@ def eliminarPost(request, id):
     return redirect(to="verPosts")
 
 
-def test(request):
+def mapavet(request):
     post = Blog.objects.last()
 
     data = {
         'post': post
     }
 
-    return render(request, 'core/test.html', data)
+    return render(request, 'core/mapavet.html', data)
 
 #Codigo toferxo geolocalizacion
 # mi_aplicacion/views.py
@@ -670,7 +673,7 @@ def veterinaries_nearby(request):
 
     print(nearby_veterinaries)  # Agrega esta línea para imprimir los datos en la consola
 
-    return render(request, 'core/test.html', {'nearby_veterinaries': nearby_veterinaries})
+    return render(request, 'core/mapavet.html', {'nearby_veterinaries': nearby_veterinaries})
 
 def eltest(request):
     post = Blog.objects.last()
@@ -679,4 +682,4 @@ def eltest(request):
         'post': post
     }
 
-    return render(request, 'core/eltest.html', data)
+    return render(request, 'core/mapavet.html', data)

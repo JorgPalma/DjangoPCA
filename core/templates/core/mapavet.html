@@ -1,10 +1,17 @@
+{% extends 'core/template.html' %}
+
+{% block title %}
+  <title>PetCareAnalytics | Veterinarias Santiago</title>
+{% endblock %}
+
+{% block content %}
+{% load static %}
 
 <head>
-  <meta charset="UTF-8">
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <script src="https://api.mapbox.com/mapbox-gl-js/v2.6.1/mapbox-gl.js"></script>
-  <link
-    href="https://api.mapbox.com/mapbox-gl-js/v2.6.1/mapbox-gl.css"
+  
+  <link href="https://api.mapbox.com/mapbox-gl-js/v2.6.1/mapbox-gl.css"
     rel="stylesheet"
   />
   <style>
@@ -16,7 +23,6 @@
       height: 100vh;
     }
   </style>
-  <title>Mapbox Example</title>
 </head>
 <body>
   <div id="map"></div>
@@ -99,3 +105,4 @@
 </body>
 </html>
 
+{% endblock %}
