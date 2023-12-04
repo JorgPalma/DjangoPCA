@@ -1064,3 +1064,83 @@ select{
     color: white;
     background: var(--azul);
 }
+
+
+.op-grafico-texto {
+    font-size: 16px;
+    font-family: var(--opensans);
+    text-align: justify;
+}
+
+.op-grafico-titulo {
+    font-size: 36px;
+    font-family: var(--quicksans);
+    color: var(--azul);
+    font-weight: bolder;
+}
+
+.op-grafico-cuadrado {
+    width: 100px;
+    height: 100px;
+    border-radius: 10px;
+}
+
+.op-grafico-rectangulo {
+    width: 200px;
+    height: 100px;
+    border-radius: 10px;
+}
+
+.op-grafico-rectangulo i{
+    font-size: 35px;
+    text-align: center;
+    line-height: 35px;
+    color: white;
+}
+
+.op-grafico-cuadrado i{
+    font-size: 35px;
+    text-align: center;
+    line-height: 35px;
+    color: white;
+    margin: auto;
+}
+
+.op-grafico-numero {
+    color: white;
+    font-size: 40px;
+    font-family: var(--quicksans);
+}
+
+.op-grafico-cuadrado-celeste {
+    background: var(--celeste);
+}
+
+.op-grafico-cuadrado-amarillo {
+    background: var(--amarillo);
+}
+.op-grafico-cuadrado-naranjo {
+    background: var(--naranjo);
+}
+.op-grafico-cuadrado-rojo {
+    background: var(--rojo);
+}
+.op-grafico-cuadrado-azul {
+    background: var(--azul);
+}
+
+.destacado {
+    font-weight: bolder;
+}
+
+.t-celeste{
+    color: var(--celeste);
+}
+
+.t-amarillo {
+    color: var(--amarillo);
+}
+
+.border-left-op {
+    border-left: 1px solid #afafaf;
+}

@@ -422,7 +422,7 @@ def dashboard(request):
     plot_div2 = fig2.to_html(full_html=False)
 
     raza_gato=['Domestico P. Corto', 'Domestico P. Largo', 'Americano P. Corto', 'Siames', 'Británico P. Corto', 'Persa', 'Europeo', 'Angora Turco', 'Británico P. Largo', 'Curl Americano']
-    trace7= go.Bar(x=raza_gato, y=[297316, 98800, 6920, 3175, 2311, 2283, 1893, 1622, 1165, 671], marker_color='#54d2d2')
+    trace7= go.Bar(x=raza_gato, y=[297316, 98800, 6920, 3175, 2311, 2283, 1893, 1622, 1165, 671], marker_color='#ffcb00')
     data7= [trace7]
     layout7 = go.Layout(title='Razas Populares de Gatos (Chile 2022)', margin=dict(l=0, r=0, b=0, t=30))
     fig7 = go.Figure(data= data7, layout= layout7)
@@ -459,7 +459,7 @@ def dashboard(request):
     plot_div5 = fig5.to_html(full_html=False)
 
     nomb_gato=['Luna', 'Pelusa', 'Tom', 'Princesa', 'Minina', 'Kitty', 'Mia', 'Niña', 'Michi', 'Negra']
-    trace6= go.Bar(x=nomb_gato, y=[8690, 5108, 3217, 2813, 2450, 2213, 2114, 2094, 1940, 1809], marker_color='#54d2d2')
+    trace6= go.Bar(x=nomb_gato, y=[8690, 5108, 3217, 2813, 2450, 2213, 2114, 2094, 1940, 1809], marker_color='#ffcb00')
     data6= [trace6]
     layout6 = go.Layout(title='Nombres Populares de Gatos (Chile 2022)', margin=dict(l=0, r=0, b=0, t=30))
     fig6 = go.Figure(data= data6, layout= layout6)

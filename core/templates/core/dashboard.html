@@ -61,31 +61,142 @@
         </ul>
       </div>
       <div class="col-12 op-dashboard-graficos" id="dashboard-1">
-        <div style="display: inline-block; width: 48%;">
-          <h2>Gráfico 1</h2>
-            {{ plot_div4|safe }}
+        <div class="row d-flex justify-content-center align-items-center">
+          <div class="col-6 op-grafico p-3">
+              {{ plot_div4|safe }}
+          </div>
+          <div class="col-6 p-3">
+            <p class="op-grafico-texto">En febrero de 2022 la subsecretaría de desarrollo regional administrativo 
+              (SUBDERE) publica el boletín técnico "Estimación de la población canina y 
+              felina del país y diagnostico de la tenencia responsable". En donde se aplicó 
+              una encuesta de tenencia responsable a nivel de vivienda en 35 comunas del país 
+              obteniendo un total de 6275 de respuestas. De cuales 4754(75.9%) tenía al menos
+               una mascota. Como resultado habían 4062 que poseen perro, 1956 que poseen gatos, 
+               1300 con ambas y solo 176 con otro tipo de especie.</p>
+               <hr>
+            <div class="row">
+              <div class="col-3">
+                <div class="op-grafico-cuadrado op-grafico-cuadrado-celeste d-flex justify-content-center align-items-center flex-wrap p-2">
+                  <i class="fa-solid fa-shield-dog"></i>
+                  <p class="op-grafico-numero">4062</p>
+                </div>
+              </div>
+              <div class="col-3">
+                <div class="op-grafico-cuadrado op-grafico-cuadrado-amarillo d-flex justify-content-center align-items-center flex-wrap p-2">
+                  <i class="fa-solid fa-shield-cat"></i>
+                  <p class="op-grafico-numero">1956</p>
+                </div>
+              </div>
+              <div class="col-3">
+                <div class="op-grafico-cuadrado op-grafico-cuadrado-naranjo d-flex justify-content-center align-items-center flex-wrap p-2">
+                  <i class="fa-solid fa-shield-dog"></i>
+                  <i class="fa-solid fa-shield-cat"></i>
+                  <p class="op-grafico-numero">1300</p>
+                </div>
+              </div>
+              <div class="col-3">
+                <div class="op-grafico-cuadrado op-grafico-cuadrado-rojo d-flex justify-content-center align-items-center flex-wrap p-2">
+                  <i class="fa-solid fa-shield"></i>
+                  <p class="op-grafico-numero">176</p>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
-        <div style="display: inline-block; width: 48%;">
-          <h2>Gráfico 2</h2>
-          {{ plot_div2|safe }}
+        <hr>
+        <div class="row d-flex justify-content-center align-items-center">
+          <div class="col-4 p-3">
+            <p class="op-grafico-texto">Cifras recopiladas del registro nacional de mascotas 
+              en donde se muestra un TOP 10 de razas de perros en territorio nacional.
+               Dando como resultado, la raza de perro mas popular correspondiente a 
+               Mestizo con 736.648 caninos registrados.</p>
+               <hr>
+            <h2 class="op-grafico-titulo text-center">Mestizo</h2>
+            <div class="row d-flex justify-content-center">
+              <div class="col-6 d-flex justify-content-center">
+                <div class="op-grafico-rectangulo op-grafico-cuadrado-azul d-flex justify-content-center align-items-center flex-wrap p-2">
+                  <i class="fa-solid fa-shield-dog"></i>
+                  <p class="op-grafico-numero">736.648</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-8 op-grafico p-3">
+              {{ plot_div2|safe }}
+          </div>
         </div>
-        <div style="display: inline-block; width: 48%;">
-          <h2>Gráfico 3</h2>
-          {{ plot_div3|safe }}
+        <hr>
+        <div class="row d-flex justify-content-center align-items-center">
+          <div class="col-8 op-grafico p-3">
+              {{ plot_div7|safe }}
+          </div>
+          <div class="col-4 p-3">
+            <p class="op-grafico-texto">Cifras recopiladas del registro nacional de
+              mascotas en donde se muestra un TOP 10 de razas de gatos en territorio nacional.
+               Dando como resultado, la raza de gato mas popular correspondiente a 
+               Domestico pelo corto con 297.316 felinos registrados.</p>
+            <hr>
+            <h2 class="op-grafico-titulo text-center">
+              Doméstico P. Corto
+            </h2>
+            <div class="row d-flex justify-content-center">
+              <div class="col-6 d-flex justify-content-center">
+                <div class="op-grafico-rectangulo op-grafico-cuadrado-azul d-flex justify-content-center align-items-center flex-wrap p-2">
+                  <i class="fa-solid fa-shield-cat"></i>
+                  <p class="op-grafico-numero">297.316</p>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
-        <div style="display: inline-block; width: 48%;">
-          <h2>Gráfico 5</h2>
-          {{ plot_div5|safe }}
+        <hr>
+        <div class="row d-flex justify-content-center align-items-center">
+          <div class="col-6 op-grafico p-3">
+            {{ plot_div5|safe }}
+          </div>
+          <div class="col-6 op-grafico p-3 border-left-op">
+            {{ plot_div6|safe }}
+          </div>
+          <div class="col-9 p-3">
+            <p class="op-grafico-texto text-center">Cifras recopiladas del registro nacional de mascotas 
+               con un TOP 10 de los nombre mas populares entre los <span class="destacado t-celeste">caninos</span> y <span class="destacado t-amarillo">felinos</span>.</p>
+            <div class="row d-flex justify-content-center">
+              <div class="col-6 d-flex justify-content-center align-items-center">
+                <h2 class="op-grafico-titulo text-center mx-auto">
+                  Luna
+                </h2>
+                <div class="op-grafico-rectangulo op-grafico-cuadrado-celeste d-flex justify-content-center align-items-center flex-wrap p-2">
+                  <span class="t-celeste">--</span><i class="fa-solid fa-dog"></i><span class="t-celeste">--</span>
+                  <p class="op-grafico-numero">30.079</p>
+                </div>
+              </div>
+              <div class="col-6 d-flex justify-content-center align-items-center border-left-op"> 
+                <div class="op-grafico-rectangulo op-grafico-cuadrado-amarillo d-flex justify-content-center align-items-center flex-wrap p-2">
+                  <span class="t-amarillo">-----</span><i class="fa-solid fa-cat"></i><span class="t-amarillo">-----</span>
+                  <br>
+                  <p class="op-grafico-numero">8.690</p>
+                </div>
+                <h2 class="op-grafico-titulo text-center mx-auto">
+                  Luna
+                </h2>
+              </div>
+            </div>
+          </div>
         </div>
-    
-        <div style="display: inline-block; width: 48%;">
-          <h2>Gráfico 6</h2>
-          {{ plot_div6|safe }}
+        <hr>
+        <div class="row d-flex justify-content-center align-items-center">
+          <div class="col-12 p-3">
+            <h2 class="op-grafico-titulo text-center mx-auto">
+              Mascotas en Chile
+            </h2>
+            <p class="op-grafico-texto text-center">Cifras recopiladas del registro nacional de mascotas el cual muestra la cantidad de gatos y perros registrados por región del 
+              país dando como resultado un total de 1.852.092 mascotas registradas.</p>
+          </div>
         </div>
-    
-        <div style="display: inline-block; width: 48%;">
-          <h2>Gráfico 7</h2>
-          {{ plot_div7|safe }}
+        <div class="row d-flex justify-content-center align-items-center">
+          <div class="col-12 op-grafico p-3">
+            {{ plot_div3|safe }}
+          </div>
         </div>
       </div>
       <div class="col-12 op-dashboard-graficos" style="display: none;" id="dashboard-2">
