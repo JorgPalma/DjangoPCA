@@ -1,7 +1,7 @@
 
 
  // Función para realizar la búsqueda de libros
- function buscarLibros(query, maxResultados = 5) {
+ function buscarLibros(query, maxResultados = 3) {
     const apiUrl = `https://www.googleapis.com/books/v1/volumes?q=${encodeURIComponent(query)}&maxResults=${maxResultados}`;
 
     fetch(apiUrl)
