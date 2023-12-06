@@ -682,4 +682,4 @@ def eltest(request):
         'post': post
     }
 
-    return render(request, 'core/mapavet.html', data)
+    return render(request, 'core/eltest.html', data)

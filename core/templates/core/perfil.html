@@ -164,7 +164,26 @@
         </main>
         <br>
       {% endif %}
+      {% if m.raza.animal.nombre_animal == "Perro" %}
+      <h1>Buscar libros</h1>
+      <label for="busqueda">Ingrese el título del libro:</label>
+      <input type="hidden" id="busqueda" value="Perro">
+      <button id="btnBusqueda" onclick="realizarBusqueda()">Realizar Búsqueda</button>
+      
 
+      <h2>Resultados de la búsqueda de libros</h2>
+      <div id="resultados"></div>
+
+      {% elif m.raza.animal.nombre_animal == "Gato" %}
+      <h1>Buscar libros</h1>
+      <label for="busqueda">Ingrese el título del libro:</label>
+      <input type="hidden" id="busqueda" value="Gato">
+      <button id="btnBusqueda" onclick="realizarBusqueda()">Realizar Búsqueda</button>
+      
+
+      <h2>Resultados de la búsqueda de libros</h2>
+      <div id="resultados"></div>
+      {% endif %}  
 
 
         {% endfor %} 
