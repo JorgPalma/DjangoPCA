@@ -8,101 +8,77 @@
 {% load static %}
 
 <head>
-
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  
-  <link href="https://api.mapbox.com/mapbox-gl-js/v2.6.1/mapbox-gl.css"
-    rel="stylesheet"
-  />
+  <link href="https://api.mapbox.com/mapbox-gl-js/v2.6.1/mapbox-gl.css" rel="stylesheet" />
   <style>
     body {
       margin: 0;
       padding: 0;
     }
-    #map {
+    #map-container {
+      position: relative;
       height: 100vh;
+    }
+    #map {
+      height: 100%;
+    }
+    #weather-container {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      z-index: 1;
+      background-color: rgba(255, 255, 255, 0.8);
+      padding: 10px;
+      border-radius: 5px;
     }
   </style>
 </head>
 <body>
-  <div id="map"></div>
+  <div id="map-container">
+    <!-- Contenedor del clima -->
+    <div id="weather-container">
+      <h2>Clima Actual</h2>
+      <p id="temperatura-ciudad">Cargando temperatura...</p>
+    </div>
+    <!-- Mapa -->
+    <div id="map"></div>
+  </div>
 
+  <!-- Script de AccuWeather -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const apiKey = 'TU_CLAVE_API_DE_ACCUWEATHER';
+      const ciudad = 'Santiago';
+      const apiUrl = `http://dataservice.accuweather.com/currentconditions/v1/${ciudad}?apikey=${apiKey}`;
+
+      // Función para obtener y mostrar la temperatura
+      async function obtenerTemperatura() {
+        try {
+          const respuesta = await fetch(apiUrl);
+          const datos = await respuesta.json();
+
+          // AccuWeather devuelve un array, tomamos la primera condición
+          const temperatura = datos[0].Temperature.Metric.Value;
+
+          // Actualizar el contenido del cuadro con la temperatura
+          const temperaturaElemento = document.getElementById('temperatura-ciudad');
+          temperaturaElemento.innerHTML = `Temperatura en ${ciudad}: ${temperatura} °C`;
+        } catch (error) {
+          console.error('Error al obtener la temperatura:', error);
+        }
+      }
+
+      // Llamar a la función al cargar la página
+      obtenerTemperatura();
+    });
+  </script>
+
+  <!-- Script de Mapbox -->
   <script>
     mapboxgl.accessToken = 'pk.eyJ1IjoicGV0Y2FyZWFkbWluIiwiYSI6ImNscGgzYW9qZDAzc2kyanFtZmNodWIybmEifQ.-Fr7wMapvDTi9VuQIWuODg';
 
-    // Ubicaciones para las que se realizarán solicitudes de geocodificación
-    const locations = [
-  { name: 'Santiago, Chile', coordinates: [-70.6482, -33.4569] },
-  { name: 'Valparaíso, Chile', coordinates: [-71.6485, -33.0472] },
-  { name: 'Concepción, Chile', coordinates: [-73.0405, -36.8271] },
-  { name: 'Rancagua, Chile', coordinates: [-70.7398, -34.1708] },
-  { name: 'Talagante, Chile', coordinates: [-70.9303, -33.6616] },
-  { name: 'Paine, Chile', coordinates: [-70.7516, -33.8144] },
-  { name: 'Arica, Chile', coordinates: [-70.3015, -18.4783] },
-  { name: 'Iquique, Chile', coordinates: [-70.1431, -20.2208] },
-  { name: 'Antofagasta, Chile', coordinates: [-70.6483, -23.6509] },
-  { name: 'La Serena, Chile', coordinates: [-71.2538, -29.9013] },
-  { name: 'Puerto Montt, Chile', coordinates: [-73.1242, -41.4718] },
-  { name: 'Temuco, Chile', coordinates: [-72.6097, -38.7397] },
-  { name: 'Chillán, Chile', coordinates: [-72.1034, -36.6060] },
-  
-  { name: 'Coquimbo, Chile', coordinates: [-71.3395, -29.9533] },
-  { name: 'Viña del Mar, Chile', coordinates: [-71.5523, -33.0154] },
-  { name: 'Pucon, Chile', coordinates: [-71.9757, -39.2723] },
- 
- 
-  
-  { name: 'Providencia, Santiago, Chile', coordinates: [-70.628, -33.4264] },
-  { name: 'Ñuñoa, Santiago, Chile', coordinates: [-70.6006, -33.4548] },
-  { name: 'Maipú, Santiago, Chile', coordinates: [-70.7653, -33.5201] },
-  { name: 'Puente Alto, Santiago, Chile', coordinates: [-70.5757, -33.6119] },
-  { name: 'La Florida, Santiago, Chile', coordinates: [-70.5508, -33.5218] },
-  { name: 'Peñalolén, Santiago, Chile', coordinates: [-70.5354, -33.485] },
-  { name: 'La Cisterna, Santiago, Chile', coordinates: [-70.6687, -33.5226] },
-  { name: 'Macul, Santiago, Chile', coordinates: [-70.5992, -33.4917] },
-  { name: 'Pudahuel, Santiago, Chile', coordinates: [-70.738, -33.4483] },
-  { name: 'Renca, Santiago, Chile', coordinates: [-70.7273, -33.4116] },
-  { name: 'Quinta Normal, Santiago, Chile', coordinates: [-70.6997, -33.4317] },
-  { name: 'Conchalí, Santiago, Chile', coordinates: [-70.6777, -33.3969] },
-  { name: 'El Bosque, Santiago, Chile', coordinates: [-70.6763, -33.5662] },
-  { name: 'San Ramón, Santiago, Chile', coordinates: [-70.6392, -33.5385] },
-  // Puedes agregar más comunas de Santiago según sea necesario
-];
-
-
-
-    const map = new mapboxgl.Map({
-      container: 'map',
-      style: 'mapbox://styles/mapbox/streets-v11',
-      center: locations[0].coordinates, // Centro del mapa en la primera ubicación
-      zoom: 13
-    });
-
-    // Realizar solicitudes de geocodificación para cada ubicación
-    locations.forEach(location => {
-      const { coordinates } = location;
-      const limit = 10;
-      const searchTerms = ['Veterinaria', 'Clínica veterinaria', 'Veterinario','Urgencia veterinaria', 'Hospital veterinario', 'Veterinario particular','Centro de Especialidades Médico Veterinario','Vet'];
-      
-      searchTerms.forEach(searchTerm => {
-        fetch(`https://api.mapbox.com/geocoding/v5/mapbox.places/${searchTerm}.json?proximity=${coordinates[0]},${coordinates[1]}&limit=${limit}&access_token=${mapboxgl.accessToken}`)
-          .then(response => response.json())
-          .then(data => {
-            data.features.forEach(feature => {
-              const [lng, lat] = feature.center;
-              const name = feature.text;
-
-              new mapboxgl.Marker()
-                .setLngLat([lng, lat])
-                .setPopup(new mapboxgl.Popup().setHTML(`<h3>${name}</h3>`))
-                .addTo(map);
-            });
-          })
-          .catch(error => console.error('Error fetching location data:', error));
-      });
-    });
+    // Resto del código de Mapbox
   </script>
 </body>
-</html>
 
 {% endblock %}
