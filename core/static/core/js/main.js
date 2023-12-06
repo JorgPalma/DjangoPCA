@@ -3,7 +3,7 @@ let noti = document.getElementById('news');
 function Api_con_axios() {
     axios({
         method: 'GET',
-        url: 'https://gnews.io/api/v4/search?q=perros&country=es&apikey=623369ee5fa721da983d130d2a836c6b'
+        url: 'https://gnews.io/api/v4/search?q=mascota&country=es&apikey=623369ee5fa721da983d130d2a836c6b'
     }).then(res => {
         let noticias = res.data.articles;
         console.log(noticias);
