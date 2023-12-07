@@ -200,23 +200,62 @@
         </div>
       </div>
       <div class="col-12 op-dashboard-graficos" style="display: none;" id="dashboard-2">
-        <div style="display: inline-block; width: 48%;">
-          <h2>Gráfico 4</h2>
-          {{ plot_div|safe }}
+        <div class="row d-flex justify-content-center align-items-center">
+          <div class="col-8">
+            {{ plot_div|safe }}
+          </div>
+          <div class="col-4 p-3">
+            <p class="op-grafico-texto">Cifras recopiladas de nuestra base de datos en 
+              donde nos muestra la cantidad total de mascotas registradas según su sexo</p>
+              <hr>
+              <div class="row d-flex justify-content-center">
+                <div class="col-4 justify-content-center">
+                  <div class="op-grafico-cuadrado op-grafico-cuadrado-amarillo d-flex justify-content-center align-items-center flex-wrap p-2">
+                    <i class="fa-solid fa-mars"></i>
+                    <p class="op-grafico-numero">{{ macho }}</p>
+                  </div>
+                </div>
+                <div class="col-4">
+                  <div class="op-grafico-cuadrado op-grafico-cuadrado-celeste d-flex justify-content-center align-items-center flex-wrap p-2">
+                    <i class="fa-solid fa-venus"></i>
+                    <p class="op-grafico-numero">{{ hembra }}</p>
+                  </div>
+                </div>
+              </div>
+          </div>
         </div>
-        <div style="display: inline-block; width: 48%;">
-          <h2>Gráfico 9</h2>
-          {{ plot_div9|safe }}
+        <hr>
+        <div class="row d-flex justify-content-center align-items-center">
+          <div class="col-4 p-3 d-flex justify-content-center">
+            <p class="text-center op-grafico-texto">Cifras recopiladas de nuestra base de datos en nos muestra la cantidad
+               total de perros registrados según su raza</p>
+          </div>
+          <div class="col-8 d-flex justify-content-center">
+            {{ plot_div9|safe }}
+          </div>
         </div>
-        <div style="display: inline-block; width: 48%;">
-          <h2>Gráfico 10</h2>
-          {{ plot_div10|safe }}
+        <hr>
+        <div class="row d-flex justify-content-center align-items-center">
+          <div class="col-8">
+            {{ plot_div10|safe }}
+          </div>
+          <div class="col-4 p-3 d-flex justify-content-center">
+            <p class="text-center op-grafico-texto">Cifras recopiladas de nuestra base de datos en nos muestra la cantidad
+               total de gatos registrados según su raza</p>
+          </div>
         </div>
       </div>
+      <hr>
       <div class="col-12 op-dashboard-graficos" style="display: none;" id="dashboard-3">
-        <div style="display: inline-block; width: 48%;">
-          <h2>Gráfico 8</h2>
-          {{ plot_div8|safe }}
+        <div class="row d-flex justify-content-center align-items-center">
+          <div class="col-10 p-3 d-flex justify-content-center">
+            <p class="text-center op-grafico-texto">En el año 2023 la FEDIAF(Organización que representa la industria de alimentos para mascotas en Europa) libera un documento con la investigación sobre la tenencia de mascotas que se realizo durante el año 2022, en donde se encuestaron aproximadamente 197 millones de hogares, de las cuales 91 millones poseen al menos una mascota. Liderando hogares que poseen gatos con cerca de 127 
+              millones, en segundo lugar hogares que poseen perros con 
+              alrededor de 104 millones. </p>
+          </div>
+          <div class="col-8 d-flex justify-content-center">
+            {{ plot_div8|safe }}
+          </div>
         </div>
       </div>
     </div>

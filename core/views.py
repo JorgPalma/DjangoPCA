@@ -271,6 +271,9 @@ def dashboard(request):
     # csv_file_path = 'core/templates/CSV/csv.csv'
     colors= ['#54d2d2', '#ffcb00', '#f8aa4b', '#ff6150', '#e2e2e2','#465B75', '#FCD949', '#FCAC49', '#ffd49e','#FC5B49', '#49FCFC', '#FC5B49']
     mascotamodel= Mascota.objects.all()
+    mascotasexoH = Mascota.objects.filter(sexo = "H").count()
+    mascotasexoM = Mascota.objects.filter(sexo = "M").count()
+
     # Listas para almacenar los datos del archivo CSV
     vacunas = []
     
@@ -474,7 +477,8 @@ def dashboard(request):
 
 
     # Pasar el gráfico a la plantilla 'dashboard.html'
-    return render(request, 'core/dashboard.html', {'plot_div': plot_div, 'plot_div2': plot_div2, 'plot_div3': plot_div3, 'plot_div4': plot_div4, 'plot_div5': plot_div5, 'plot_div6': plot_div6, 'plot_div7': plot_div7, 'plot_div8': plot_div8, 'plot_div9': plot_div9, 'plot_div10': plot_div10})
+    return render(request, 'core/dashboard.html', {'hembra': mascotasexoH,
+        'macho': mascotasexoM, 'plot_div': plot_div, 'plot_div2': plot_div2, 'plot_div3': plot_div3, 'plot_div4': plot_div4, 'plot_div5': plot_div5, 'plot_div6': plot_div6, 'plot_div7': plot_div7, 'plot_div8': plot_div8, 'plot_div9': plot_div9, 'plot_div10': plot_div10})
     fig.write_html('pie_chart.html')
 
 
