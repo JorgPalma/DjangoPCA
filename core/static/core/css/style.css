@@ -671,7 +671,8 @@ select{
 }
 
 .op-botonera-login .enviar,
-.op-botonera-login .op-btn-login {
+.op-botonera-login .op-btn-login,
+.op-btn-login {
     background: var(--celeste);
     font-family: var(--quicksans);
     color: var(--azul);
@@ -1143,4 +1144,14 @@ select{
 
 .border-left-op {
     border-left: 1px solid #afafaf;
+}
+
+.texto-recuperar {
+    font-size: 14px;
+    font-family: var(--opensans);
+    color: var(--azul);
+}
+
+.cambiar_contrasena ul li {
+    font-size: 12px;
 }

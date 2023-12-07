@@ -24,10 +24,10 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('core.urls')),
     path('accounts/', include('django.contrib.auth.urls')),
-    path('cambiar_contasena/', auth_views.PasswordResetView.as_view(), name='password_reset'),
-    path('cambiar_contrasena_enviar', auth_views.PasswordResetDoneView.as_view(), name="password_reset_done"),
-    path('cambiar/<uidb64>/<token>/', auth_views.PasswordResetConfirmView.as_view(), name="password_reset_confirm"),
-    path('cambiar_contasena_listo/', auth_views.PasswordResetCompleteView.as_view(), name="password_reset_complete")
+    path('cambiar/', auth_views.PasswordResetView.as_view(template_name="core/cambiar.html"), name='password_reset'),
+    path('cambiar_contrasena_enviar', auth_views.PasswordResetDoneView.as_view(template_name="core/mailEnviado.html"), name="password_reset_done"),
+    path('cambiar/<uidb64>/<token>/', auth_views.PasswordResetConfirmView.as_view(template_name="core/confirmar.html"), name="password_reset_confirm"),
+    path('cambiar_contasena_listo/', auth_views.PasswordResetCompleteView.as_view(template_name="core/listo.html"), name="password_reset_complete")
 ]
 
 
