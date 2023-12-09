@@ -10,26 +10,26 @@
 <main class="pb-3 pt-3 op-destacados">
   <div class="container">
     <div class="row d-flex justify-content-center">
-        <div class="col-10">
+        <div class="col-12 justify-content-center">
           <ul class="op-botonera d-flex justify-content-between mx-3 mt-2">
             <li class="op-botonera-boton">
-              <a href="#" class="op-botonera-link"><i class="fa-solid fa-list-ul"></i> Todo</a>
+              <a href="{% url 'blog' %}" class="op-botonera-link"><i class="fa-solid fa-list-ul"></i><span class="ocultar-text"> Todo</span></a>
             </li>
             <li class="op-botonera-boton">
-              <a href="{% url 'blogperro' %}" class="op-botonera-link"><i class="fa-solid fa-dog"></i> Perros</a>
+              <a href="{% url 'blogperro' %}" class="op-botonera-link"><i class="fa-solid fa-dog"></i> <span class="ocultar-text"> Perros</span></a>
             </li>
             <li class="op-botonera-boton">
-              <a href="#" class="op-botonera-link"><i class="fa-solid fa-cat"></i> Gatos</a>
+              <a href="{% url 'bloggato' %}" class="op-botonera-link"><i class="fa-solid fa-cat"></i> <span class="ocultar-text"> Gatos</span></a>
             </li>
             <li class="op-botonera-boton">
-              <a href="#" class="op-botonera-link"><i class="fa-solid fa-bone"></i> Alimentación</a>
+              <a href="{% url 'blogalimentacion' %}" class="op-botonera-link"><i class="fa-solid fa-bone"></i> <span class="ocultar-text"> Alimentación</span></a>
             </li>
             <li class="op-botonera-boton">
-              <a href="#" class="op-botonera-link"><i class="fa-solid fa-paw"></i> Adopción</a>
+              <a href="{% url 'blogadopcion' %}" class="op-botonera-link"><i class="fa-solid fa-paw"></i> <span class="ocultar-text"> Adopción</span></a>
             </li>
             {% if user.is_authenticated %}
               <li class="op-botonera-boton">
-                <a href="{% url 'addPost' %}" class="op-botonera-post"><i class="fa-solid fa-plus"></i>  Nuevo</a>
+                <a href="{% url 'addPost' %}" class="op-botonera-post"><i class="fa-solid fa-plus"></i> <span class="ocultar-text"> Nuevo</span></a>
               </li>
             {% endif %}
           </ul>
@@ -37,7 +37,7 @@
       </div>
       {% for b in blog %}
       <div class="row d-flex justify-content-center">
-        <div class="col-8">
+        <div class="col-sm-12 col-md-8">
           <a class="op-post-link" href="{% url 'detallepost' b.id %}">
             <article class="op-post d-flex justify-content-between mt-2 mb-2">
               <div class="op-post-cont-sm">

@@ -10,21 +10,15 @@
         <section class="op-cta d-flex">
           <div class="container d-flex align-self-center">
             <div class="row d-flex justify-content-center">
-              <div class="col-12 col-md-6 op-cta-text d-flex flex-wrap mb-2">
+              <div class="col-sm-12 col-md-6 op-cta-text d-flex flex-wrap mb-2">
                   <h1 class="op-cta-title">Cuida a tus mascotas</h1>
                   <div class="op-barra-divisora-sm mt-1 mb-2"></div>
                   <p class="op-cta-p">
                     Conoce información y estadísitcas de tus animales en nuestra aplicación web.
                   </p>
-                  <p class="op-cta-p">
-                  </p>
                   <a class="op-cta-button" href="{% url  'dashboard' %}">Comencémos</a>
-                </p>
-                <p class="op-cta-p">
-                </p>
-                <a class="op-cta-button" href="{% url  'mapavet' %}">Veterinarias</a>
               </div>
-              <div class="col-12 col-md-6 op-cta-text d-flex flex-wrap justify-content-center">
+              <div class="col-sm-12 col-md-6 op-cta-text d-flex flex-wrap justify-content-center">
                 <img class="op-cta-img align-self-center" src="{% static 'core/img/1.jpeg' %}" alt="Gatito y perrito bonito" width="100%"> 
                 
               </div>
@@ -35,7 +29,7 @@
         <aside class="op-nosotros pb-3" id="nosotros">
           <div class="container">
             <div class="row d-flex justify-content-center">
-              <div class="col-10 col-md-8">
+              <div class="col-sm-12 col-md-8">
                 <h2 class="op-nosotros-title text-center mt-3 mb-3">Nosotros</h2>
                 <div class="op-barra-divisora-xg mb-4"></div>
                 <p class="op-nosotros-p">
@@ -74,6 +68,19 @@
             </div>
           </div>
         </aside>
+        <section class="op-cta d-flex">
+          <div class="container d-flex align-self-center">
+            <div class="row d-flex justify-content-center">
+              <div class="col-sm-12 col-md-12 op-cta-text d-flex flex-wrap mb-2 justify-content-center">
+                <h2 class="op-blog-title text-center">Encuentra veterinarias en tu región</h2>
+                <img class="op-cta-img align-self-center" src="{% static 'core/img/veterinaria.png' %}" alt="Gatito y perrito bonito" width="40%"> 
+                <a class="op-cta-button align-self-center" href="{% url 'mapavet' %}">Veterinarias</a>
+              </div>
+              <div class="col-12 col-md-6 op-cta-text d-flex flex-wrap justify-content-center">    
+              </div>
+            </div>
+          </div> 
+        </section>
         <main class="pb-3 op-destacados">
           <div class="container">
             <div class="row d-flex justify-content-center">
@@ -83,7 +90,7 @@
               </div>
             </div>
             <div class="row d-flex justify-content-center">
-              <div class="col-8">
+              <div class="col-sm-12 col-md-8">
                 <a class="op-post-link" href="{% url 'detallepost' post.id %}">
                   <article class="op-post d-flex justify-content-between mt-2 mb-2">
                     <div class="op-post-cont-sm">

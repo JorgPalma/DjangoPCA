@@ -8,10 +8,10 @@
 {% load static %}
 <div class="container pt-5 pb-5">
   <div class="row d-flex justify-content-center">
-    <div class="col-5">
+    <div class="col-5 img-contacto-ocultar">
       <img src="{% static 'core/img/ImagotipoColor.png' %}" alt="PetCare" width="80%">
     </div>
-    <div class="col-6 op-col-contacto">
+    <div class="col-sm-6 op-col-contacto p-2">
       <h2 class="h4 text-center" >Formulario de contacto e información animal</h2>
       <form name="contactform" action="#" method="post" id="formulario-contacto" class="op-contact-form d-flex flex-wrap justify-content-center">
         {% csrf_token %}

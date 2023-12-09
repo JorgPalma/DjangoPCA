@@ -101,6 +101,8 @@ def bloggato(request):
     return render(request, 'core/bloggato.html', data)
 
 def blogalimentacion(request):
+    blog = Blog.objects.filter(categoria = "3").order_by('-timestamp')
+    
     page = request.GET.get('page', 1)
 
     try:
@@ -116,6 +118,7 @@ def blogalimentacion(request):
     return render(request, 'core/blogalimentacion.html', data)
 
 def blogadopcion(request):
+    blog = Blog.objects.filter(categoria = "4").order_by('-timestamp')
     page = request.GET.get('page', 1)
 
     try:

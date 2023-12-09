@@ -1155,3 +1155,69 @@ select{
 .cambiar_contrasena ul li {
     font-size: 12px;
 }
+
+.img-footer {
+    width: 100%;
+}
+
+@media only screen and (max-width: 600px) {
+    .op-post-cont-sm {
+        width: 20%;
+    }
+    
+    .op-post-cont-xl {
+        width: 80%;
+    }
+
+    .op-post-title {
+        font-size: 16px;
+    }
+
+    .op-post-like {
+        display: none;
+    }
+
+    .op-blog-likes {
+        display: none;
+    }
+    
+    .op-post-text {
+        display: none;
+    }
+
+    .op-post-img {
+        width: 50px;
+        height: 50px;
+    }
+
+    .img-footer {
+        width: 150px;
+        padding: 0 auto;
+    }
+
+    .op-blog-title {
+        font-size: 30px;
+    }
+
+    .op-nosotros-title {
+        font-size: 30px;
+    }
+    .op-nosotros-title-ng {
+        font-size: 30px;
+    }
+    .op-cta-img {
+        width: 100%;
+    }
+
+    .dashboards-li{
+        display: none;
+    }
+
+    .img-contacto-ocultar{
+        display: none;
+    }
+
+    .ocultar-text {
+        display: none;
+    }
+  }
