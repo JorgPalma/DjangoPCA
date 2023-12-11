@@ -2,8 +2,11 @@ var requestOptions = {
     method: 'GET'
 };
 // tokendante = GIMRjldigYu6qxayPnCPKmdruId4CgzWKYIIYSrA
+// I7GOkn9lxJmdUeNpxk3C4fMbJ8suQupV1mDPmaAi
+// Hn8ouDNWFhzd46n7HvIcMBGhrYg20OkCm6EgLYm3
+// 4293ec2ff1cc4f9899e1bcf9b5c6a538
 var params = {
-    api_token: 'GIMRjldigYu6qxayPnCPKmdruId4CgzWKYIIYSrA',
+    api_token: 'Hn8ouDNWFhzd46n7HvIcMBGhrYg20OkCm6EgLYm3',
     search: 'perros',
     language: 'es'
 };
@@ -28,9 +31,25 @@ fetch("https://api.thenewsapi.com/v1/news/all?" + query, requestOptions)
                   return;
               }
 
-              var articleContainer = document.createElement('div');
-              articleContainer.classList.add('blog-post');
+              var articleContainer = document.createElement('article');
+              articleContainer.classList.add('op-post', 'mt-2', 'mb-2');
 
+              var imageElement = document.createElement('div');
+              imageElement.classList.add('op-post-cont-sm');
+              imageElement.innerHTML = `
+                  <div class="op-post-cont-sm">
+                      <img class="op-post-img" src="${article.image_url}" alt="${article.title}">
+                  </div>`;
+
+                  let contentDiv = document.createElement('div');
+                  contentDiv.classList.add('op-post-cont-xl');
+                  contentDiv.innerHTML = `
+                      <h1 class="op-post-title">${article.title}</h1>
+                      <h6 class="op-post-description">${article.snippet}</h6>
+                      <div class="op-post-barra"></div>
+                      <a href="${article.url}" target="_blank" class="op-post-link">Seguir leyendo</a>
+                  `;
+                  
               // Crea elementos para cada propiedad del artículo
               var titleElement = document.createElement('h2');
               titleElement.textContent = article.title;
@@ -38,25 +57,13 @@ fetch("https://api.thenewsapi.com/v1/news/all?" + query, requestOptions)
               var snippetElement = document.createElement('p');
               snippetElement.textContent = article.snippet;
 
-              var imageElement = document.createElement('img');
-              imageElement.src = article.image_url;
-              imageElement.alt = article.title;
-
-              var sourceElement = document.createElement('p');
-              sourceElement.textContent = 'Source: ' + article.source;
-
               var linkElement = document.createElement('a');
               linkElement.href = article.url;
               linkElement.textContent = 'Leer más';
 
-              // Agrega todos los elementos al contenedor del artículo
-              articleContainer.appendChild(titleElement);
-              articleContainer.appendChild(snippetElement);
-              articleContainer.appendChild(imageElement);
-              articleContainer.appendChild(sourceElement);
-              articleContainer.appendChild(linkElement);
+              articleContainer.appendChild(imageElement); 
+              articleContainer.appendChild(contentDiv);
 
-              // Agrega el contenedor del artículo al contenedor del blog
               blogContainer.appendChild(articleContainer);
           });
       } else {
@@ -66,7 +73,7 @@ fetch("https://api.thenewsapi.com/v1/news/all?" + query, requestOptions)
 
 
   var paramsa = {
-    api_token: 'I7GOkn9lxJmdUeNpxk3C4fMbJ8suQupV1mDPmaAi',
+    api_token: 'Hn8ouDNWFhzd46n7HvIcMBGhrYg20OkCm6EgLYm3',
     search: 'gatos',
     language: 'es'
 };
@@ -91,9 +98,25 @@ var querya = Object.keys(paramsa)
                   return;
               }
 
-              var articleContainer = document.createElement('div');
-              articleContainer.classList.add('blog-post');
+              var articleContainer = document.createElement('article');
+              articleContainer.classList.add('op-post', 'mt-2', 'mb-2');
 
+              var imageElement = document.createElement('div');
+              imageElement.classList.add('op-post-cont-sm');
+              imageElement.innerHTML = `
+                  <div class="op-post-cont-sm">
+                      <img class="op-post-img" src="${article.image_url}" alt="${article.title}">
+                  </div>`;
+
+                  let contentDiv = document.createElement('div');
+                  contentDiv.classList.add('op-post-cont-xl');
+                  contentDiv.innerHTML = `
+                      <h1 class="op-post-title">${article.title}</h1>
+                      <h6 class="op-post-description">${article.snippet}</h6>
+                      <div class="op-post-barra"></div>
+                      <a href="${article.url}" target="_blank" class="op-post-link">Seguir leyendo</a>
+                  `;
+                  
               // Crea elementos para cada propiedad del artículo
               var titleElement = document.createElement('h2');
               titleElement.textContent = article.title;
@@ -101,25 +124,13 @@ var querya = Object.keys(paramsa)
               var snippetElement = document.createElement('p');
               snippetElement.textContent = article.snippet;
 
-              var imageElement = document.createElement('img');
-              imageElement.src = article.image_url;
-              imageElement.alt = article.title;
-
-              var sourceElement = document.createElement('p');
-              sourceElement.textContent = 'Source: ' + article.source;
-
               var linkElement = document.createElement('a');
               linkElement.href = article.url;
               linkElement.textContent = 'Leer más';
 
-              // Agrega todos los elementos al contenedor del artículo
-              articleContainer.appendChild(titleElement);
-              articleContainer.appendChild(snippetElement);
-              articleContainer.appendChild(imageElement);
-              articleContainer.appendChild(sourceElement);
-              articleContainer.appendChild(linkElement);
+              articleContainer.appendChild(imageElement); 
+              articleContainer.appendChild(contentDiv);
 
-              // Agrega el contenedor del artículo al contenedor del blog
               blogContainer.appendChild(articleContainer);
           });
       } else {
