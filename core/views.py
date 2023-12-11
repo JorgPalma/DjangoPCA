@@ -385,11 +385,11 @@ def dashboard(request):
         else:
             otrog += 1
 
-    trace10 = go.Pie(labels=lblrazagato, values=[siames, maine, esfinge, bengali, expelocorto, british, otrog], hole=.3)
+    trace10 = go.Bar(x=lblrazagato, y=[siames, maine, esfinge, bengali, expelocorto, british, otrog], marker_color='#ffcb00')
     data10 = [trace10]
     layout10 = go.Layout(title='Distribución de razas felinas registrada (PetCareAnalytics)', margin=dict(l=0, r=0, b=0, t=30))  # Ajusta los márgenes según tus preferencias
     fig10 = go.Figure(data=data10, layout=layout10)
-    fig10.update_traces(marker=dict(colors=colors))
+    
     plot_div10 = fig10.to_html(full_html=False)
 
     # Leer datos desde el archivo CSV y manejar valores no numéricos
