@@ -1160,6 +1160,12 @@ select{
     width: 100%;
 }
 
+.link-a-blog {
+    text-decoration: none;
+    color:var(--naranjo);
+    font-weight: bolder;
+}
+
 @media only screen and (max-width: 600px) {
     .op-post-cont-sm {
         width: 20%;
