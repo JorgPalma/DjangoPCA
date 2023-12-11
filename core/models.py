@@ -72,11 +72,6 @@ class Mascota(models.Model):
     def __str__(self):
         return self.nombre_masc
     
-class Alergia(models.Model):
-    tipo_alergia = models.CharField(max_length=15, default="No")
-
-    def __str__(self):
-        return self.tipo_alergia
     
 class Contacto(models.Model):
     nombre_contacto = models.CharField(max_length=50)

@@ -1,6 +1,5 @@
 from django.contrib import admin
-from .models import Persona, Blog, Comentario, Contacto, Mascota, Animal, Raza, Categoria, Alergia
-
+from .models import Persona, Blog, Comentario, Contacto, Mascota, Animal, Raza, Categoria
 # Register your models here.
 
 admin.site.register(Persona)
@@ -11,4 +10,3 @@ admin.site.register(Mascota)
 admin.site.register(Animal)
 admin.site.register(Raza)
 admin.site.register(Categoria)
-admin.site.register(Alergia)
