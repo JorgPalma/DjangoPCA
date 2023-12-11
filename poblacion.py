@@ -4,7 +4,7 @@ os.environ.setdefault("DJANGO_SETTINGS_MODULE", "PetCareAnalytics.settings")
 import django
 django.setup()
 from django.contrib.auth.models import User
-from core.models import Persona, Raza, Mascota, Animal, Alergia, Formulario
+from core.models import Persona, Raza, Mascota, Animal
 
 def poblar_db():
     # Poblar la tabla Usuario (COMENTAR CODIGO 'CTRL+K+C')(DESCOMENTAR 'CTRL+K+U')
